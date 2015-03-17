@@ -6,7 +6,7 @@ import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.view.GameBoardView;
 import nl.spookystoriesinc.coolgame.objects.Leaf;
 import nl.spookystoriesinc.coolgame.objects.Rock;
-import nl.spookystoriesinc.coolgame.objects.Wombat;
+import nl.spookystoriesinc.coolgame.objects.Player;
 
 /**
  * The game board for CoolGame.
@@ -30,8 +30,8 @@ public class CoolGameBoard extends GameBoard {
 	@Override
 	public void onEmptyTileClicked(int x, int y) {
 		// The x pos. and y pos. from the player object
-		int oldX = getWombat().getPositionX();
-		int oldY = getWombat().getPositionY();
+		int oldX = getPlayer().getPositionX();
+		int oldY = getPlayer().getPositionY();
 		// The difference between the players position and the clicked tile
 		int difX;
 		int difY;
@@ -44,9 +44,9 @@ public class CoolGameBoard extends GameBoard {
 		//while (x != oldX || y != oldY) {
 			updateView();
 
-			oldX = getWombat().getPositionX();
+			oldX = getPlayer().getPositionX();
 			Log.d(CoolGame.TAG, "oldX: " + oldX);
-			oldY = getWombat().getPositionY();
+			oldY = getPlayer().getPositionY();
 			Log.d(CoolGame.TAG, "oldY: " + oldY);
 
 			// If the player reached the clicked position the method will end
@@ -90,14 +90,16 @@ public class CoolGameBoard extends GameBoard {
 
 							else {
 								Log.d(CoolGame.TAG, "Going down");
-								this.moveObject(getWombat(), (oldX), (oldY + 1));
+								((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX), (oldY + 1));
 
 							}
 
 						}
 					} else {
 						Log.d(CoolGame.TAG, "Going left");
-						this.moveObject(getWombat(), (oldX - 1), oldY);
+						((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX - 1), oldY);
 						
 				}
 					
@@ -129,14 +131,16 @@ public class CoolGameBoard extends GameBoard {
 
 							else {
 								Log.d(CoolGame.TAG, "Going left");
-								this.moveObject(getWombat(), (oldX - 1), (oldY));
+								((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX - 1), (oldY));
 
 							}
 
 						}
 					} else {
 						Log.d(CoolGame.TAG, "Going down");
-						this.moveObject(getWombat(), (oldX), (oldY + 1));
+						((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX), (oldY + 1));
 						
 				}
 				}
@@ -169,14 +173,16 @@ public class CoolGameBoard extends GameBoard {
 
 							else {
 								Log.d(CoolGame.TAG, "Going up");
-								this.moveObject(getWombat(), (oldX), (oldY - 1));
+								((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX), (oldY - 1));
 
 							}
 
 						}
 					} else {
 						Log.d(CoolGame.TAG, "Going left");
-						this.moveObject(getWombat(), (oldX - 1), (oldY));
+						((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX - 1), (oldY));
 				
 					}
 				}
@@ -209,14 +215,16 @@ public class CoolGameBoard extends GameBoard {
 
 							else {
 								Log.d(CoolGame.TAG, "Going left");
-								this.moveObject(getWombat(), (oldX - 1), (oldY));
+								((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX - 1), (oldY));
 
 							}
 
 						}
 					} else {
 						Log.d(CoolGame.TAG, "Going up");
-						this.moveObject(getWombat(), (oldX), (oldY - 1));
+						((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX), (oldY - 1));
 						
 					}
 				}
@@ -250,14 +258,16 @@ public class CoolGameBoard extends GameBoard {
 
 							else {
 								Log.d(CoolGame.TAG, "Going up");
-								this.moveObject(getWombat(), (oldX), (oldY - 1));
+								((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX), (oldY - 1));
 
 							}
 
 						}
 					} else {
 						Log.d(CoolGame.TAG, "Going right");
-						this.moveObject(getWombat(), (oldX + 1), (oldY));
+						((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX + 1), (oldY));
 						
 					}
 				
@@ -287,14 +297,16 @@ public class CoolGameBoard extends GameBoard {
 							}
 
 							else {
-								this.moveObject(getWombat(), (oldX + 1), (oldY));
+								((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX + 1), (oldY));
 								Log.d(CoolGame.TAG, "Going right");
 
 							}
 
 						}
 					} else {
-						this.moveObject(getWombat(), (oldX), (oldY - 1));
+						((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX), (oldY - 1));
 						Log.d(CoolGame.TAG, "Going up");
 						
 					}
@@ -327,14 +339,16 @@ public class CoolGameBoard extends GameBoard {
 							}
 
 							else {
-								this.moveObject(getWombat(), (oldX), (oldY + 1));
+								((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX), (oldY + 1));
 								Log.d(CoolGame.TAG, "Going down");
 
 							}
 
 						}
 					} else {
-						this.moveObject(getWombat(), (oldX + 1), oldY);
+						((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX + 1), oldY);
 						Log.d(CoolGame.TAG, "Going right");
 					}
 				}	
@@ -363,14 +377,16 @@ public class CoolGameBoard extends GameBoard {
 							}
 
 							else {
-								this.moveObject(getWombat(), (oldX + 1), (oldY));
+								((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+								this.moveObject(getPlayer(), (oldX + 1), (oldY));
 								Log.d(CoolGame.TAG, "Going right");
 
 							}
 
 						}
 					} else {
-						this.moveObject(getWombat(), (oldX), oldY + 1);
+						((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+						this.moveObject(getPlayer(), (oldX), oldY + 1);
 						Log.d(CoolGame.TAG, "Going down");
 					}
 				}

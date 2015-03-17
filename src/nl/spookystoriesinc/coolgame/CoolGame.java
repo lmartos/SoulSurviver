@@ -1,8 +1,10 @@
 package nl.spookystoriesinc.coolgame;
 
+import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Leaf;
 import nl.spookystoriesinc.coolgame.objects.Rock;
-import nl.spookystoriesinc.coolgame.objects.Wombat;
+import nl.spookystoriesinc.coolgame.objects.Wall;
+import nl.spookystoriesinc.coolgame.objects.Player;
 import nl.spookystoriesinc.model.Game;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.coolgame.CoolGameBoard;
@@ -59,44 +61,40 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(new Wombat(), 1, 1);
+		board.addGameObject(new Player(), 1, 1);
 		
 		// walls of the game
-		board.addGameObject(new Rock(false), 0,0);
-		board.addGameObject(new Rock(false), 0,1);
-		board.addGameObject(new Rock(false), 0,2);
-		board.addGameObject(new Rock(false), 0,4);
-		board.addGameObject(new Rock(false), 0,5);
-		board.addGameObject(new Rock(false), 0,6);
+		board.addGameObject(new Wall(), 0,0);
+		board.addGameObject(new Wall(), 0,1);
+		board.addGameObject(new Wall(), 0,2);
+		board.addGameObject(new Wall(), 0,4);
+		board.addGameObject(new Wall(), 0,5);
+		board.addGameObject(new Wall(), 0,6);
 		
-		board.addGameObject(new Rock(false), 1,6);
-		board.addGameObject(new Rock(false), 2,6);
-		board.addGameObject(new Rock(false), 3,6);
-		board.addGameObject(new Rock(false), 5,6);
-		board.addGameObject(new Rock(false), 6,6);
-		board.addGameObject(new Rock(false), 7,6);
+		board.addGameObject(new Wall(), 1,6);
+		board.addGameObject(new Wall(), 2,6);
+		board.addGameObject(new Wall(), 3,6);
+		board.addGameObject(new Wall(), 5,6);
+		board.addGameObject(new Wall(), 6,6);
+		board.addGameObject(new Wall(), 7,6);
 		
-		board.addGameObject(new Rock(false), 1,0);
-		board.addGameObject(new Rock(false), 2,0);
-		board.addGameObject(new Rock(false), 3,0);
-		board.addGameObject(new Rock(false), 5,0);
-		board.addGameObject(new Rock(false), 6,0);
-		board.addGameObject(new Rock(false), 7,0);
-		board.addGameObject(new Rock(false), 8,0);
+		board.addGameObject(new Wall(), 1,0);
+		board.addGameObject(new Wall(), 2,0);
+		board.addGameObject(new Wall(), 3,0);
+		board.addGameObject(new Wall(), 5,0);
+		board.addGameObject(new Wall(), 6,0);
+		board.addGameObject(new Wall(), 7,0);
+		board.addGameObject(new Wall(), 8,0);
 		
-		board.addGameObject(new Rock(false), 8,1);
-		board.addGameObject(new Rock(false), 8,2);
-		board.addGameObject(new Rock(false), 8,4);
-		board.addGameObject(new Rock(false), 8,5);
-		board.addGameObject(new Rock(false), 8,6);
+		board.addGameObject(new Wall(), 8,1);
+		board.addGameObject(new Wall(), 8,2);
+		board.addGameObject(new Wall(), 8,4);
+		board.addGameObject(new Wall(), 8,5);
+		board.addGameObject(new Wall(), 8,6);
 		
 		
-
-		// Add some rocks
-		board.addGameObject(new Rock(false), 3, 3);
-		board.addGameObject(new Rock(false), 3, 4);
-		board.addGameObject(new Rock(false), 4, 3);
-		board.addGameObject(new Rock(false), 5, 3);
+		// Object / X / Y
+		board.addGameObject(new Chair(), 6, 1);
 
 		// Redraw the game view
 		board.updateView();

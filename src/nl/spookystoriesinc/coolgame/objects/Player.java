@@ -10,14 +10,24 @@ import nl.spookystoriesinc.model.GameObject;
  * 
  * @author Paul de Groot
  */
-public class Wombat extends GameObject {
-	public static final String WOMBAT_IMAGE = "Wombat";
+public class Player extends GameObject {
+	public static final String DOWN_PLAYER_IMAGE = "PlayerDown";
+	public static final String LEFT_PLAYER_IMAGE = "PlayerLeft";
+	public static final String RIGHT_PLAYER_IMAGE = "PlayerRight";
+	public static final String UP_PLAYER_IMAGE = "PlayerUp";
+	
+	private String imageId = DOWN_PLAYER_IMAGE;
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return WOMBAT_IMAGE;
+		return imageId;
 	}
+	
+	public void setImageId(String imageId){
+		this.imageId = imageId;
+	}
+
 
 	/** Called when the user touched this wombat. */
 	@Override
