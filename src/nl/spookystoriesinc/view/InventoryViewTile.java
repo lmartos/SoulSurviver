@@ -1,15 +1,21 @@
 package nl.spookystoriesinc.view;
 
 import java.util.Observable;
+
+
 import java.util.Observer;
+
 import nl.spookystoriesinc.spookystories.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
-public class InventoryViewTile extends View implements Observer {
+public class InventoryViewTile extends ImageView implements Observer {
 
 	
 	//private InventoryViewTile view;
@@ -41,7 +47,7 @@ public class InventoryViewTile extends View implements Observer {
 	public void init(){
 		
 		if(!isInEditMode()) {
-		
+			
 	//	view = (InventoryViewTile) findViewById(R.id.inventoryViewTile1);
 	//	view.setBackgroundColor(Color.BLUE);
 	//	view.setOnClickListener(new ClickListener());

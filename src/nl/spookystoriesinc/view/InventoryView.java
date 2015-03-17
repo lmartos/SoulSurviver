@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.view;
 
 import java.util.Observable;
+
 import java.util.Observer;
 
 import nl.spookystoriesinc.spookystories.R;
@@ -108,7 +109,7 @@ public class InventoryView extends LinearLayout implements Observer {
 		@Override
 		public void onClick(View v) {
 		if(v == tile1){
-			tile1.setBackgroundColor(Color.RED);
+			tile1.setImageResource(R.drawable.leaf);
 		}else if(v == tile2){
 			tile2.setBackgroundColor(Color.RED);
 		}else if(v == tile3){
