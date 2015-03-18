@@ -31,6 +31,9 @@ public class Key extends GameObject{
 		else if(this.id == 2){
 			return R.drawable.sleutelgoud;
 		}
+		else if(this.id == 3){
+			return R.drawable.sleutelblauw;
+		}
 		return R.drawable.sleutelgrijs;
 	}
 	

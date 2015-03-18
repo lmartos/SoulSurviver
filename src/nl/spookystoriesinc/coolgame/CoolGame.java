@@ -108,6 +108,12 @@ public class CoolGame extends Game {
 		Chest chestTwo;
 		board.addGameObject(chestTwo = new Chest(), 2, 1);
 		chestTwo.addKey(new Key(2));
+		
+		// rightest chest
+		Chest chestThree;
+		board.addGameObject(chestThree = new Chest(), 7, 4);
+		chestThree.addKey(new Key(3));
+		chestThree.addKey(new Key(4));
 
 		board.addGameObject(new Table(), 3, 1);
 		board.addGameObject(new Table(), 5, 1);

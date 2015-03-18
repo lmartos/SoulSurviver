@@ -40,7 +40,7 @@ public class Door extends GameObject{
 		
 		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			if(InventoryView.checkForKey(this.id)){
-				state = SOUTH_OPEN_DOOR_IMAGE;	
+				state = EAST_OPEN_DOOR_IMAGE;	
 			}
 		}
 		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
@@ -50,7 +50,7 @@ public class Door extends GameObject{
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			if(InventoryView.checkForKey(this.id)){
-				state = EAST_OPEN_DOOR_IMAGE;	
+				state = SOUTH_OPEN_DOOR_IMAGE;	
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
