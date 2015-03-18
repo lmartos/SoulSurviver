@@ -74,26 +74,22 @@ public class CoolGameBoard extends GameBoard {
 					if (objectAtNewPos != null) {
 
 						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+					
 							newX = oldX;
 							newY = oldY + 1;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
+								return;
 
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
+							
 							}
-
 							else {
 								Log.d(CoolGame.TAG, "Going down");
 								((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX), (oldY + 1));
 
-							}
+							
 
 						}
 					} else {
@@ -114,27 +110,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+					
 							newX = oldX - 1;
 							newY = oldY;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+					
+						}
 							else {
 								Log.d(CoolGame.TAG, "Going left");
 								((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX - 1), (oldY));
 
-							}
+							
 
 						}
 					} else {
@@ -142,7 +132,7 @@ public class CoolGameBoard extends GameBoard {
 						((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
 						this.moveObject(getPlayer(), (oldX), (oldY + 1));
 						
-				}
+					}
 				}
 
 			}
@@ -156,29 +146,23 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+			
 							newX = oldX;
 							newY = oldY - 1;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+					
+						}
 							else {
 								Log.d(CoolGame.TAG, "Going up");
 								((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX), (oldY - 1));
 
 							}
-
-						}
+						
+						
 					} else {
 						Log.d(CoolGame.TAG, "Going left");
 						((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
@@ -198,27 +182,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+				
 							newX = oldX - 1;
 							newY = oldY;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+					
+						}
 							else {
 								Log.d(CoolGame.TAG, "Going left");
 								((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX - 1), (oldY));
 
-							}
+							
 
 						}
 					} else {
@@ -241,27 +219,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+					
 							newX = oldX;
 							newY = oldY - 1;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+				
+						}
 							else {
 								Log.d(CoolGame.TAG, "Going up");
 								((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX), (oldY - 1));
 
-							}
+							
 
 						}
 					} else {
@@ -281,27 +253,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+					
 							newX = oldX + 1;
 							newY = oldY;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+			
+						}
 							else {
 								((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX + 1), (oldY));
 								Log.d(CoolGame.TAG, "Going right");
 
-							}
+							
 
 						}
 					} else {
@@ -323,27 +289,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+				
 							newX = oldX;
 							newY = oldY + 1;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+					
+						}
 							else {
 								((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX), (oldY + 1));
 								Log.d(CoolGame.TAG, "Going down");
 
-							}
+							
 
 						}
 					} else {
@@ -361,27 +321,21 @@ public class CoolGameBoard extends GameBoard {
 
 					if (objectAtNewPos != null) {
 
-						// Wombats can't move through rocks
-						if (objectAtNewPos instanceof Rock) {
-
+						
 							newX = oldX + 1;
 							newY = oldY;
 							objectAtNewPos = this.getObject(newX, newY);
 
 							if (objectAtNewPos != null) {
-
-								// Wombats can't move through rocks
-								if (objectAtNewPos instanceof Rock) {
-									return;
-								}
-							}
-
+								return;
+						
+						}
 							else {
 								((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
 								this.moveObject(getPlayer(), (oldX + 1), (oldY));
 								Log.d(CoolGame.TAG, "Going right");
 
-							}
+							
 
 						}
 					} else {
@@ -407,4 +361,5 @@ public class CoolGameBoard extends GameBoard {
 	public int haalMinWeg(int getal) {
 		return getal * -1;
 	}
+
 }

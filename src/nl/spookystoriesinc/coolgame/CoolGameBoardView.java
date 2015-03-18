@@ -1,8 +1,11 @@
 package nl.spookystoriesinc.coolgame;
 
 import nl.spookystoriesinc.coolgame.objects.Chair;
+import nl.spookystoriesinc.coolgame.objects.Chest;
+import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Leaf;
 import nl.spookystoriesinc.coolgame.objects.Rock;
+import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.coolgame.objects.Player;
 import nl.spookystoriesinc.spookystories.R;
@@ -53,15 +56,21 @@ public class CoolGameBoardView extends GameBoardView {
 
 		// Load the images for the GameObjects
 		spriteCache.loadTile(Leaf.LEAF_IMAGE, R.drawable.leaf);
-		spriteCache.loadTile(Rock.ROCK_IMAGE, R.drawable.rock);
-		spriteCache.loadTile(Rock.RED_ROCK_IMAGE, R.drawable.rock2);
 		
 		spriteCache.loadTile(Player.DOWN_PLAYER_IMAGE, R.drawable.characterdown);
 		spriteCache.loadTile(Player.LEFT_PLAYER_IMAGE, R.drawable.characterleft);
 		spriteCache.loadTile(Player.RIGHT_PLAYER_IMAGE, R.drawable.characterright);
 		spriteCache.loadTile(Player.UP_PLAYER_IMAGE, R.drawable.characterup);
 		
-		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.wall);
+		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.darkwall);
+		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.tablesquare);
+		
+		spriteCache.loadTile(Door.CLOSED_DOOR_IMAGE, R.drawable.doorclosed);
+		spriteCache.loadTile(Door.OPEN_DOOR_IMAGE, R.drawable.dooropen);
+		
+		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chestfrontclosed);
+		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chestfrontopen);
+		
 		spriteCache.loadTile(Chair.CHAIR_IMAGE, R.drawable.chair);
 	}
 }

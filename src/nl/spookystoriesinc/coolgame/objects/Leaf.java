@@ -50,4 +50,10 @@ public class Leaf extends GameObject {
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
+
+	@Override
+	public int getImageIdInt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

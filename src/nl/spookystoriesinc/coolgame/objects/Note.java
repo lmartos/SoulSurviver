@@ -24,4 +24,9 @@ public class Note extends GameObject{
 		
 	}
 
+	@Override
+	public int getImageIdInt() {
+		return 0;
+	}
+
 }

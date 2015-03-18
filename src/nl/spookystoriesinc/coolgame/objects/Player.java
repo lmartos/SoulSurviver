@@ -64,4 +64,10 @@ public class Player extends GameObject {
 		gameBoard.updateView();
 	}
 
+	@Override
+	public int getImageIdInt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

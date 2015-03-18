@@ -56,6 +56,8 @@ public abstract class GameObject {
 	 * @return   The ID of the image to show.
 	 */
 	public abstract String getImageId();
+	
+	public abstract int getImageIdInt();
 
 	/**
 	 * Called when the user touched this game object.

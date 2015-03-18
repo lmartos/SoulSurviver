@@ -1,8 +1,11 @@
 package nl.spookystoriesinc.coolgame;
 
 import nl.spookystoriesinc.coolgame.objects.Chair;
+import nl.spookystoriesinc.coolgame.objects.Chest;
+import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Leaf;
 import nl.spookystoriesinc.coolgame.objects.Rock;
+import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.coolgame.objects.Player;
 import nl.spookystoriesinc.model.Game;
@@ -91,10 +94,15 @@ public class CoolGame extends Game {
 		board.addGameObject(new Wall(), 8,4);
 		board.addGameObject(new Wall(), 8,5);
 		board.addGameObject(new Wall(), 8,6);
-		
-		
+			
 		// Object / X / Y
-		board.addGameObject(new Chair(), 6, 1);
+		board.addGameObject(new Table(), 5, 1);
+		board.addGameObject(new Chest(), 6, 1);
+		
+		board.addGameObject(new Door(1), 4, 0);
+		board.addGameObject(new Door(1), 8, 3);
+		board.addGameObject(new Door(1), 4, 6);
+		board.addGameObject(new Door(1), 0, 3);
 
 		// Redraw the game view
 		board.updateView();

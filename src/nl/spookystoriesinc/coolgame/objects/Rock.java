@@ -45,4 +45,10 @@ public class Rock extends GameObject {
 		redBlock = !redBlock;
 		gameBoard.updateView();
 	}
+
+	@Override
+	public int getImageIdInt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

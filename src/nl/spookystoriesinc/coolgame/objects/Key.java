@@ -22,4 +22,10 @@ public class Key extends GameObject{
 		
 	}
 
+	@Override
+	public int getImageIdInt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
