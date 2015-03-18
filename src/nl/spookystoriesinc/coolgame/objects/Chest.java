@@ -7,6 +7,7 @@ import nl.spookystoriesinc.coolgame.CoolGameBoard;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.spookystories.R;
+import nl.spookystoriesinc.view.InventoryView;
 
 public class Chest extends GameObject{
 	public static final String FRONT_CLOSED_CHEST_IMAGE = "FrontClosedChest";
@@ -18,6 +19,10 @@ public class Chest extends GameObject{
 	
 	public Chest(){
 		super();
+	}
+	
+	public void addKey(Key key){
+		items.add(key);
 	}
 
 	@Override
@@ -33,15 +38,31 @@ public class Chest extends GameObject{
 		
 		if(chestX == (gameBoard.getPlayer().getPositionX() + 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
+			for(GameObject item: items){
+				InventoryView.addItemToInventory(item);
+			}	
+			this.items.removeAll(items);
 		}
 		else if(chestX == (gameBoard.getPlayer().getPositionX() - 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
+			for(GameObject item: items){
+				InventoryView.addItemToInventory(item);
+			}	
+			this.items.removeAll(items);
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() + 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
+			for(GameObject item: items){
+				InventoryView.addItemToInventory(item);
+			}	
+			this.items.removeAll(items);
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() - 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
+			for(GameObject item: items){
+				InventoryView.addItemToInventory(item);
+			}
+			this.items.removeAll(items);
 		}
 		gameBoard.updateView();
 	}

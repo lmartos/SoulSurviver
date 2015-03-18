@@ -2,6 +2,7 @@ package nl.spookystoriesinc.coolgame.objects;
 
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
+import nl.spookystoriesinc.spookystories.R;
 
 public class Key extends GameObject{
 
@@ -24,8 +25,13 @@ public class Key extends GameObject{
 
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(this.id == 1){
+			return R.drawable.sleutelgrijs;
+		}
+		else if(this.id == 2){
+			return R.drawable.sleutelgoud;
+		}
+		return R.drawable.sleutelgrijs;
 	}
 	
 	public int getKeyId(){

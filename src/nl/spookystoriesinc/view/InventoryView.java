@@ -17,20 +17,20 @@ import android.widget.LinearLayout;
 public class InventoryView extends LinearLayout implements Observer {
 	
 	
-	private ArrayList<GameObject> items = new ArrayList<GameObject>();
+	private static ArrayList<GameObject> items = new ArrayList<GameObject>();
 	
-	private InventoryViewTile tile1;
-	private InventoryViewTile tile2;
-	private InventoryViewTile tile3;
-	private InventoryViewTile tile4;
-	private InventoryViewTile tile5;
-	private InventoryViewTile tile6;
-	private InventoryViewTile tile7;
-	private InventoryViewTile tile8;
-	private InventoryViewTile tile9;
-	private InventoryViewTile tile10;
-	private InventoryViewTile tile11;
-	private InventoryViewTile tile12;
+	private static InventoryViewTile tile1;
+	private static InventoryViewTile tile2;
+	private static InventoryViewTile tile3;
+	private static InventoryViewTile tile4;
+	private static InventoryViewTile tile5;
+	private static InventoryViewTile tile6;
+	private static InventoryViewTile tile7;
+	private static InventoryViewTile tile8;
+	private static InventoryViewTile tile9;
+	private static InventoryViewTile tile10;
+	private static InventoryViewTile tile11;
+	private static InventoryViewTile tile12;
 
 	
 	
@@ -55,20 +55,19 @@ public class InventoryView extends LinearLayout implements Observer {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boolean checkForKey(int keyId){
+	public static boolean checkForKey(int doorId){
 		for(GameObject g: items){
 			if(g instanceof Key){
-				if(((Key) g).getKeyId() == keyId){
+				if(((Key) g).getKeyId() == doorId){
 					return true;
-				}else{
-					return false;
+				
 				}
 			}
 		}
 		return false;
 	}
 	
-	public void addItemToInventory(GameObject item){
+	public static void addItemToInventory(GameObject item){
 		items.add(item);
 		switch(items.lastIndexOf(item)){
 		case 0: tile1.setImageResource(item.getImageIdInt());
@@ -126,20 +125,20 @@ public class InventoryView extends LinearLayout implements Observer {
 			tile11 = (InventoryViewTile) findViewById(R.id.inventoryViewTile11);
 			tile12 = (InventoryViewTile) findViewById(R.id.inventoryViewTile12);
 			
-			OnClickListener onclickListener = new ClickListener();
+			//OnClickListener onclickListener = new ClickListener();
 			
-			tile1.setOnClickListener(onclickListener);
-			tile2.setOnClickListener(onclickListener);
-			tile3.setOnClickListener(onclickListener);
-			tile4.setOnClickListener(onclickListener);
-			tile5.setOnClickListener(onclickListener);
-			tile6.setOnClickListener(onclickListener);
-			tile7.setOnClickListener(onclickListener);
-			tile8.setOnClickListener(onclickListener);
-			tile9.setOnClickListener(onclickListener);
-			tile10.setOnClickListener(onclickListener);
-			tile11.setOnClickListener(onclickListener);
-			tile12.setOnClickListener(onclickListener);
+			//tile1.setOnClickListener(onclickListener);
+			//tile2.setOnClickListener(onclickListener);
+			//tile3.setOnClickListener(onclickListener);
+			//tile4.setOnClickListener(onclickListener);
+			//tile5.setOnClickListener(onclickListener);
+			//tile6.setOnClickListener(onclickListener);
+			//tile7.setOnClickListener(onclickListener);
+			//tile8.setOnClickListener(onclickListener);
+			//tile9.setOnClickListener(onclickListener);
+			//tile10.setOnClickListener(onclickListener);
+			//tile11.setOnClickListener(onclickListener);
+			//tile12.setOnClickListener(onclickListener);
 			
 			tile1.setBackgroundResource(R.drawable.inventoryslot);
 			tile2.setBackgroundResource(R.drawable.inventoryslot);
@@ -158,39 +157,38 @@ public class InventoryView extends LinearLayout implements Observer {
 		
 	}
 	
-	public class ClickListener implements OnClickListener {
+	//public class ClickListener implements OnClickListener {
 
-		@Override
-		public void onClick(View v) {
-		if(v == tile1){
-			tile1.setImageResource(R.drawable.leaf);
-		}else if(v == tile2){
-			tile2.setBackgroundColor(Color.RED);
-		}else if(v == tile3){
-			tile3.setBackgroundColor(Color.RED);
-		}else if(v == tile4){
-			tile4.setBackgroundColor(Color.RED);
-		}else if(v == tile5){
-			tile5.setBackgroundColor(Color.RED);
-		}else if(v == tile6){
-			tile6.setBackgroundColor(Color.RED);
-		}else if(v == tile7){
-			tile7.setBackgroundColor(Color.RED);
-		}else if(v == tile8){
-			tile8.setBackgroundColor(Color.RED);
-		}else if(v == tile9){
-			tile9.setBackgroundColor(Color.RED);
-		}else if(v == tile10){
-			tile10.setBackgroundColor(Color.RED);
-		}else if(v == tile11){
-			tile11.setBackgroundColor(Color.RED);
-		}else if(v == tile12){
-			tile12.setBackgroundColor(Color.RED);
-		}
+	//	public void onClick(View v) {
+	//	if(v == tile1){
+	//		tile1.setImageResource(R.drawable.leaf);
+	//	}else if(v == tile2){
+	//		tile2.setBackgroundColor(Color.RED);
+	//	}else if(v == tile3){
+	//		tile3.setBackgroundColor(Color.RED);
+	//	}else if(v == tile4){
+	//		tile4.setBackgroundColor(Color.RED);
+	//	}else if(v == tile5){
+	//		tile5.setBackgroundColor(Color.RED);
+	//	}else if(v == tile6){
+	//		tile6.setBackgroundColor(Color.RED);
+	//	}else if(v == tile7){
+	//		tile7.setBackgroundColor(Color.RED);
+	//	}else if(v == tile8){
+	//		tile8.setBackgroundColor(Color.RED);
+	//	}else if(v == tile9){
+	//		tile9.setBackgroundColor(Color.RED);
+	//	}else if(v == tile10){
+	//		tile10.setBackgroundColor(Color.RED);
+	//	}else if(v == tile11){
+	//		tile11.setBackgroundColor(Color.RED);
+	//	}else if(v == tile12){
+	//		tile12.setBackgroundColor(Color.RED);
+	//	}
 			
-		}
+	//	}
 		
-	}
+	//}
 
 	@Override
 	public void update(Observable observable, Object data) {

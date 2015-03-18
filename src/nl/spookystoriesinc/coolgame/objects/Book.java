@@ -3,17 +3,17 @@ package nl.spookystoriesinc.coolgame.objects;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 
-public class Note extends GameObject{
+public class Book extends GameObject{
+
+	public static final String BOOK_IMAGE = "Book";
 	
-	public static final String NOTE_IMAGE = "Note";
-	
-	public Note(){
+	public Book(){
 		super();
 	}
 
 	@Override
 	public String getImageId() {
-		return NOTE_IMAGE;
+		return BOOK_IMAGE;
 	}
 
 	@Override
@@ -26,5 +26,4 @@ public class Note extends GameObject{
 	public int getImageIdInt() {
 		return 0;
 	}
-
 }

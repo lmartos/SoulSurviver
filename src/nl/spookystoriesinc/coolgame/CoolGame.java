@@ -1,9 +1,12 @@
 package nl.spookystoriesinc.coolgame;
 
+import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
 import nl.spookystoriesinc.coolgame.objects.Door;
+import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Leaf;
+import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Rock;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -95,17 +98,30 @@ public class CoolGame extends Game {
 		board.addGameObject(new Wall(), 8,5);
 		board.addGameObject(new Wall(), 8,6);
 			
-		// Object / X / Y
-		board.addGameObject(new Table(), 5, 1);
-		board.addGameObject(new Chest(), 6, 1);
+		// right chest
+		Chest chestOne;
+		board.addGameObject(chestOne = new Chest(), 6, 1);
+		chestOne.addKey(new Key(1));
+		
+		// left chest
+		Chest chestTwo;
+		board.addGameObject(chestTwo = new Chest(), 2, 1);
+		chestTwo.addKey(new Key(2));
 
 		board.addGameObject(new Table(), 3, 1);
-		board.addGameObject(new Chest(), 2, 1);
+		board.addGameObject(new Table(), 5, 1);
 		
+		board.addGameObject(new Book(), 3, 5);
+		board.addGameObject(new Note(), 5, 5);
+		
+		//north door | id 1
 		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);
-		board.addGameObject(new Door(2, Door.NORTH_CLOSED_DOOR_IMAGE), 8, 3);
-		board.addGameObject(new Door(3, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 6);
-		board.addGameObject(new Door(4, Door.NORTH_CLOSED_DOOR_IMAGE), 0, 3);
+		//west door | id 2
+		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE), 0, 3);
+		//east door | id 3
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE), 8, 3);
+		//south door | id 4
+		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE), 4, 6);
 
 		// Redraw the game view
 		board.updateView();
