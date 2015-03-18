@@ -27,5 +27,9 @@ public class Key extends GameObject{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public int getKeyId(){
+		return this.id;
+	}
 
 }

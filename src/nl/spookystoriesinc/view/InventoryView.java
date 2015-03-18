@@ -1,10 +1,10 @@
 package nl.spookystoriesinc.view;
 
 import java.util.ArrayList;
-
 import java.util.Observable;
 import java.util.Observer;
 
+import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.spookystories.R;
 import android.content.Context;
@@ -55,32 +55,45 @@ public class InventoryView extends LinearLayout implements Observer {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public boolean checkForKey(int keyId){
+		for(GameObject g: items){
+			if(g instanceof Key){
+				if(((Key) g).getKeyId() == keyId){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public void addItemToInventory(GameObject item){
 		items.add(item);
 		switch(items.lastIndexOf(item)){
-		case 0: tile1.setImageResource(R.drawable.leaf);
+		case 0: tile1.setImageResource(item.getImageIdInt());
 		break;
-		case 1: tile2.setImageResource(R.drawable.leaf);
+		case 1: tile2.setImageResource(item.getImageIdInt());
 		break;
-		case 2: tile3.setImageResource(R.drawable.leaf);
+		case 2: tile3.setImageResource(item.getImageIdInt());
 		break;
-		case 3: tile4.setImageResource(R.drawable.leaf);
+		case 3: tile4.setImageResource(item.getImageIdInt());
 		break;
-		case 4: tile5.setImageResource(R.drawable.leaf);
+		case 4: tile5.setImageResource(item.getImageIdInt());
 		break;
-		case 5: tile6.setImageResource(R.drawable.leaf);
+		case 5: tile6.setImageResource(item.getImageIdInt());
 		break;
-		case 6: tile7.setImageResource(R.drawable.leaf);
+		case 6: tile7.setImageResource(item.getImageIdInt());
 		break;
-		case 7: tile8.setImageResource(R.drawable.leaf);
+		case 7: tile8.setImageResource(item.getImageIdInt());
 		break;
-		case 8: tile9.setImageResource(R.drawable.leaf);
+		case 8: tile9.setImageResource(item.getImageIdInt());
 		break;
-		case 9: tile10.setImageResource(R.drawable.leaf);
+		case 9: tile10.setImageResource(item.getImageIdInt());
 		break;
-		case 10: tile11.setImageResource(R.drawable.leaf);
+		case 10: tile11.setImageResource(item.getImageIdInt());
 		break;
-		case 11: tile12.setImageResource(R.drawable.leaf);
+		case 11: tile12.setImageResource(item.getImageIdInt());
 		break;
 		}
 		
