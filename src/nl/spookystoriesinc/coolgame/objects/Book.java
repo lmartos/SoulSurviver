@@ -38,32 +38,24 @@ public class Book extends GameObject{
 		this.bookX = this.getPositionX();
 		this.bookY = this.getPositionY();
 		if(bookX == (gameBoard.getPlayer().getPositionX() + 1) && bookY == gameBoard.getPlayer().getPositionY()){
+			startOverlay();
+		}else if(bookX == (gameBoard.getPlayer().getPositionX() - 1) && bookY == gameBoard.getPlayer().getPositionY()){
+			startOverlay();
+		}else if(bookY == (gameBoard.getPlayer().getPositionY() + 1) && bookX == gameBoard.getPlayer().getPositionX()){
+			startOverlay();
+		}else if(bookY == (gameBoard.getPlayer().getPositionY() - 1) && bookX == gameBoard.getPlayer().getPositionX()){
+			startOverlay();
+		}
+		
+		
+	}
+	
+	private void startOverlay(){
 		Intent intent = new Intent(MainActivity.getContext(), TekstOverlayActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putIntegerArrayListExtra("pages", pages);
 		Context context = MainActivity.getContext();
 		context.startActivity(intent);
-		}else if(bookX == (gameBoard.getPlayer().getPositionX() - 1) && bookY == gameBoard.getPlayer().getPositionY()){
-			Intent intent = new Intent(MainActivity.getContext(), TekstOverlayActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.putIntegerArrayListExtra("pages", pages);
-			Context context = MainActivity.getContext();
-			context.startActivity(intent);
-		}else if(bookY == (gameBoard.getPlayer().getPositionY() + 1) && bookX == gameBoard.getPlayer().getPositionX()){
-			Intent intent = new Intent(MainActivity.getContext(), TekstOverlayActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.putIntegerArrayListExtra("pages", pages);
-			Context context = MainActivity.getContext();
-			context.startActivity(intent);
-		}else if(bookY == (gameBoard.getPlayer().getPositionY() - 1) && bookX == gameBoard.getPlayer().getPositionX()){
-			Intent intent = new Intent(MainActivity.getContext(), TekstOverlayActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			intent.putIntegerArrayListExtra("pages", pages);
-			Context context = MainActivity.getContext();
-			context.startActivity(intent);
-		}
-		
-		
 	}
 
 	@Override
