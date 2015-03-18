@@ -23,10 +23,17 @@ public class TekstOverlayActivity extends Activity{
 		setContentView(R.layout.tekst_overlay);
 		
 		Intent intent = getIntent();
+		
+		onClick clicker = new onClick();
 		pages = intent.getIntegerArrayListExtra("pages");
-		returnToGame = (Button) findViewById(R.id.button1);
-		previousPage = (Button) findViewById(R.id.button2);
-		nextPage = (Button) findViewById(R.id.button3);
+		returnToGame = (Button) findViewById(R.id.returnButton1);
+		previousPage = (Button) findViewById(R.id.prevButton1);
+		nextPage = (Button) findViewById(R.id.nextButton1);
+		book = (ImageView) findViewById(R.id.bookView1);
+		returnToGame.setOnClickListener(clicker);
+		previousPage.setOnClickListener(clicker);
+		nextPage.setOnClickListener(clicker);
+		book.setImageResource(pages.get(0));
 	}
 	
 	public class onClick implements OnClickListener{
@@ -41,9 +48,11 @@ public class TekstOverlayActivity extends Activity{
 					book.setImageResource(pages.get(currentPage));
 				}
 			}else if(v == nextPage){
-				if(currentPage < pages.size())
+				if(currentPage < (pages.size() - 1)){
 					currentPage++;
 					book.setImageResource(pages.get(currentPage));
+				}
+					
 			}
 			
 		}

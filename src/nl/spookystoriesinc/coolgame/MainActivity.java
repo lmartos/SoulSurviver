@@ -2,6 +2,8 @@ package nl.spookystoriesinc.coolgame;
 
 import nl.spookystoriesinc.spookystories.R;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class MainActivity extends Activity {
 	private CoolGame game;
 	private CoolGameBoardView gameView;
 	private TextView scoreLabel;
+	private static Context context;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -33,7 +36,7 @@ public class MainActivity extends Activity {
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
 		game = new CoolGame(this);
-
+		MainActivity.context = getApplicationContext();
 		// Do something when user clicks new game
 		registerNewGameButton();
 
@@ -57,6 +60,12 @@ public class MainActivity extends Activity {
 	public CoolGameBoardView getGameBoardView() {
 		return gameView;
 	}
+	
+	public static Context getContext(){
+		return MainActivity.context;
+	}
+	
+	
 
 	/**
 	 * Install a listener to the 'New game'-button so that it starts a new

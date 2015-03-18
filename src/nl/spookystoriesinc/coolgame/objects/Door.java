@@ -1,9 +1,11 @@
 package nl.spookystoriesinc.coolgame.objects;
 
 import android.util.Log;
-import nl.spookystoriesinc.model.GameBoard;
-import nl.spookystoriesinc.model.GameObject;
-import nl.spookystoriesinc.view.InventoryView;
+import nl.spookystoriesinc.coolgame.*;
+import nl.spookystoriesinc.model.*;
+import nl.spookystoriesinc.view.*;
+
+
 
 public class Door extends GameObject{
 	

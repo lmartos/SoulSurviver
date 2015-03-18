@@ -13,6 +13,7 @@ import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.coolgame.objects.Player;
 import nl.spookystoriesinc.model.Game;
 import nl.spookystoriesinc.model.GameBoard;
+import nl.spookystoriesinc.spookystories.R;
 import nl.spookystoriesinc.coolgame.CoolGameBoard;
 
 /**
@@ -111,7 +112,9 @@ public class CoolGame extends Game {
 		board.addGameObject(new Table(), 3, 1);
 		board.addGameObject(new Table(), 5, 1);
 		
-		board.addGameObject(new Book(), 3, 5);
+		Book book = new Book(R.drawable.book_souls_page1);
+		book.addPage(R.drawable.book_souls_page_2);
+		board.addGameObject(book, 3, 5);
 		board.addGameObject(new Note(), 5, 5);
 		
 		//north door | id 1

@@ -20,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:screenOrientation="landscape"
+            android:label="appname"
+            android:name="nl.spookystoriesinc.coolgame.TekstOverlayActivity"
+            ></activity>
     </application>
 
 </manifest>
