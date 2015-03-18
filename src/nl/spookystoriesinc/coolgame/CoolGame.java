@@ -64,7 +64,7 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(new Player(), 1, 1);
+		board.addGameObject(new Player(),4, 3);
 		
 		// walls of the game
 		board.addGameObject(new Wall(), 0,0);
@@ -98,11 +98,14 @@ public class CoolGame extends Game {
 		// Object / X / Y
 		board.addGameObject(new Table(), 5, 1);
 		board.addGameObject(new Chest(), 6, 1);
+
+		board.addGameObject(new Table(), 3, 1);
+		board.addGameObject(new Chest(), 2, 1);
 		
-		board.addGameObject(new Door(1), 4, 0);
-		board.addGameObject(new Door(1), 8, 3);
-		board.addGameObject(new Door(1), 4, 6);
-		board.addGameObject(new Door(1), 0, 3);
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);
+		board.addGameObject(new Door(2, Door.NORTH_CLOSED_DOOR_IMAGE), 8, 3);
+		board.addGameObject(new Door(3, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 6);
+		board.addGameObject(new Door(4, Door.NORTH_CLOSED_DOOR_IMAGE), 0, 3);
 
 		// Redraw the game view
 		board.updateView();

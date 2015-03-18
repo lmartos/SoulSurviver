@@ -65,8 +65,8 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.darkwall);
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.tablesquare);
 		
-		spriteCache.loadTile(Door.CLOSED_DOOR_IMAGE, R.drawable.doorclosed);
-		spriteCache.loadTile(Door.OPEN_DOOR_IMAGE, R.drawable.dooropen);
+		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.doorclosed);
+		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.dooropen);
 		
 		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chestfrontclosed);
 		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chestfrontopen);

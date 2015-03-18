@@ -18,8 +18,6 @@ public class Chest extends GameObject{
 	
 	public Chest(){
 		super();
-		this.chestX = this.getPositionX();
-		this.chestY = this.getPositionY();
 	}
 
 	@Override
@@ -31,7 +29,7 @@ public class Chest extends GameObject{
 	public void onTouched(GameBoard gameBoard) {
 		this.chestX = this.getPositionX();
 		this.chestY = this.getPositionY();
-		Log.d("Chest", "You clicked the chest X: " + chestX + "Y" + chestY);
+		Log.d("Chest", "You clicked the chest X: " + chestX + " Y: " + chestY);
 		
 		if(chestX == (gameBoard.getPlayer().getPositionX() + 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -50,7 +48,6 @@ public class Chest extends GameObject{
 
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

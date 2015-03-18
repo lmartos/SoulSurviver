@@ -1,45 +1,63 @@
 package nl.spookystoriesinc.coolgame.objects;
 
+import android.util.Log;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 
 public class Door extends GameObject{
 	
-	public static final String CLOSED_DOOR_IMAGE = "ClosedDoor";
-	public static final String OPEN_DOOR_IMAGE = "OpenDoor";
+	public static final String NORTH_CLOSED_DOOR_IMAGE = "NorthClosedDoor";
+	public static final String NORTH_OPEN_DOOR_IMAGE = "NorthOpenDoor";
+	public static final String WEST_CLOSED_DOOR_IMAGE = "WestOpenDoor";
+	public static final String WEST_OPEN_DOOR_IMAGE = "WestOpenDoor";
+	public static final String SOUTH_CLOSED_DOOR_IMAGE = "SouthOpenDoor";
+	public static final String SOUTH_OPEN_DOOR_IMAGE = "SouthOpenDoor";
+	public static final String EAST_CLOSED_DOOR_IMAGE = "EastOpenDoor";
+	public static final String EAST_OPEN_DOOR_IMAGE = "EastOpenDoor";
+	private String state;
+	private int doorX;
+	private int doorY;
 	private final int id;
 	
-	public Door(int id){
+	public Door(int id, String state){
 		this.id = id;
+		this.state = state;
 	}
 	
 	@Override
 	public String getImageId() {
-		return CLOSED_DOOR_IMAGE;
+		return state;
 	}
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// You should get the inventory filled with the keys
-		// and look which keys are there
-		// getInventory();
+		this.doorX = this.getPositionX();
+		this.doorY = this.getPositionY();
+		Log.d("Chest", "You clicked the chest X: " + doorX + " Y: " + doorY);
 		
-		//for(int i = 0; i < getInventory.size() ; i++)
-			//if(getInventory(i).getKeyId == this.id ) {
-				//this.unlock();
-			//}
-			//else{
-				//this.lock();
-			//}
-		
-		
+		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
+			state = NORTH_OPEN_DOOR_IMAGE;
+		}
+		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
+			state = NORTH_OPEN_DOOR_IMAGE;
+		}
+		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
+			state = NORTH_OPEN_DOOR_IMAGE;
+		}
+		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
+			state = NORTH_OPEN_DOOR_IMAGE;
+		}
+		gameBoard.updateView();
 		
 	}
 
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public int getId() {
+		return id;
 	}
 	
 }
