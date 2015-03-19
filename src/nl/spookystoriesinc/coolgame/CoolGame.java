@@ -5,9 +5,7 @@ import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Key;
-import nl.spookystoriesinc.coolgame.objects.Leaf;
 import nl.spookystoriesinc.coolgame.objects.Note;
-import nl.spookystoriesinc.coolgame.objects.Rock;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.coolgame.objects.Player;
@@ -121,7 +119,6 @@ public class CoolGame extends Game {
 		Book book = new Book(R.drawable.book_souls_page1);
 		book.addPage(R.drawable.book_souls_page_2);
 		board.addGameObject(book, 3, 5);
-		board.addGameObject(new Note(), 5, 5);
 		
 		//north door | id 1
 		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);

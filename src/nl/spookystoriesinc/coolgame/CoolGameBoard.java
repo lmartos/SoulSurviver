@@ -4,8 +4,6 @@ import android.util.Log;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.view.GameBoardView;
-import nl.spookystoriesinc.coolgame.objects.Leaf;
-import nl.spookystoriesinc.coolgame.objects.Rock;
 import nl.spookystoriesinc.coolgame.objects.Player;
 
 /**

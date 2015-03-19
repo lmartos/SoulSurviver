@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.coolgame;
 
 import nl.spookystoriesinc.spookystories.R;
+import nl.spookystoriesinc.view.InventoryView;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -83,5 +84,8 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-
+	public void onDestroy(){
+		InventoryView.clear();
+		super.onDestroy();
+	}
 }

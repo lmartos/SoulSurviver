@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.coolgame.objects;
 
 import android.util.Log;
+import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.*;
 import nl.spookystoriesinc.model.*;
 import nl.spookystoriesinc.view.*;
@@ -41,23 +42,43 @@ public class Door extends GameObject{
 		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			if(InventoryView.checkForKey(this.id)){
 				state = EAST_OPEN_DOOR_IMAGE;	
+				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+			}
+			else{
+				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			if(InventoryView.checkForKey(this.id)){
 				state = WEST_OPEN_DOOR_IMAGE;	
+				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+			}
+			else{
+				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			if(InventoryView.checkForKey(this.id)){
 				state = SOUTH_OPEN_DOOR_IMAGE;	
+				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+			}
+			else{
+				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			if(InventoryView.checkForKey(this.id)){
 				state = NORTH_OPEN_DOOR_IMAGE;	
+				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+			}
+			else{
+				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
+		else{
+			Toast.makeText(MainActivity.getContext(), "Out of range!", Toast.LENGTH_SHORT).show();
+		}
+		
 		gameBoard.updateView();
 		
 	}

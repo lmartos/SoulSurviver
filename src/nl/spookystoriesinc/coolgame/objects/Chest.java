@@ -3,7 +3,9 @@ package nl.spookystoriesinc.coolgame.objects;
 import java.util.ArrayList;
 
 import android.util.Log;
+import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.CoolGameBoard;
+import nl.spookystoriesinc.coolgame.MainActivity;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.spookystories.R;
@@ -42,6 +44,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
+			Toast.makeText(MainActivity.getContext(), "You've opened a chest!", Toast.LENGTH_LONG).show();
 		}
 		else if(chestX == (gameBoard.getPlayer().getPositionX() - 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -49,6 +52,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
+			Toast.makeText(MainActivity.getContext(), "You've opened a chest!",Toast.LENGTH_LONG).show();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() + 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -56,6 +60,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
+			Toast.makeText(MainActivity.getContext(), "You've opened a chest!", Toast.LENGTH_LONG).show();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() - 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -63,6 +68,10 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}
 			this.items.removeAll(items);
+			Toast.makeText(MainActivity.getContext(), "You've opened a chest!",Toast.LENGTH_LONG).show();
+		}
+		else{
+			Toast.makeText(MainActivity.getContext(), "Out of range!", Toast.LENGTH_SHORT).show();
 		}
 		gameBoard.updateView();
 	}

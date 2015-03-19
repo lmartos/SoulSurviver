@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import nl.spookystoriesinc.coolgame.MainActivity;
 import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.spookystories.R;
@@ -13,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class InventoryView extends LinearLayout implements Observer {
 	
@@ -125,20 +127,20 @@ public class InventoryView extends LinearLayout implements Observer {
 			tile11 = (InventoryViewTile) findViewById(R.id.inventoryViewTile11);
 			tile12 = (InventoryViewTile) findViewById(R.id.inventoryViewTile12);
 			
-			//OnClickListener onclickListener = new ClickListener();
+			OnClickListener onclickListener = new ClickListener();
 			
-			//tile1.setOnClickListener(onclickListener);
-			//tile2.setOnClickListener(onclickListener);
-			//tile3.setOnClickListener(onclickListener);
-			//tile4.setOnClickListener(onclickListener);
-			//tile5.setOnClickListener(onclickListener);
-			//tile6.setOnClickListener(onclickListener);
-			//tile7.setOnClickListener(onclickListener);
-			//tile8.setOnClickListener(onclickListener);
-			//tile9.setOnClickListener(onclickListener);
-			//tile10.setOnClickListener(onclickListener);
-			//tile11.setOnClickListener(onclickListener);
-			//tile12.setOnClickListener(onclickListener);
+			tile1.setOnClickListener(onclickListener);
+			tile2.setOnClickListener(onclickListener);
+			tile3.setOnClickListener(onclickListener);
+			tile4.setOnClickListener(onclickListener);
+			tile5.setOnClickListener(onclickListener);
+			tile6.setOnClickListener(onclickListener);
+			tile7.setOnClickListener(onclickListener);
+			tile8.setOnClickListener(onclickListener);
+			tile9.setOnClickListener(onclickListener);
+			tile10.setOnClickListener(onclickListener);
+			tile11.setOnClickListener(onclickListener);
+			tile12.setOnClickListener(onclickListener);
 			
 			tile1.setBackgroundResource(R.drawable.inventoryslot);
 			tile2.setBackgroundResource(R.drawable.inventoryslot);
@@ -157,45 +159,22 @@ public class InventoryView extends LinearLayout implements Observer {
 		
 	}
 	
-	//public class ClickListener implements OnClickListener {
-
-	//	public void onClick(View v) {
-	//	if(v == tile1){
-	//		tile1.setImageResource(R.drawable.leaf);
-	//	}else if(v == tile2){
-	//		tile2.setBackgroundColor(Color.RED);
-	//	}else if(v == tile3){
-	//		tile3.setBackgroundColor(Color.RED);
-	//	}else if(v == tile4){
-	//		tile4.setBackgroundColor(Color.RED);
-	//	}else if(v == tile5){
-	//		tile5.setBackgroundColor(Color.RED);
-	//	}else if(v == tile6){
-	//		tile6.setBackgroundColor(Color.RED);
-	//	}else if(v == tile7){
-	//		tile7.setBackgroundColor(Color.RED);
-	//	}else if(v == tile8){
-	//		tile8.setBackgroundColor(Color.RED);
-	//	}else if(v == tile9){
-	//		tile9.setBackgroundColor(Color.RED);
-	//	}else if(v == tile10){
-	//		tile10.setBackgroundColor(Color.RED);
-	//	}else if(v == tile11){
-	//		tile11.setBackgroundColor(Color.RED);
-	//	}else if(v == tile12){
-	//		tile12.setBackgroundColor(Color.RED);
-	//	}
-			
-	//	}
+	public class ClickListener implements OnClickListener {
+	
+		public void onClick(View v) {
+			Toast.makeText(MainActivity.getContext(), "This is a key you've picked up!", Toast.LENGTH_SHORT).show();
+		}
 		
-	//}
-
+	}
+	
 	@Override
 	public void update(Observable observable, Object data) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	public static void clear(){
+		items.removeAll(items);
+	}
 
 
 }
