@@ -11,7 +11,7 @@ public class Key extends GameObject{
 	public Key(int id){
 		this.id = id;
 	}
-	
+	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
 		return null;
@@ -19,10 +19,11 @@ public class Key extends GameObject{
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
 	@Override
 	public int getImageIdInt() {
 		if(this.id == 1){
@@ -37,6 +38,10 @@ public class Key extends GameObject{
 		return R.drawable.sleutelgrijs;
 	}
 	
+	/**
+	 * 			get the unique id of the key
+	 * @return	returns the id
+	 */
 	public int getKeyId(){
 		return this.id;
 	}

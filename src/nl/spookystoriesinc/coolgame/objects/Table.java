@@ -6,13 +6,11 @@ import nl.spookystoriesinc.model.GameObject;
 public class Table extends GameObject{
 	public static final String TABLE_IMAGE = "Table";
 
-	/**
-	 * Constructs a rock.
-	 */
 	public Table() {
 		super();
 	}
 
+	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
 		return TABLE_IMAGE;
@@ -20,13 +18,13 @@ public class Table extends GameObject{
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

@@ -23,9 +23,10 @@ public class Wall extends GameObject {
 		
 	}
 
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

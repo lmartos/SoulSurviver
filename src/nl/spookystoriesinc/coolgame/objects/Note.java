@@ -11,6 +11,7 @@ public class Note extends GameObject{
 		super();
 	}
 
+	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
 		return NOTE_IMAGE;
@@ -18,10 +19,11 @@ public class Note extends GameObject{
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
 	@Override
 	public int getImageIdInt() {
 		return 0;

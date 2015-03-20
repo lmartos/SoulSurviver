@@ -23,10 +23,15 @@ public class Chest extends GameObject{
 		super();
 	}
 	
+	/**
+	 * 				Adds a key to the loot of the chest
+	 * @param key	The key that you want to be added
+	 */
 	public void addKey(Key key){
 		items.add(key);
 	}
 
+	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
 		return state;
@@ -34,9 +39,33 @@ public class Chest extends GameObject{
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
+		checkChest(gameBoard);
+	}
+
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
+	@Override
+	public int getImageIdInt() {
+		return 0;
+	}
+	
+	/**
+	 * 						The method will check first what the X and Y position of the chest are
+	 * 						then it will check if the chest is not already opened if so it returns
+	 * 						then it will look if there's a player object left, right, above or beneath the chest.
+	 * 						if there is a player object there, then the chest will open
+	 * 						if the player object is out of range then it will stay closed
+	 * @param gameBoard		The gameboard the chest is at
+	 */
+	public void checkChest(GameBoard gameBoard){
 		this.chestX = this.getPositionX();
 		this.chestY = this.getPositionY();
 		Log.d("Chest", "You clicked the chest X: " + chestX + " Y: " + chestY);
+		
+		if(this.state == FRONT_OPEN_CHEST_IMAGE){
+			Toast.makeText(MainActivity.getContext(), "You've already opened this chest!", Toast.LENGTH_LONG).show();
+			return;
+		}
 		
 		if(chestX == (gameBoard.getPlayer().getPositionX() + 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -74,11 +103,6 @@ public class Chest extends GameObject{
 			Toast.makeText(MainActivity.getContext(), "Out of range!", Toast.LENGTH_SHORT).show();
 		}
 		gameBoard.updateView();
-	}
-
-	@Override
-	public int getImageIdInt() {
-		return 0;
 	}
 
 }

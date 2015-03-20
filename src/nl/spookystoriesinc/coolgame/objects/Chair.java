@@ -19,13 +19,13 @@ public class Chair extends GameObject{
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/** Returns the R.drawable generated unique code for the image
+	 * or 0 when not needed*/
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

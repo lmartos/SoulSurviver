@@ -26,9 +26,6 @@ public class CoolGame extends Game {
 	/** Reference to the main activity, so some labels can be updated. */
 	private MainActivity activity;
 	
-	/** The number of leafs eaten. */
-	private int score;
-
 	/**
 	 * Constructor.
 	 * 
@@ -54,21 +51,20 @@ public class CoolGame extends Game {
 	}
 
 	/**
-	 * Starts a new game.
-	 * Resets the score and places all objects in the right place.
+	 *	Clears the board
+	 *	Calls the method which room to build 
 	 */
 	public void initNewGame() {
-		// Set the score and update the label
-		score = 0;
-		activity.updateScoreLabel(score);
-
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
 
+		initMainHall(board);
+	}
+	public void initMainHall(GameBoard board){
 		// Add a player object
 		board.addGameObject(new Player(),4, 3);
 		
-		// walls of the game
+		// walls of the Main hall
 		board.addGameObject(new Wall(), 0,0);
 		board.addGameObject(new Wall(), 0,1);
 		board.addGameObject(new Wall(), 0,2);
@@ -97,17 +93,17 @@ public class CoolGame extends Game {
 		board.addGameObject(new Wall(), 8,5);
 		board.addGameObject(new Wall(), 8,6);
 			
-		// right chest
+		// chest (6,1)
 		Chest chestOne;
 		board.addGameObject(chestOne = new Chest(), 6, 1);
 		chestOne.addKey(new Key(1));
 		
-		// left chest
+		// Chest (2,1)
 		Chest chestTwo;
 		board.addGameObject(chestTwo = new Chest(), 2, 1);
 		chestTwo.addKey(new Key(2));
 		
-		// rightest chest
+		// Chest (7,4)
 		Chest chestThree;
 		board.addGameObject(chestThree = new Chest(), 7, 4);
 		chestThree.addKey(new Key(3));
@@ -116,6 +112,7 @@ public class CoolGame extends Game {
 		board.addGameObject(new Table(), 3, 1);
 		board.addGameObject(new Table(), 5, 1);
 		
+		// add a book
 		Book book = new Book(R.drawable.book_souls_page1);
 		book.addPage(R.drawable.book_souls_page_2);
 		board.addGameObject(book, 3, 5);
@@ -131,13 +128,5 @@ public class CoolGame extends Game {
 
 		// Redraw the game view
 		board.updateView();
-	}
-
-	/**
-	 * Called by Wombat if it ate a leaf. Increases the score.
-	 */
-	public void increaseScore() {
-		score++;
-		activity.updateScoreLabel(score);
 	}
 }
