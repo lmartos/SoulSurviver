@@ -11,52 +11,58 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class TekstOverlayActivity extends Activity{
+public class TekstOverlayActivity extends Activity {
+
 	private Button returnToGame, previousPage, nextPage;
 	private ImageView book;
 	private ArrayList<Integer> pages;
 	private int currentPage;
-	
-	
-	public void onCreate(Bundle savedInstanceState){
+
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tekst_overlay);
-		
+
+		// instancing of variables
 		Intent intent = getIntent();
-		
 		onClick clicker = new onClick();
 		pages = intent.getIntegerArrayListExtra("pages");
+
+		// coupling of xml to java code
 		returnToGame = (Button) findViewById(R.id.returnButton1);
 		previousPage = (Button) findViewById(R.id.prevButton1);
 		nextPage = (Button) findViewById(R.id.nextButton1);
 		book = (ImageView) findViewById(R.id.bookView1);
+
+		// attaching onclicklisteners to buttons
 		returnToGame.setOnClickListener(clicker);
 		previousPage.setOnClickListener(clicker);
 		nextPage.setOnClickListener(clicker);
+
+		// setting default image for tekstoverlay
 		book.setImageResource(pages.get(0));
 	}
-	
-	public class onClick implements OnClickListener{
+
+	public class onClick implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
-			if(v == returnToGame){
+			if (v == returnToGame) {
 				finish();
-			}else if(v == previousPage){
-				if(currentPage > 0){
+			} else if (v == previousPage) {
+				if (currentPage > 0) {
 					currentPage--;
 					book.setImageResource(pages.get(currentPage));
 				}
-			}else if(v == nextPage){
-				if(currentPage < (pages.size() - 1)){
+			} else if (v == nextPage) {
+				if (currentPage < (pages.size() - 1)) {
 					currentPage++;
 					book.setImageResource(pages.get(currentPage));
 				}
-					
+
 			}
-			
+
 		}
-		
+
 	}
 
 }

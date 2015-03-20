@@ -49,7 +49,8 @@ public class MainActivity extends Activity {
 	/**
 	 * Set a new score on the score label
 	 * 
-	 * @param newScore  The new score.
+	 * @param newScore
+	 *            The new score.
 	 */
 	public void updateScoreLabel(int newScore) {
 		scoreLabel.setText("Score: " + newScore);
@@ -61,21 +62,24 @@ public class MainActivity extends Activity {
 	public CoolGameBoardView getGameBoardView() {
 		return gameView;
 	}
-	
-	public static Context getContext(){
-		return MainActivity.context;
-	}
-	
-	
 
 	/**
-	 * Install a listener to the 'New game'-button so that it starts a new
-	 * game when clicked.
+	 * 
+	 * @return returns the application context of the main activity
+	 */
+
+	public static Context getContext() {
+		return MainActivity.context;
+	}
+
+	/**
+	 * Install a listener to the 'New game'-button so that it starts a new game
+	 * when clicked.
 	 */
 	private void registerNewGameButton() {
 		// Find the 'New Game'-button in the activity
 		final Button button1 = (Button) findViewById(R.id.newGameButton);
-		
+
 		// Add a click listener to the button that calls initNewGame()
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -84,7 +88,14 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-	public void onDestroy(){
+
+	/**
+	 * 
+	 * clears the static inventory elements after closing the game
+	 * 
+	 */
+
+	public void onDestroy() {
 		InventoryView.clear();
 		super.onDestroy();
 	}
