@@ -26,6 +26,12 @@
             android:label="Book"
             android:name="nl.spookystoriesinc.coolgame.TekstOverlayActivity"
             ></activity>
+         <activity
+            android:icon="@drawable/player_characterdown"
+            android:screenOrientation="landscape"
+            android:label="MainMenu"
+            android:name="nl.spookystoriesinc.coolgame.MainMenuActivity"
+            ></activity>
     </application>
 
 </manifest>

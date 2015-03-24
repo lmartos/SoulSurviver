@@ -40,10 +40,11 @@ public class MainActivity extends Activity {
 		MainActivity.context = getApplicationContext();
 		// Do something when user clicks new game
 		registerNewGameButton();
-
+		Intent mainMenu = new Intent(context, MainMenuActivity.class);
+		startActivity(mainMenu);
 		// Tell user to start the game
-		Toast.makeText(getApplicationContext(), "Lets start",
-				Toast.LENGTH_SHORT).show();
+		
+		
 	}
 
 	/**
