@@ -20,7 +20,6 @@ public class Wall extends GameObject {
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		
 	}
 
 	/** Returns the R.drawable generated unique code for the image

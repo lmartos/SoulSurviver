@@ -4,6 +4,7 @@ import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
 import nl.spookystoriesinc.coolgame.objects.Door;
+import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -60,6 +61,10 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Player.LEFT_PLAYER_IMAGE, R.drawable.player_characterleft);
 		spriteCache.loadTile(Player.RIGHT_PLAYER_IMAGE, R.drawable.player_characterright);
 		spriteCache.loadTile(Player.UP_PLAYER_IMAGE, R.drawable.player_characterup);
+		
+		spriteCache.loadTile(Enemy.DOWN_GHOST_IMAGE, R.drawable.enemy_enemydown);
+		spriteCache.loadTile(Enemy.RIGHT_GHOST_IMAGE, R.drawable.enemy_enemyright);
+		spriteCache.loadTile(Enemy.LEFT_GHOST_IMAGE, R.drawable.enemy_enemyleft);
 		
 		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.wall_darkwall);
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);

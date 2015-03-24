@@ -4,6 +4,7 @@ import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
 import nl.spookystoriesinc.coolgame.objects.Door;
+import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Table;
@@ -64,6 +65,9 @@ public class CoolGame extends Game {
 		// Add a player object
 		board.addGameObject(new Player(),4, 3);
 		
+		// Add a enemy object
+		board.addGameObject(new Enemy(), 7, 5);
+		
 		// walls of the Main hall
 		board.addGameObject(new Wall(), 0,0);
 		board.addGameObject(new Wall(), 0,1);
@@ -104,10 +108,10 @@ public class CoolGame extends Game {
 		chestTwo.addKey(new Key(2));
 		
 		// Chest (7,4)
-		Chest chestThree;
-		board.addGameObject(chestThree = new Chest(), 7, 4);
-		chestThree.addKey(new Key(3));
-		chestThree.addKey(new Key(4));
+		//Chest chestThree;
+		//board.addGameObject(chestThree = new Chest(), 7, 4);
+		//chestThree.addKey(new Key(3));
+		//chestThree.addKey(new Key(4));
 
 		board.addGameObject(new Table(), 3, 1);
 		board.addGameObject(new Table(), 5, 1);
