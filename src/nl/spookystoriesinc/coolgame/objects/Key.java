@@ -27,15 +27,15 @@ public class Key extends GameObject{
 	@Override
 	public int getImageIdInt() {
 		if(this.id == 1){
-			return R.drawable.sleutelgrijs;
+			return R.drawable.key_greykey;
 		}
 		else if(this.id == 2){
-			return R.drawable.sleutelgoud;
+			return R.drawable.key_goldkey;
 		}
 		else if(this.id == 3){
-			return R.drawable.sleutelblauw;
+			return R.drawable.key_bluekey;
 		}
-		return R.drawable.sleutelgrijs;
+		return R.drawable.key_greykey;
 	}
 	
 	/**

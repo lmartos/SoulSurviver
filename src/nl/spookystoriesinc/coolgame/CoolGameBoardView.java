@@ -51,30 +51,30 @@ public class CoolGameBoardView extends GameBoardView {
 
 		// Load the 'empty' cell bitmap and tell the tile view that this is the
 		// image to use for cells without GameObject
-		spriteCache.loadTile("empty", R.drawable.hardwoodfloor);
+		spriteCache.loadTile("empty", R.drawable.floor_hardwoodfloor);
 		setEmptyTile("empty");
 
 		// Load the images for the GameObjects
 		
-		spriteCache.loadTile(Player.DOWN_PLAYER_IMAGE, R.drawable.characterdown);
-		spriteCache.loadTile(Player.LEFT_PLAYER_IMAGE, R.drawable.characterleft);
-		spriteCache.loadTile(Player.RIGHT_PLAYER_IMAGE, R.drawable.characterright);
-		spriteCache.loadTile(Player.UP_PLAYER_IMAGE, R.drawable.characterup);
+		spriteCache.loadTile(Player.DOWN_PLAYER_IMAGE, R.drawable.player_characterdown);
+		spriteCache.loadTile(Player.LEFT_PLAYER_IMAGE, R.drawable.player_characterleft);
+		spriteCache.loadTile(Player.RIGHT_PLAYER_IMAGE, R.drawable.player_characterright);
+		spriteCache.loadTile(Player.UP_PLAYER_IMAGE, R.drawable.player_characterup);
 		
-		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.darkwall);
-		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.tablesquare);
+		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.wall_darkwall);
+		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
 		
-		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.northcloseddoor);
-		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.northopendoor);
-		spriteCache.loadTile(Door.WEST_CLOSED_DOOR_IMAGE, R.drawable.westcloseddoor);
-		spriteCache.loadTile(Door.WEST_OPEN_DOOR_IMAGE, R.drawable.westopendoor);
-		spriteCache.loadTile(Door.EAST_CLOSED_DOOR_IMAGE, R.drawable.eastcloseddoor);
-		spriteCache.loadTile(Door.EAST_OPEN_DOOR_IMAGE, R.drawable.eastopendoor);
-		spriteCache.loadTile(Door.SOUTH_CLOSED_DOOR_IMAGE, R.drawable.southcloseddoor);
-		spriteCache.loadTile(Door.SOUTH_OPEN_DOOR_IMAGE, R.drawable.southopendoor);
+		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
+		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.door_northopendoor);
+		spriteCache.loadTile(Door.WEST_CLOSED_DOOR_IMAGE, R.drawable.door_westcloseddoor);
+		spriteCache.loadTile(Door.WEST_OPEN_DOOR_IMAGE, R.drawable.door_westopendoor);
+		spriteCache.loadTile(Door.EAST_CLOSED_DOOR_IMAGE, R.drawable.door_eastcloseddoor);
+		spriteCache.loadTile(Door.EAST_OPEN_DOOR_IMAGE, R.drawable.door_eastopendoor);
+		spriteCache.loadTile(Door.SOUTH_CLOSED_DOOR_IMAGE, R.drawable.door_southcloseddoor);
+		spriteCache.loadTile(Door.SOUTH_OPEN_DOOR_IMAGE, R.drawable.door_southopendoor);
 		
-		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chestfrontclosed);
-		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chestfrontopen);
+		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chest_chestfrontclosed);
+		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chest_chestfrontopen);
 		
 		spriteCache.loadTile(Book.BOOK_IMAGE, R.drawable.book);
 		spriteCache.loadTile(Note.NOTE_IMAGE, R.drawable.note);
