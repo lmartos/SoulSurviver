@@ -36,6 +36,7 @@ public class CoolGame extends Game {
 
 	/** Reference to the main activity, so some labels can be updated. */
 	private MainActivity activity;
+	private int random;
 	
 	/**
 	 * Constructor.
@@ -72,6 +73,7 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		initMainHall(board);
+		board.init();
 	}
 	
 	public void addWalls(GameBoard board){
@@ -111,7 +113,10 @@ public class CoolGame extends Game {
 		board.addGameObject(new Player(),4, 3);
 		
 		// Add a enemy object
-		board.addGameObject(new Enemy(), 7, 5);
+		random = (int) (Math.random() * 2);
+		if(random <= 1){
+			board.addGameObject(new Enemy(), 7, 5);
+		}
 		
 		// walls of the Main hall
 		addWalls(board);

@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 	private CoolGame game;
 	private CoolGameBoardView gameView;
 	private TextView scoreLabel;	
-	private int init;
+	private int init = 0;
 	private Intent mainMenu;
 
 	/** Called when the activity is first created. */
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
-		game = new CoolGame(this);
+		
 		// Do something when user clicks new game
 		registerNewGameButton();
 		mainMenu = new Intent(MainActivity.this, MainMenuActivity.class);
