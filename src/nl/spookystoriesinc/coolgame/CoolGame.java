@@ -182,9 +182,9 @@ public class CoolGame extends Game {
 		
 		
 		//north door | id 1
-		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context), 4, 0);
 		//east door | id 3
-		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE), 8, 3);
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context), 8, 3);
 
 		// Redraw the game view
 		board.updateView();
