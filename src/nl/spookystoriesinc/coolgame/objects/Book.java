@@ -16,10 +16,12 @@ public class Book extends GameObject {
 	public static final String BOOK_IMAGE = "Book";
 	private ArrayList<Integer> pages = new ArrayList<Integer>();
 	private int bookX, bookY;
+	private Context context;
 
-	public Book(int page) {
+	public Book(int page, Context context) {
 		super();
 		this.pages.add(page);
+		this.context = context;
 	}
 
 	/**
@@ -59,7 +61,7 @@ public class Book extends GameObject {
 				&& bookX == gameBoard.getPlayer().getPositionX()) {
 			startOverlay();
 		} else {
-			Toast.makeText(MainActivity.getContext(), "Out of range!",
+			Toast.makeText(context, "Out of range!",
 					Toast.LENGTH_SHORT).show();
 		}
 
@@ -71,11 +73,10 @@ public class Book extends GameObject {
 	 */
 	private void startOverlay() {
 		Log.d("startOverlay", "starting new activity");
-		Intent intent = new Intent(MainActivity.getContext(),
+		Intent intent = new Intent(context,
 				TekstOverlayActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putIntegerArrayListExtra("pages", pages);
-		Context context = MainActivity.getContext();
 		context.startActivity(intent);
 	}
 

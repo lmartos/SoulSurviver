@@ -32,15 +32,18 @@ public class InventoryView extends LinearLayout implements Observer {
 	private static InventoryViewTile tile10;
 	private static InventoryViewTile tile11;
 	private static InventoryViewTile tile12;
+	private Context context;
 
 	public InventoryView(Context context) {
 		super(context);
 		init(context);
+		
 	}
 
 	public InventoryView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init(context);
+		
 	}
 
 	public InventoryView(Context context, AttributeSet attrs, int defStyle) {
@@ -133,7 +136,7 @@ public class InventoryView extends LinearLayout implements Observer {
 			LayoutInflater inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			inflater.inflate(R.layout.inventory, this);
-
+			this.context = context;
 			// coupling of xml to java variables
 			tile1 = (InventoryViewTile) findViewById(R.id.inventoryViewTile1);
 			tile2 = (InventoryViewTile) findViewById(R.id.inventoryViewTile2);
@@ -186,9 +189,7 @@ public class InventoryView extends LinearLayout implements Observer {
 	public class ClickListener implements OnClickListener {
 
 		public void onClick(View v) {
-			Toast.makeText(MainActivity.getContext(),
-					"This is a key you've picked up!", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(context, "This is a key you've picked up!", Toast.LENGTH_SHORT).show();
 		}
 
 	}
