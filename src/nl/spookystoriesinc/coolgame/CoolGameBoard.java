@@ -3,6 +3,7 @@ package nl.spookystoriesinc.coolgame;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import nl.spookystoriesinc.coolgame.objects.Player;
 public class CoolGameBoard extends GameBoard {
 	private static final int GAMEBOARD_WIDTH = 9;
 	private static final int GAMEBOARD_HEIGHT = 7;
+	private Intent gameIsOver;
 	private Timer timer;
 	Handler handler = new Handler();
 	
