@@ -61,14 +61,9 @@ public class CoolGame extends Game {
 
 		initMainHall(board);
 	}
-	public void initMainHall(GameBoard board){
-		// Add a player object
-		board.addGameObject(new Player(),4, 3);
+	
+	public void addWalls(GameBoard board){
 		
-		// Add a enemy object
-		board.addGameObject(new Enemy(), 7, 5);
-		
-		// walls of the Main hall
 		board.addGameObject(new Wall(), 0,0);
 		board.addGameObject(new Wall(), 0,1);
 		board.addGameObject(new Wall(), 0,2);
@@ -96,6 +91,18 @@ public class CoolGame extends Game {
 		board.addGameObject(new Wall(), 8,4);
 		board.addGameObject(new Wall(), 8,5);
 		board.addGameObject(new Wall(), 8,6);
+	}
+	
+	public void initMainHall(GameBoard board){
+	
+		// Add a player object
+		board.addGameObject(new Player(),4, 3);
+		
+		// Add a enemy object
+		board.addGameObject(new Enemy(), 7, 5);
+		
+		// walls of the Main hall
+		addWalls(board);
 			
 		// chest (6,1)
 		Chest chestOne;
@@ -133,4 +140,43 @@ public class CoolGame extends Game {
 		// Redraw the game view
 		board.updateView();
 	}
+	
+	public void initDiningRoom(GameBoard board){
+		// Add a player object
+		board.addGameObject(new Player(),7, 3);
+		
+		// walls of the Dining room
+		addWalls(board);
+		
+		// chest (6,1)
+		Chest chestOne;
+		board.addGameObject(chestOne = new Chest(), 6, 1);
+		chestOne.addKey(new Key(1));
+		
+		// Chest (2,1)
+		Chest chestTwo;
+		board.addGameObject(chestTwo = new Chest(), 2, 1);
+		chestTwo.addKey(new Key(2));
+
+		board.addGameObject(new Table(), 3, 1);
+		board.addGameObject(new Table(), 5, 1);
+		
+		// add a book
+		Book book = new Book(R.drawable.book_souls_page1);
+		book.addPage(R.drawable.book_souls_page_2);
+		board.addGameObject(book, 3, 5);
+		
+		//north door | id 1
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);
+		//west door | id 2
+		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE), 0, 3);
+		//east door | id 3
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE), 8, 3);
+		//south door | id 4
+		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE), 4, 6);
+
+		// Redraw the game view
+		board.updateView();
+	}
+	
 }
