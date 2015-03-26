@@ -26,6 +26,7 @@ public class CoolGame extends Game {
 
 	/** Reference to the main activity, so some labels can be updated. */
 	private MainActivity activity;
+	private int random;
 	
 	/**
 	 * Constructor.
@@ -60,42 +61,46 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		initMainHall(board);
+		board.init();
 	}
 	public void initMainHall(GameBoard board){
 		// Add a player object
 		board.addGameObject(new Player(),4, 3);
 		
 		// Add a enemy object
-		board.addGameObject(new Enemy(), 7, 5);
+		random = (int) (Math.random() * 10);
+		if(random <= 1){
+			board.addGameObject(new Enemy(), 7, 5);
+		}
 		
 		// walls of the Main hall
-		board.addGameObject(new Wall(), 0,0);
-		board.addGameObject(new Wall(), 0,1);
-		board.addGameObject(new Wall(), 0,2);
-		board.addGameObject(new Wall(), 0,4);
-		board.addGameObject(new Wall(), 0,5);
-		board.addGameObject(new Wall(), 0,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
 		
-		board.addGameObject(new Wall(), 1,6);
-		board.addGameObject(new Wall(), 2,6);
-		board.addGameObject(new Wall(), 3,6);
-		board.addGameObject(new Wall(), 5,6);
-		board.addGameObject(new Wall(), 6,6);
-		board.addGameObject(new Wall(), 7,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
 		
-		board.addGameObject(new Wall(), 1,0);
-		board.addGameObject(new Wall(), 2,0);
-		board.addGameObject(new Wall(), 3,0);
-		board.addGameObject(new Wall(), 5,0);
-		board.addGameObject(new Wall(), 6,0);
-		board.addGameObject(new Wall(), 7,0);
-		board.addGameObject(new Wall(), 8,0);
+		board.addGameObject(new Wall(Wall.WALL_PAINTING), 1,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 2,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 6,0);
+		board.addGameObject(new Wall(Wall.WALL_SHELF), 7,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
 		
-		board.addGameObject(new Wall(), 8,1);
-		board.addGameObject(new Wall(), 8,2);
-		board.addGameObject(new Wall(), 8,4);
-		board.addGameObject(new Wall(), 8,5);
-		board.addGameObject(new Wall(), 8,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
 			
 		// chest (6,1)
 		Chest chestOne;
@@ -119,7 +124,7 @@ public class CoolGame extends Game {
 		// add a book
 		Book book = new Book(R.drawable.book_souls_page1);
 		book.addPage(R.drawable.book_souls_page_2);
-		board.addGameObject(book, 3, 5);
+		board.addGameObject(book, 3, 4);
 		
 		//north door | id 1
 		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);

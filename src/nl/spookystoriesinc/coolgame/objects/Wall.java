@@ -7,15 +7,20 @@ import nl.spookystoriesinc.model.GameObject;
 
 public class Wall extends GameObject {
 	public static final String WALL_IMAGE = "Wall";
+	public static final String WALL_PAINTING = "WallPainting";
+	public static final String WALL_SHELF = "WallShelf";
+	
+	private String state;
 
-	public Wall() {
+	public Wall(String state) {
 		super();
+		this.state = state;
 	}
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return WALL_IMAGE;
+		return state;
 	}
 
 	@Override

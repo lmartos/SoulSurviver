@@ -63,10 +63,13 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Player.UP_PLAYER_IMAGE, R.drawable.player_characterup);
 		
 		spriteCache.loadTile(Enemy.DOWN_GHOST_IMAGE, R.drawable.enemy_enemydown);
-		spriteCache.loadTile(Enemy.RIGHT_GHOST_IMAGE, R.drawable.enemy_enemyright);
 		spriteCache.loadTile(Enemy.LEFT_GHOST_IMAGE, R.drawable.enemy_enemyleft);
+		spriteCache.loadTile(Enemy.RIGHT_GHOST_IMAGE, R.drawable.enemy_enemyright);
+		spriteCache.loadTile(Enemy.UP_GHOST_IMAGE, R.drawable.enemy_enemyup);
 		
 		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.wall_darkwall);
+		spriteCache.loadTile(Wall.WALL_PAINTING, R.drawable.wall_wallpainting1);
+		spriteCache.loadTile(Wall.WALL_SHELF, R.drawable.wall_wallshelf1);
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
 		
 		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
