@@ -1,5 +1,6 @@
 package nl.spookystoriesinc.coolgame.objects;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.*;
@@ -26,13 +27,14 @@ public class Door extends GameObject{
 	private int doorX;
 	private int doorY;
 	private final int id;
+	private Context context;
 	
 	/**
 	 * 				Make a door object
 	 * @param id	the unique id of the door that helps with locking and unlocking	
 	 * @param state	the state where the door is in
 	 */
-	public Door(int id, String state){
+	public Door(int id, String state, Context context){
 		this.id = id;
 		this.state = state;
 	}
@@ -79,7 +81,7 @@ public class Door extends GameObject{
 		if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
 				|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
 			
-			Toast.makeText(MainActivity.getContext(), "You've already opened this door!", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
@@ -87,41 +89,41 @@ public class Door extends GameObject{
 		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			if(InventoryView.checkForKey(this.id)){
 				state = EAST_OPEN_DOOR_IMAGE;	
-				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 			}
 			else{
-				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			if(InventoryView.checkForKey(this.id)){
 				state = WEST_OPEN_DOOR_IMAGE;	
-				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 			}
 			else{
-				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			if(InventoryView.checkForKey(this.id)){
 				state = SOUTH_OPEN_DOOR_IMAGE;	
-				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 			}
 			else{
-				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			if(InventoryView.checkForKey(this.id)){
 				state = NORTH_OPEN_DOOR_IMAGE;	
-				Toast.makeText(MainActivity.getContext(), "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 			}
 			else{
-				Toast.makeText(MainActivity.getContext(), "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
 			}
 		}
 		else{
-			Toast.makeText(MainActivity.getContext(), "Out of range!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
 		
 		gameBoard.updateView();

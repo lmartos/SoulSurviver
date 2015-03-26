@@ -2,6 +2,7 @@ package nl.spookystoriesinc.coolgame.objects;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.CoolGameBoard;
@@ -18,9 +19,12 @@ public class Chest extends GameObject{
 	private ArrayList<GameObject> items = new ArrayList<GameObject>();
 	private int chestX;
 	private int chestY;
+	private Context context;
 	
-	public Chest(){
+	public Chest(Context context){
 		super();
+		this.context = context;
+		
 	}
 	
 	/**
@@ -63,7 +67,7 @@ public class Chest extends GameObject{
 		Log.d("Chest", "You clicked the chest X: " + chestX + " Y: " + chestY);
 		
 		if(this.state == FRONT_OPEN_CHEST_IMAGE){
-			Toast.makeText(MainActivity.getContext(), "You've already opened this chest!", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've already opened this chest!", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
@@ -73,7 +77,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
-			Toast.makeText(MainActivity.getContext(), "You've opened a chest!", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've opened a chest!", Toast.LENGTH_LONG).show();
 		}
 		else if(chestX == (gameBoard.getPlayer().getPositionX() - 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -81,7 +85,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
-			Toast.makeText(MainActivity.getContext(), "You've opened a chest!",Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've opened a chest!",Toast.LENGTH_LONG).show();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() + 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -89,7 +93,7 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}	
 			this.items.removeAll(items);
-			Toast.makeText(MainActivity.getContext(), "You've opened a chest!", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've opened a chest!", Toast.LENGTH_LONG).show();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() - 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -97,10 +101,10 @@ public class Chest extends GameObject{
 				InventoryView.addItemToInventory(item);
 			}
 			this.items.removeAll(items);
-			Toast.makeText(MainActivity.getContext(), "You've opened a chest!",Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You've opened a chest!",Toast.LENGTH_LONG).show();
 		}
 		else{
-			Toast.makeText(MainActivity.getContext(), "Out of range!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
 		gameBoard.updateView();
 	}
