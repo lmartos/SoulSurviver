@@ -76,33 +76,33 @@ public class CoolGame extends Game {
 	
 	public void addWalls(GameBoard board){
 		
-		board.addGameObject(new Wall(), 0,0);
-		board.addGameObject(new Wall(), 0,1);
-		board.addGameObject(new Wall(), 0,2);
-		board.addGameObject(new Wall(), 0,4);
-		board.addGameObject(new Wall(), 0,5);
-		board.addGameObject(new Wall(), 0,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
 		
-		board.addGameObject(new Wall(), 1,6);
-		board.addGameObject(new Wall(), 2,6);
-		board.addGameObject(new Wall(), 3,6);
-		board.addGameObject(new Wall(), 5,6);
-		board.addGameObject(new Wall(), 6,6);
-		board.addGameObject(new Wall(), 7,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
 		
-		board.addGameObject(new Wall(), 1,0);
-		board.addGameObject(new Wall(), 2,0);
-		board.addGameObject(new Wall(), 3,0);
-		board.addGameObject(new Wall(), 5,0);
-		board.addGameObject(new Wall(), 6,0);
-		board.addGameObject(new Wall(), 7,0);
-		board.addGameObject(new Wall(), 8,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 2,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 6,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
 		
-		board.addGameObject(new Wall(), 8,1);
-		board.addGameObject(new Wall(), 8,2);
-		board.addGameObject(new Wall(), 8,4);
-		board.addGameObject(new Wall(), 8,5);
-		board.addGameObject(new Wall(), 8,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
 	}
 	
 	public void initMainHall(GameBoard board){
@@ -159,8 +159,8 @@ public class CoolGame extends Game {
 		
 		// walls of the Dining room
 		addWalls(board);
-		board.addGameObject(new Wall(), 0,3);
-		board.addGameObject(new Wall(), 4,6);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 4,6);
 		
 		//dining table
 		board.addGameObject(new DiningTableLeft(), 3, 3);
