@@ -1,9 +1,15 @@
 package nl.spookystoriesinc.coolgame;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.view.GameBoardView;
+import nl.spookystoriesinc.view.InventoryView;
 import nl.spookystoriesinc.coolgame.objects.Player;
 
 /**
@@ -14,11 +20,15 @@ import nl.spookystoriesinc.coolgame.objects.Player;
 public class CoolGameBoard extends GameBoard {
 	private static final int GAMEBOARD_WIDTH = 9;
 	private static final int GAMEBOARD_HEIGHT = 7;
-
+	private Timer timer;
+	Handler handler = new Handler();
+	
+	private boolean gameOver = false;
+	
 	// The difference between the players position and the clicked tile
 	private int difX;
 	private int difY;
-	// the x where the wombat is moving to
+	// the x where the player is moving to
 	private int newX;
 	private int newY;
 	
@@ -32,13 +42,257 @@ public class CoolGameBoard extends GameBoard {
 	 */
 	public CoolGameBoard() {
 		super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
+		timer = new Timer();
 	}
+	
+	public void init(){
+		if(getEnemy() == null){
+			return;
+		}
+		timer.scheduleAtFixedRate(new MoveEnemyTask(), 1500, 1500);
+	}
+	class MoveEnemyTask extends TimerTask{
+		
+		// The difference between the players position and the clicked tile
+		private int enemyDifX;
+		private int enemyDifY;
+		// the x where the player is moving to
+		private int enemyNewX;
+		private int enemyNewY;
+		
+		// The x pos. and y pos. from the player object
+		private int enemyOldX;
+		private int enemyOldY;
+		@Override
+		public void run() {
+			
+			if(getEnemy().getPositionX() == (getPlayer().getPositionX() + 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
+				gameOver = true;
+				return;
+			}
+			else if(getEnemy().getPositionX() == (getPlayer().getPositionX() - 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
+				gameOver = true;
+				return;
+			}
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() + 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
+				gameOver = true;
+				return;
+			}
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() - 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
+				gameOver = true;
+				return;
+			}
+			// The x pos. and y pos. from the player object
+			enemyOldX = getEnemy().getPositionX();
+			enemyOldY = getEnemy().getPositionY();
 
+			// Calculate the difference between the players position and the clicked tile
+			enemyDifX = getPlayer().getPositionX() - enemyOldX;
+			enemyDifY = getPlayer().getPositionY() - enemyOldY;
+			
+			Log.d("Enemy", "Enemy Xdif: " + enemyDifX + " YDif: " + enemyDifY);
+			
+			// links naar beneden
+			if (enemyDifX <= 0 && enemyDifY >= 0) {
+				EnemyLeftDown(enemyOldX, enemyOldY);
+			}
+			// links naar boven
+			else if (enemyDifX <= 0 && enemyDifY <= 0) {
+				EnemyLeftUp(enemyOldX, enemyOldY);
+			}
+
+			// rechts naar boven
+			else if (enemyDifX >= 0 && enemyDifY <= 0) {
+				EnemyRightUp(enemyOldX, enemyOldY);
+			}
+
+			// rechts naar onder!
+			else if(enemyDifX >= 0 && enemyDifY >= 0){
+				EnemyRightDown(enemyOldX, enemyOldY);
+			}
+
+			else {
+				return;
+				
+			}
+			
+			handler.post(new Runnable(){
+				@Override
+				public void run() {
+					updateView();
+				}
+				
+			});
+		}
+		public void EnemyLeftDown(int oldX, int oldY){
+			Log.d("EnemyLeftDown", "moving enemy left down");
+				// links
+				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
+					enemyNewX = oldX - 1;
+					enemyNewY = oldY;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX;
+						enemyNewY = oldY + 1;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX), (oldY + 1));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX - 1), oldY);
+					}
+				}
+				// beneden
+				else {
+					enemyNewX = oldX;
+					enemyNewY = oldY + 1;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX - 1;
+						enemyNewY = oldY;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX - 1), (oldY));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX), (oldY + 1));
+					}
+			}
+		}
+		public void EnemyLeftUp(int oldX, int oldY){
+			Log.d("EnemyLeftUp", "moving enemy left up");
+
+				// links
+				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
+					enemyNewX = oldX - 1;
+					enemyNewY = oldY;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX;
+						enemyNewY = oldY - 1;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX), (oldY - 1));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX - 1), oldY);
+					}
+				}
+				// boven
+				else {
+					enemyNewX = oldX;
+					enemyNewY = oldY - 1;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX - 1;
+						enemyNewY = oldY;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX - 1), (oldY));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX), (oldY - 1));
+					}
+				
+			}
+		}
+		public void EnemyRightUp(int oldX, int oldY){
+			Log.d("EnemyLRightUp", "moving enemy right up");
+				// rechts
+				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
+					enemyNewX = oldX + 1;
+					enemyNewY = oldY;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX;
+						enemyNewY = oldY - 1;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX), (oldY - 1));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX + 1), oldY);
+					}
+				}
+				// omhoog
+				else {
+					enemyNewX = oldX;
+					enemyNewY = oldY - 1;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX + 1;
+						enemyNewY = oldY;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX + 1), (oldY));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX), (oldY - 1));
+					}
+			}
+		}
+		public void EnemyRightDown(int oldX, int oldY){
+			Log.d("EnemyRightDown", "moving enemy Right down");
+				// rechts
+				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
+					enemyNewX = oldX + 1;
+					enemyNewY = oldY;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX;
+						enemyNewY = oldY + 1;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX), (oldY + 1));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX + 1), oldY);
+					}
+				}
+				// beneden
+				else {
+					enemyNewX = oldX;
+					enemyNewY = oldY + 1;
+					objectAtNewPos = getObject(enemyNewX, enemyNewY);
+					if (objectAtNewPos != null) {
+						enemyNewX = oldX + 1;
+						enemyNewY = oldY;
+						objectAtNewPos = getObject(enemyNewX, enemyNewY);
+						if (objectAtNewPos != null) {
+							return;
+						} else {
+							moveObject(getEnemy(), (oldX + 1), (oldY));
+						}
+					} else {
+						moveObject(getEnemy(), (oldX), (oldY + 1));
+					}
+				}
+		}
+	}
 	/**
 	 * 
 	 */
 	@Override
 	public void onEmptyTileClicked(int x, int y) {
+		if(gameOver){
+			timer.cancel();
+			return;
+		}
+		//timer.schedule(new MoveEnemyTask(), 1500);
 		
 		// The x pos. and y pos. from the player object
 		oldX = getPlayer().getPositionX();
@@ -51,7 +305,6 @@ public class CoolGameBoard extends GameBoard {
 		// links naar beneden
 		if (difX <= 0 && difY >= 0) {
 			moveLeftDown(oldX, oldY);
-
 		}
 		// links naar boven
 		else if (difX <= 0 && difY <= 0) {
@@ -86,7 +339,12 @@ public class CoolGameBoard extends GameBoard {
 	 * @return			the number
 	 */
 	public int haalMinWeg(int getal) {
-		return getal * -1;
+		if(getal >= 0 ){
+			return getal;
+		}
+		else {
+			return getal * -1;
+		}
 	}
 	
 	public void moveLeftDown(int oldX, int oldY){

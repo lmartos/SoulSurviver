@@ -9,7 +9,7 @@ public class Enemy extends GameObject{
 	public static final String RIGHT_GHOST_IMAGE = "GhostRight";
 	public static final String UP_GHOST_IMAGE = "GhostUp";
 	
-	private String state = RIGHT_GHOST_IMAGE;
+	private String state = DOWN_GHOST_IMAGE;
 
 	@Override
 	public String getImageId() {
