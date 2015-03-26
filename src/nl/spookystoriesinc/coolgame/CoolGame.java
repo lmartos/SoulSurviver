@@ -1,5 +1,6 @@
 package nl.spookystoriesinc.coolgame;
 
+import android.content.Context;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
@@ -26,6 +27,7 @@ public class CoolGame extends Game {
 
 	/** Reference to the main activity, so some labels can be updated. */
 	private MainActivity activity;
+	private Context context;
 	private int random;
 	
 	/**
@@ -50,6 +52,7 @@ public class CoolGame extends Game {
 		
 		// Set size of the view to that of the game board
 		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
+		context = this.activity.getApplicationContext();
 	}
 
 	/**
@@ -104,12 +107,12 @@ public class CoolGame extends Game {
 			
 		// chest (6,1)
 		Chest chestOne;
-		board.addGameObject(chestOne = new Chest(), 6, 1);
+		board.addGameObject(chestOne = new Chest(context), 6, 1);
 		chestOne.addKey(new Key(1));
 		
 		// Chest (2,1)
 		Chest chestTwo;
-		board.addGameObject(chestTwo = new Chest(), 2, 1);
+		board.addGameObject(chestTwo = new Chest(context), 2, 1);
 		chestTwo.addKey(new Key(2));
 		
 		// Chest (7,4)
@@ -122,18 +125,18 @@ public class CoolGame extends Game {
 		board.addGameObject(new Table(), 5, 1);
 		
 		// add a book
-		Book book = new Book(R.drawable.book_souls_page1);
+		Book book = new Book(R.drawable.book_souls_page1, context);
 		book.addPage(R.drawable.book_souls_page_2);
 		board.addGameObject(book, 3, 4);
 		
 		//north door | id 1
-		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE), 4, 0);
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context), 4, 0);
 		//west door | id 2
-		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE), 0, 3);
+		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE, context), 0, 3);
 		//east door | id 3
-		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE), 8, 3);
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context), 8, 3);
 		//south door | id 4
-		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE), 4, 6);
+		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE, context), 4, 6);
 
 		// Redraw the game view
 		board.updateView();

@@ -289,7 +289,6 @@ public class CoolGameBoard extends GameBoard {
 	@Override
 	public void onEmptyTileClicked(int x, int y) {
 		if(gameOver){
-			Toast.makeText(MainActivity.getContext(), "Game Over m8", Toast.LENGTH_LONG).show();
 			timer.cancel();
 			return;
 		}
