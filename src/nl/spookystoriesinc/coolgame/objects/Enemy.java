@@ -25,5 +25,8 @@ public class Enemy extends GameObject{
 	public void onTouched(GameBoard gameBoard) {
 		
 	}
-
+	
+	public void setImageId(String state){
+		this.state = state;
+	}
 }

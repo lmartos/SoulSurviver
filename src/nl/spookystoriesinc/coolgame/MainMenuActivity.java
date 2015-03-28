@@ -5,7 +5,9 @@ import nl.spookystoriesinc.view.VolumeMenu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ public class MainMenuActivity extends Activity {
 	
 	private Button settings, startGame, credits;
 	private Context context;
+	private MediaPlayer mediaPlayer;
 	private Intent testGameOver;
 	private Intent resultIntent;
 	
@@ -37,7 +40,20 @@ public class MainMenuActivity extends Activity {
 			startActivity(startGameOver);
 			
 		}
-	}
+		playMusic();
+		}
+		private void playMusic() {
+			
+			Log.d("MainActivity", "starting music!");
+			mediaPlayer = MediaPlayer.create(context, R.raw.hughes_hall_sleep_now);
+			mediaPlayer.start();
+			mediaPlayer.setLooping(true);
+		}
+		
+		public void onDestroy(){
+			mediaPlayer.stop();
+			super.onDestroy();
+		}
 	
 	public class onClickMainMenu implements OnClickListener{
 
@@ -59,10 +75,7 @@ public class MainMenuActivity extends Activity {
 			
 	}
 	
-	public void onDestroy(){
-		
-		super.onDestroy();
-	}
+	
 	
 
 

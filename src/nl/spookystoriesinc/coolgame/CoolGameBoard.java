@@ -12,6 +12,7 @@ import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 import nl.spookystoriesinc.view.GameBoardView;
 import nl.spookystoriesinc.view.InventoryView;
+import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Player;
 
 /**
@@ -84,465 +85,270 @@ public class CoolGameBoard extends GameBoard {
 		@Override
 		public void run() {
 			
-			if(getEnemy().getPositionX() == (getPlayer().getPositionX() + 1) && getEnemy().getPositionY() == getPlayer().getPositionY() && !gameOver){
+			if(gameOver){
 				gameOver();
 				return;
-			}
-			else if(getEnemy().getPositionX() == (getPlayer().getPositionX() - 1) && getEnemy().getPositionY() == getPlayer().getPositionY() && !gameOver){
-				gameOver();
-				return;
-			}
-			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() + 1) && getEnemy().getPositionX() == getPlayer().getPositionX() && !gameOver){
-				gameOver();
-				return;
-			}
-			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() - 1) && getEnemy().getPositionX() == getPlayer().getPositionX() && !gameOver){
-				gameOver();
-				return;
-			}
-			// The x pos. and y pos. from the player object
-			enemyOldX = getEnemy().getPositionX();
-			enemyOldY = getEnemy().getPositionY();
-
-			// Calculate the difference between the players position and the clicked tile
-			enemyDifX = getPlayer().getPositionX() - enemyOldX;
-			enemyDifY = getPlayer().getPositionY() - enemyOldY;
-			
-			Log.d("Enemy", "Enemy Xdif: " + enemyDifX + " YDif: " + enemyDifY);
-			
-			// links naar beneden
-			if (enemyDifX <= 0 && enemyDifY >= 0) {
-				EnemyLeftDown(enemyOldX, enemyOldY);
-			}
-			// links naar boven
-			else if (enemyDifX <= 0 && enemyDifY <= 0) {
-				EnemyLeftUp(enemyOldX, enemyOldY);
-			}
-
-			// rechts naar boven
-			else if (enemyDifX >= 0 && enemyDifY <= 0) {
-				EnemyRightUp(enemyOldX, enemyOldY);
-			}
-
-			// rechts naar onder!
-			else if(enemyDifX >= 0 && enemyDifY >= 0){
-				EnemyRightDown(enemyOldX, enemyOldY);
-			}
-
-			else {
-				return;
-				
 			}
 			
-			handler.post(new Runnable(){
+			if(getEnemy().getPositionX() == (getPlayer().getPositionX() + 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
+				gameOver();
+				return;
+			}
+			else if(getEnemy().getPositionX() == (getPlayer().getPositionX() - 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
+				gameOver();
+				return;
+			}
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() + 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
+				gameOver();
+				return;
+			}
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() - 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
+				gameOver();
+				return;
+			}
+			// The x pos. and y pos. from the enemy object
+						enemyOldX = getEnemy().getPositionX();
+						enemyOldY = getEnemy().getPositionY();
+
+						// Calculate the difference between the players position and enemy
+						enemyDifX = getPlayer().getPositionX() - enemyOldX;
+						enemyDifY = getPlayer().getPositionY() - enemyOldY;
+						
+						// links naar beneden
+						if (enemyDifX <= 0 && enemyDifY >= 0) {
+							moveChar(-1 , 1, getEnemy(), enemyDifX, enemyDifY);
+						}
+						// links naar boven
+						else if (enemyDifX <= 0 && enemyDifY <= 0) {
+							moveChar(-1, -1, getEnemy(), enemyDifX, enemyDifY);
+						}
+						// rechts naar boven
+						else if (enemyDifX >= 0 && enemyDifY <= 0) {
+							moveChar(1, -1, getEnemy(), enemyDifX, enemyDifY);
+						}
+						// rechts naar onder!
+						else if(enemyDifX >= 0 && enemyDifY >= 0){
+							moveChar(1, 1, getEnemy(), enemyDifX, enemyDifY);
+						}
+						else {
+							return;		
+						}		
+						handler.post(new Runnable(){
+							@Override
+							public void run() {
+								updateView();
+							}	
+						});
+					}
+				}
+				/**
+				 * 
+				 */
 				@Override
-				public void run() {
+				public void onEmptyTileClicked(int x, int y) {
+					
+					if(gameOver){
+						timer.cancel();
+						return;
+					}
+					
+					// The x pos. and y pos. from the object
+					oldX = getPlayer().getPositionX();
+					oldY = getPlayer().getPositionY();
+					// Calculate the difference between the players position and the clicked tile
+					difX = x - oldX;
+					difY = y - oldY;
+				
+					// links naar beneden
+					if (difX <= 0 && difY >= 0) {
+						moveChar(-1, 1, this.getPlayer(), difX, difY);
+					}
+					// links naar boven
+					else if (difX <= 0 && difY <= 0) {
+						moveChar(-1, -1, this.getPlayer(), difX, difY);
+					}
+					// rechts naar boven
+					else if (difX >= 0 && difY <= 0) {
+						moveChar(1, -1, this.getPlayer(), difX, difY);
+					}
+					// rechts naar onder!
+					else if(difX >= 0 && difY >= 0){
+						moveChar(1, 1, this.getPlayer(), difX, difY);
+					}
+					else {
+						return;		
+					}
 					updateView();
 				}
+
+				@Override
+				public String getBackgroundImg(int mx, int my) {
+					return null;
+				}
+
+				/**
+				 * 					A method to remove the - from a number
+				 * @param getal		the number you want to remove the - from
+				 * @return			the number
+				 */
+				public int haalMinWeg(int getal) {
+					if(getal >= 0 ){
+						return getal;
+					}
+					else {
+						return getal * -1;
+					}
+				}
 				
-			});
-		}
-		public void EnemyLeftDown(int oldX, int oldY){
-			Log.d("EnemyLeftDown", "moving enemy left down");
-				// links
-				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
-					enemyNewX = oldX - 1;
-					enemyNewY = oldY;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX;
-						enemyNewY = oldY + 1;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX), (oldY + 1));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX - 1), oldY);
-					}
-				}
-				// beneden
-				else {
-					enemyNewX = oldX;
-					enemyNewY = oldY + 1;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX - 1;
-						enemyNewY = oldY;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX - 1), (oldY));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX), (oldY + 1));
-					}
-			}
-		}
-		public void EnemyLeftUp(int oldX, int oldY){
-			Log.d("EnemyLeftUp", "moving enemy left up");
+				/**
+				 * 
+				 * @param x			which way you want to move in the x direction
+				 * @param y			which way you want to move in the y direction
+				 * @param obj		The object you want to move
+				 * @param difX		the x difference between the object you want to move and where it has to move
+				 * @param difY		the x difference between the object you want to move and where it has to move
+				 */
+				public void moveChar(int x, int y, GameObject obj, int difX, int difY){
+					
+					// The x pos. and y pos. from the object
+					oldX = obj.getPositionX();
+					oldY = obj.getPositionY();
 
-				// links
-				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
-					enemyNewX = oldX - 1;
-					enemyNewY = oldY;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX;
-						enemyNewY = oldY - 1;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX), (oldY - 1));
+						if (haalMinWeg(difX) >= haalMinWeg(difY)) {
+							newX = oldX + x;
+							newY = oldY;
+							objectAtNewPos = this.getObject(newX, newY);
+							if (objectAtNewPos != null) {
+								newX = oldX;
+								newY = oldY + y;
+								objectAtNewPos = this.getObject(newX, newY);
+								if (objectAtNewPos != null) {
+									newX = oldX;
+									newY = oldY - y;
+									objectAtNewPos = this.getObject(newX, newY);
+									if(objectAtNewPos != null){
+										return;
+									}
+									else{
+										if(y > 0){
+											if(obj instanceof Player){
+											((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+											}else{
+												((Enemy) getEnemy()).setImageId(Enemy.UP_GHOST_IMAGE);
+											}
+										}
+										else{
+											if(obj instanceof Player){
+												((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+											}else{
+												((Enemy) getEnemy()).setImageId(Enemy.DOWN_GHOST_IMAGE);
+											}
+										}
+										this.moveObject(obj, (oldX), (oldY - y));
+									}
+								} else {
+									if(y > 0){
+										if(obj instanceof Player){
+										((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+										}else{
+											((Enemy) getEnemy()).setImageId(Enemy.DOWN_GHOST_IMAGE);
+										}
+									}
+									else{
+										if(obj instanceof Player){
+										((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+										}else{
+											((Enemy) getEnemy()).setImageId(Enemy.UP_GHOST_IMAGE);
+										}
+									}
+									this.moveObject(obj, (oldX), (oldY + y));
+								}
+							} else {
+								if(x >= 0){
+									if(obj instanceof Player){
+									((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+									}else{
+										((Enemy) getEnemy()).setImageId(Enemy.RIGHT_GHOST_IMAGE);
+									}
+								}
+								else{
+									if(obj instanceof Player){
+									((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+									}else{
+										((Enemy) getEnemy()).setImageId(Enemy.LEFT_GHOST_IMAGE);
+									}
+								}
+								this.moveObject(obj, (oldX + x), oldY);
+							}
 						}
-					} else {
-						moveObject(getEnemy(), (oldX - 1), oldY);
+						else {
+							newX = oldX;
+							newY = oldY + y;
+							objectAtNewPos = this.getObject(newX, newY);
+							if (objectAtNewPos != null) {
+								newX = oldX + x;
+								newY = oldY;
+								objectAtNewPos = this.getObject(newX, newY);
+								if (objectAtNewPos != null) {
+									newX = oldX - x;
+									newY = oldY;
+									objectAtNewPos = this.getObject(newX, newY);
+									if(objectAtNewPos != null){
+										return;
+									}
+									else{
+										if(x >= 0){
+											if(obj instanceof Player){
+											((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+											}
+											else{
+												((Enemy) getEnemy()).setImageId(Enemy.RIGHT_GHOST_IMAGE);
+											}
+										}
+										else{
+											if(obj instanceof Player){
+											((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+											}else{
+												((Enemy) getEnemy()).setImageId(Enemy.LEFT_GHOST_IMAGE);
+											}
+										}
+										this.moveObject(obj, (oldX - x), (oldY));
+									}
+								} else {
+									if(x >= 0){
+										if(obj instanceof Player){
+										((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
+										}else{
+											((Enemy) getEnemy()).setImageId(Enemy.RIGHT_GHOST_IMAGE);
+										}
+									}
+									else{
+										if(obj instanceof Player){
+										((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
+										}else{
+											((Enemy) getEnemy()).setImageId(Enemy.LEFT_GHOST_IMAGE);
+										}
+									}
+									this.moveObject(obj, (oldX + x), (oldY));
+								}
+							} else {
+								if(y >= 0){
+									if(obj instanceof Player){
+									((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
+									}else{
+										((Enemy) getEnemy()).setImageId(Enemy.DOWN_GHOST_IMAGE);
+									}
+								}
+								else{
+									if(obj instanceof Player){
+									((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
+									}else{
+										((Enemy) getEnemy()).setImageId(Enemy.UP_GHOST_IMAGE);
+									}
+								}
+								this.moveObject(obj, (oldX), (oldY + y));
+						}
 					}
 				}
-				// boven
-				else {
-					enemyNewX = oldX;
-					enemyNewY = oldY - 1;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX - 1;
-						enemyNewY = oldY;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX - 1), (oldY));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX), (oldY - 1));
-					}
 				
 			}
-		}
-		public void EnemyRightUp(int oldX, int oldY){
-			Log.d("EnemyLRightUp", "moving enemy right up");
-				// rechts
-				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
-					enemyNewX = oldX + 1;
-					enemyNewY = oldY;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX;
-						enemyNewY = oldY - 1;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX), (oldY - 1));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX + 1), oldY);
-					}
-				}
-				// omhoog
-				else {
-					enemyNewX = oldX;
-					enemyNewY = oldY - 1;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX + 1;
-						enemyNewY = oldY;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX + 1), (oldY));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX), (oldY - 1));
-					}
-			}
-		}
-		public void EnemyRightDown(int oldX, int oldY){
-			Log.d("EnemyRightDown", "moving enemy Right down");
-				// rechts
-				if (haalMinWeg(enemyDifX) >= haalMinWeg(enemyDifY)) {
-					enemyNewX = oldX + 1;
-					enemyNewY = oldY;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX;
-						enemyNewY = oldY + 1;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX), (oldY + 1));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX + 1), oldY);
-					}
-				}
-				// beneden
-				else {
-					enemyNewX = oldX;
-					enemyNewY = oldY + 1;
-					objectAtNewPos = getObject(enemyNewX, enemyNewY);
-					if (objectAtNewPos != null) {
-						enemyNewX = oldX + 1;
-						enemyNewY = oldY;
-						objectAtNewPos = getObject(enemyNewX, enemyNewY);
-						if (objectAtNewPos != null) {
-							return;
-						} else {
-							moveObject(getEnemy(), (oldX + 1), (oldY));
-						}
-					} else {
-						moveObject(getEnemy(), (oldX), (oldY + 1));
-					}
-				}
-		}
-	}
-	/**
-	 * 
-	 */
-	@Override
-	public void onEmptyTileClicked(int x, int y) {
-		if(gameOver){
-			timer.cancel();
-			return;
-		}
-		//timer.schedule(new MoveEnemyTask(), 1500);
-		
-		// The x pos. and y pos. from the player object
-		oldX = getPlayer().getPositionX();
-		oldY = getPlayer().getPositionY();
-
-		// Calculate the difference between the players position and the clicked tile
-		difX = x - oldX;
-		difY = y - oldY;
-		
-		// links naar beneden
-		if (difX <= 0 && difY >= 0) {
-			moveLeftDown(oldX, oldY);
-		}
-		// links naar boven
-		else if (difX <= 0 && difY <= 0) {
-			moveLeftUp(oldX, oldY);
-		}
-
-		// rechts naar boven
-		else if (difX >= 0 && difY <= 0) {
-			moveRightUp(oldX, oldY);
-		}
-
-		// rechts naar onder!
-		else if(difX >= 0 && difY >= 0){
-			moveRightDown(oldX, oldY);
-		}
-
-		else {
-			return;
-			
-		}
-		updateView();
-	}
-
-	@Override
-	public String getBackgroundImg(int mx, int my) {
-		return null;
-	}
-
-	/**
-	 * 					A method to remove the - from a number
-	 * @param getal		the number you want to remove the - from
-	 * @return			the number
-	 */
-	public int haalMinWeg(int getal) {
-		if(getal >= 0 ){
-			return getal;
-		}
-		else {
-			return getal * -1;
-		}
-	}
-	
-	public void moveLeftDown(int oldX, int oldY){
-
-		// links naar beneden
-		if (difX <= 0 && difY >= 0) {
-			// links
-			if (haalMinWeg(difX) >= difY) {
-				newX = oldX - 1;
-				newY = oldY;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					newX = oldX;
-					newY = oldY + 1;
-					objectAtNewPos = this.getObject(newX, newY);
-					if (objectAtNewPos != null) {
-						return;
-					} else {
-						((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
-						this.moveObject(getPlayer(), (oldX), (oldY + 1));
-					}
-				} else {
-					((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX - 1), oldY);
-				}
-			}
-			// beneden
-			else {
-				newX = oldX;
-				newY = oldY + 1;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					newX = oldX - 1;
-					newY = oldY;
-					objectAtNewPos = this.getObject(newX, newY);
-					if (objectAtNewPos != null) {
-						return;
-					} else {
-						((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
-						this.moveObject(getPlayer(), (oldX - 1), (oldY));
-					}
-				} else {
-					((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX), (oldY + 1));
-				}
-			}
-		}
-	}
-	
-	
-	public void moveLeftUp(int oldX, int oldY){
-		
-		if (haalMinWeg(difX) >= haalMinWeg(difY)) {
-			newX = oldX - 1;
-			newY = oldY;
-			objectAtNewPos = this.getObject(newX, newY);
-			if (objectAtNewPos != null) {
-				newX = oldX;
-				newY = oldY - 1;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					return;
-				} else {
-					((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX), (oldY - 1));
-				}
-			} else {
-				Log.d(CoolGame.TAG, "Going left");
-				((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX - 1), (oldY));
-			}
-		}
-		else {
-			newX = oldX;
-			newY = oldY - 1;
-
-			objectAtNewPos = this.getObject(newX, newY);
-
-			if (objectAtNewPos != null) {
-
-				newX = oldX - 1;
-				newY = oldY;
-				objectAtNewPos = this.getObject(newX, newY);
-
-				if (objectAtNewPos != null) {
-					return;
-
-				} else {
-					((Player) getPlayer()).setImageId(Player.LEFT_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX - 1), (oldY));
-
-				}
-			} else {
-				((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX), (oldY - 1));
-			}
-		}
-	}
-	
-	public void moveRightUp(int oldX, int oldY){
-		if (difX >= haalMinWeg(difY)) {
-			newX = oldX + 1;
-			newY = oldY;
-			objectAtNewPos = this.getObject(newX, newY);
-			if (objectAtNewPos != null) {
-				newX = oldX;
-				newY = oldY - 1;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					return;
-				} else {
-					((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX), (oldY - 1));
-				}
-			} else {
-				((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX + 1), (oldY));
-			}
-		}
-		else {
-			newX = oldX;
-			newY = oldY - 1;
-			objectAtNewPos = this.getObject(newX, newY);
-			if (objectAtNewPos != null) {
-				newX = oldX + 1;
-				newY = oldY;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					return;
-				} else {
-					((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX + 1), (oldY));
-				}
-			} else {
-				((Player) getPlayer()).setImageId(Player.UP_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX), (oldY - 1));
-				Log.d(CoolGame.TAG, "Going up");
-			}
-		}
-	}
-
-	public void moveRightDown(int oldX, int oldY){
-
-		if (difX >= difY) {
-			newX = oldX + 1;
-			newY = oldY;
-			objectAtNewPos = this.getObject(newX, newY);
-			if (objectAtNewPos != null) {
-				newX = oldX;
-				newY = oldY + 1;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					return;
-				} else {
-					((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX), (oldY + 1));
-				}
-			} else {
-				((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX + 1), oldY);
-			}
-		}
-		else if (difX < difY) {
-			newX = oldX;
-			newY = oldY + 1;
-			objectAtNewPos = this.getObject(newX, newY);
-			if (objectAtNewPos != null) {
-				newX = oldX + 1;
-				newY = oldY;
-				objectAtNewPos = this.getObject(newX, newY);
-				if (objectAtNewPos != null) {
-					return;
-				} else {
-					((Player) getPlayer()).setImageId(Player.RIGHT_PLAYER_IMAGE);
-					this.moveObject(getPlayer(), (oldX + 1), (oldY));
-				}
-			} else {
-				((Player) getPlayer()).setImageId(Player.DOWN_PLAYER_IMAGE);
-				this.moveObject(getPlayer(), (oldX), oldY + 1);
-			}
-		}
-	}
-}

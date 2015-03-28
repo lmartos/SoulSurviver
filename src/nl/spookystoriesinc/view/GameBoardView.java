@@ -195,17 +195,17 @@ public abstract class GameBoardView extends View implements Observer {
 				Log.d(TAG, "Touched view tile ("+x+", "+y+") = model tile ("+mx+", "+my+")\n");
 
 				if( (mx < board.getWidth()) && (my < board.getHeight())) {
-					Log.d(TAG, "Check1");
+					
 					// Determine the object clicked
 					GameObject object = board.getObject(mx, my);
 
 					// Call the listener
 					if (object != null) {
 						object.onTouched(board);
-						Log.d(TAG, "Check2");
+					
 					} else {
 						board.onEmptyTileClicked(x, y);
-						Log.d(TAG, "Check3");
+						
 					}
 				}
 			}
