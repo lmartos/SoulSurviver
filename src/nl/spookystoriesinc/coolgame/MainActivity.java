@@ -19,11 +19,12 @@ import android.widget.Toast;
  * @author Jan Stroet
  */
 public class MainActivity extends Activity {
-	private CoolGame game;
+	private CoolGame game = null;
 	private CoolGameBoardView gameView;
 	private TextView scoreLabel;	
 	private int init = 0;
 	private Intent mainMenu;
+	public static final int START_GAME = 1;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -35,32 +36,33 @@ public class MainActivity extends Activity {
 		// Find some of the user interface elements
 		gameView = (CoolGameBoardView) findViewById(R.id.game);
 		scoreLabel = (TextView) findViewById(R.id.scoreTextView);
-
+		
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
-		
+		game = new CoolGame(this);
 		// Do something when user clicks new game
 		registerNewGameButton();
 		mainMenu = new Intent(MainActivity.this, MainMenuActivity.class);
-		game = new CoolGame(this);
+		startActivityForResult(mainMenu, START_GAME);
+		
 		// Tell user to start the game
 		
-		onPause(true);
+		
 		// Tell user to start the game
 		
 	}
-	public void onPause(Boolean b){
-		if(b){
-			startActivity(mainMenu);
+
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data){
+			if(resultCode == RESULT_OK){
+				game.initNewGame();
 		}
-		super.onPause();
 	}
-	public void onResume(){
-		if(init == 0){
-			game.initNewGame();
-			init++;
-		}
-		super.onResume();
+	
+	public void initGameOverState(){
+		Intent initGameOver = new Intent(this, MainMenuActivity.class);
+		initGameOver.putExtra("Game is over", true);
+		startActivityForResult(initGameOver, START_GAME);
 	}
 	
 	

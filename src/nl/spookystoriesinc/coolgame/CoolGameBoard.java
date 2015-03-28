@@ -3,6 +3,7 @@ package nl.spookystoriesinc.coolgame;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
@@ -37,14 +38,27 @@ public class CoolGameBoard extends GameBoard {
 	// The x pos. and y pos. from the player object
 	private int oldX;
 	private int oldY;
+	private MainActivity mainActivity;
 	private GameObject objectAtNewPos;
 
 	/**
 	 * Create a new game board.
 	 */
-	public CoolGameBoard() {
+	public CoolGameBoard(MainActivity mainActivity) {
 		super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
 		timer = new Timer();
+		this.mainActivity = mainActivity;
+	}
+	public void reset(){
+		gameOver = false;
+		timer = new Timer();
+	}
+	
+	public void gameOver(){
+		gameOver = true;
+		timer.cancel();
+		timer.purge();
+		mainActivity.initGameOverState();
 	}
 	
 	public void init(){
@@ -52,6 +66,7 @@ public class CoolGameBoard extends GameBoard {
 			return;
 		}
 		timer.scheduleAtFixedRate(new MoveEnemyTask(), 1500, 1500);
+		
 	}
 	class MoveEnemyTask extends TimerTask{
 		
@@ -65,23 +80,24 @@ public class CoolGameBoard extends GameBoard {
 		// The x pos. and y pos. from the player object
 		private int enemyOldX;
 		private int enemyOldY;
+		
 		@Override
 		public void run() {
 			
-			if(getEnemy().getPositionX() == (getPlayer().getPositionX() + 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
-				gameOver = true;
+			if(getEnemy().getPositionX() == (getPlayer().getPositionX() + 1) && getEnemy().getPositionY() == getPlayer().getPositionY() && !gameOver){
+				gameOver();
 				return;
 			}
-			else if(getEnemy().getPositionX() == (getPlayer().getPositionX() - 1) && getEnemy().getPositionY() == getPlayer().getPositionY()){
-				gameOver = true;
+			else if(getEnemy().getPositionX() == (getPlayer().getPositionX() - 1) && getEnemy().getPositionY() == getPlayer().getPositionY() && !gameOver){
+				gameOver();
 				return;
 			}
-			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() + 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
-				gameOver = true;
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() + 1) && getEnemy().getPositionX() == getPlayer().getPositionX() && !gameOver){
+				gameOver();
 				return;
 			}
-			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() - 1) && getEnemy().getPositionX() == getPlayer().getPositionX()){
-				gameOver = true;
+			else if(getEnemy().getPositionY() == (getPlayer().getPositionY() - 1) && getEnemy().getPositionX() == getPlayer().getPositionX() && !gameOver){
+				gameOver();
 				return;
 			}
 			// The x pos. and y pos. from the player object

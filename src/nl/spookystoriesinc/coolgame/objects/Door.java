@@ -37,6 +37,7 @@ public class Door extends GameObject{
 	public Door(int id, String state, Context context){
 		this.id = id;
 		this.state = state;
+		this.context = context;
 	}
 	/** Returns the ImageId of the image to show. */
 	@Override

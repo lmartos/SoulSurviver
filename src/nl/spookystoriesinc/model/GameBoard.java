@@ -37,6 +37,7 @@ public abstract class GameBoard extends Observable {
 		this.gameBoard = new GameObject[width][height];
 	}
 
+	public abstract void reset();
 	/**
 	 * Returns the number of tiles in the X-direction of the board.
 	 */

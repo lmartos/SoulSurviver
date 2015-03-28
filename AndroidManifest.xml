@@ -32,6 +32,12 @@
             android:label="MainMenu"
             android:name="nl.spookystoriesinc.coolgame.MainMenuActivity"
             ></activity>
+         <activity
+            android:icon="@drawable/player_characterdown"
+            android:screenOrientation="landscape"
+            android:label="GameOver"
+            android:name="nl.spookystoriesinc.coolgame.GameOverScreenActivity"
+            ></activity>
     </application>
 
 </manifest>

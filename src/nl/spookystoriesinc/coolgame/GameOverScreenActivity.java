@@ -12,13 +12,12 @@ import android.widget.Button;
 
 public class GameOverScreenActivity extends Activity {
 	private Button mainMenuButton;
-	private Context context;
 	private Intent mainMenu;
 	
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.mainmenu);
-		
+		setContentView(R.layout.gameoverscreen);
+		mainMenu = new Intent(GameOverScreenActivity.this, MainMenuActivity.class);
 		onClickMainMenu menuClicks = new onClickMainMenu();
 		mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
 		mainMenuButton.setOnClickListener(menuClicks);
@@ -29,10 +28,10 @@ public class GameOverScreenActivity extends Activity {
 
 		@Override
 		public void onClick(View arg0) {
-			setContentView(R.layout.main);	
-			startActivity(mainMenu);
+			finish();
 		}
 
 	}
+	
 
 }

@@ -45,7 +45,7 @@ public class CoolGame extends Game {
 	 */
 	public CoolGame(MainActivity activity) {
 		// Create a new game board and couple it to this game
-		super(new CoolGameBoard());
+		super(new CoolGameBoard(activity));
 		
 		// Store reference to the main activity
 		this.activity = activity;
@@ -71,7 +71,7 @@ public class CoolGame extends Game {
 	public void initNewGame() {
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
-
+		board.reset();
 		initMainHall(board);
 		board.init();
 	}
