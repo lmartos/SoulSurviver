@@ -203,8 +203,24 @@ public class InventoryView extends LinearLayout implements Observer {
 	/**
 	 * clears the current static inventory
 	 */
-	public static void clear() {
+	public void clear() {
+		clearImages();
 		items.removeAll(items);
+	}
+	
+	public void clearImages(){
+		tile1.setImageResource(android.R.color.transparent);
+		tile2.setImageResource(android.R.color.transparent);
+		tile3.setImageResource(android.R.color.transparent);
+		tile4.setImageResource(android.R.color.transparent);
+		tile5.setImageResource(android.R.color.transparent);
+		tile6.setImageResource(android.R.color.transparent);
+		tile7.setImageResource(android.R.color.transparent);
+		tile8.setImageResource(android.R.color.transparent);
+		tile9.setImageResource(android.R.color.transparent);
+		tile10.setImageResource(android.R.color.transparent);
+		tile11.setImageResource(android.R.color.transparent);
+		tile12.setImageResource(android.R.color.transparent);
 	}
 
 }

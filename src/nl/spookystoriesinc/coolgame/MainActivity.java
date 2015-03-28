@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 	private int init = 0;
 	private Intent mainMenu;
 	public static final int START_GAME = 1;
+	private InventoryView inventory;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
 		// Find some of the user interface elements
 		gameView = (CoolGameBoardView) findViewById(R.id.game);
 		scoreLabel = (TextView) findViewById(R.id.scoreTextView);
+		inventory = (InventoryView) findViewById(R.id.inventoryView1);
 		
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
@@ -55,6 +57,7 @@ public class MainActivity extends Activity {
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 			if(resultCode == RESULT_OK){
+				inventory.clear();
 				game.initNewGame();
 		}
 	}
@@ -63,6 +66,7 @@ public class MainActivity extends Activity {
 		Intent initGameOver = new Intent(this, MainMenuActivity.class);
 		initGameOver.putExtra("Game is over", true);
 		startActivityForResult(initGameOver, START_GAME);
+		
 	}
 	
 	
@@ -115,7 +119,7 @@ public class MainActivity extends Activity {
 	 */
 
 	public void onDestroy() {
-		InventoryView.clear();
+		inventory.clear();
 		super.onDestroy();
 	}
 }
