@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 		// Do something when user clicks new game
 		registerNewGameButton();
 		mainMenu = new Intent(MainActivity.this, MainMenuActivity.class);
-		
+		game = new CoolGame(this);
 		// Tell user to start the game
 		
 		onPause(true);
@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 	}
 	public void onResume(){
 		if(init == 0){
-			game = new CoolGame(this);
+			game.initNewGame();
 			init++;
 		}
 		super.onResume();

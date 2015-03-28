@@ -53,7 +53,7 @@ public class CoolGame extends Game {
 		context = this.activity.getApplicationContext();
 
 		// Reset the game
-		initNewGame();
+		
 
 		// Tell the game board view which game board to show
 		CoolGameBoardView gameView = activity.getGameBoardView();
