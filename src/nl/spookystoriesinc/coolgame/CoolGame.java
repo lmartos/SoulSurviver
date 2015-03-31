@@ -10,6 +10,7 @@ import nl.spookystoriesinc.coolgame.objects.DiningTableRight;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
+import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -72,8 +73,19 @@ public class CoolGame extends Game {
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
 		board.reset();
-		initMainHall(board);
+		initRoom("MainHall");
 		board.init();
+	}
+	public void initRoom(String room){
+		if(room.equals("MainHall")){
+			initMainHall(getGameBoard());
+		}
+		else if(room.equals("DiningRoom")){
+			initDiningRoom(getGameBoard());
+		}
+		else if(room.equals("Hall")){
+			initHall(getGameBoard());
+		}
 	}
 	
 	public void addWalls(GameBoard board){
@@ -146,13 +158,13 @@ public class CoolGame extends Game {
 		board.addGameObject(book, 3, 5);
 		
 		//north door | id 1
-		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context), 4, 0);
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context, this, "Hall", true), 4, 0);
 		//west door | id 2
-		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE, context), 0, 3);
+		board.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE, context, this, "DiningRoom", true), 0, 3);
 		//east door | id 3
-		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context), 8, 3);
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context, this, "Library", true), 8, 3);
 		//south door | id 4
-		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE, context), 4, 6);
+		board.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE, context, this, "Outside", true), 4, 6);
 
 		// Redraw the game view
 		board.updateView();
@@ -173,26 +185,59 @@ public class CoolGame extends Game {
 		board.addGameObject(new DiningTableRight(), 5, 3);
 		
 		//dining table chairs
-		board.addGameObject(new Chair(), 3, 4);
-		board.addGameObject(new Chair(), 4, 4);
-		board.addGameObject(new Chair(), 5, 4);
+		board.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 3, 4);
+		board.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 4, 4);
+		board.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 5, 4);
 		
-		board.addGameObject(new Chair(), 2, 3);
-		board.addGameObject(new Chair(), 6, 3);
+		board.addGameObject(new Chair(Chair.CHAIR_RIGHT_IMAGE), 2, 3);
+		board.addGameObject(new Chair(Chair.CHAIR_LEFT_IMAGE), 6, 3);
 		
-		board.addGameObject(new Chair(), 3, 2);
-		board.addGameObject(new Chair(), 4, 2);
-		board.addGameObject(new Chair(), 5, 2);
+		board.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 3, 2);
+		board.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 4, 2);
+		board.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 5, 2);
 		
-		
+		//chest
+				Chest chestThree;
+				board.addGameObject(chestThree = new Chest(context), 1, 1);
+				
+		//lamp
+				board.addGameObject(new Lamp(), 7, 5);
+				board.addGameObject(new Lamp(), 1, 5);
 		
 		//north door | id 1
-		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context), 4, 0);
+		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context, this, "Kitchen", true), 4, 0);
 		//east door | id 3
-		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context), 8, 3);
+		board.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, context, this, "MainHall", true), 8, 3);
 
 		// Redraw the game view
 		board.updateView();
+	}
+	
+	public void initHall(GameBoard board){
+		board.removeAllObjects();
+		// Add a player object
+		board.addGameObject(new Player(),4, 5);
+		
+		// walls of the Dining room
+		addWalls(board);
+		board.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		
+		//lamp
+		board.addGameObject(new Lamp(), 1, 1);
+		board.addGameObject(new Lamp(), 7, 1);
+		board.addGameObject(new Lamp(), 1, 5);
+		board.addGameObject(new Lamp(), 7, 5);
+		
+		//north door | id 7
+		board.addGameObject(new Door(7, Door.NORTH_STAIRS_UP, context, this, "Corridor", true), 4, 0);
+		//east door | id 8
+		board.addGameObject(new Door(8, Door.EAST_CLOSED_DOOR_IMAGE, context, this, "Study Room", true), 8, 3);
+		//south door | id 9
+		board.addGameObject(new Door(9, Door.SOUTH_OPEN_DOOR_IMAGE, context, this, "MainHall", true), 4, 6);
+		// Redraw the game view
+		board.updateView();
+		
+		
 	}
 	
 }
