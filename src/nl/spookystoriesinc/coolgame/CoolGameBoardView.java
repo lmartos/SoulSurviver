@@ -3,8 +3,10 @@ package nl.spookystoriesinc.coolgame;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
+import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
+import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -68,12 +70,26 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Enemy.UP_GHOST_IMAGE, R.drawable.enemy_enemyup);
 		
 		spriteCache.loadTile(Wall.WALL_IMAGE, R.drawable.wall_darkwall);
+
 		spriteCache.loadTile(Wall.WALL_PAINTING, R.drawable.wall_wallpainting1);
 		spriteCache.loadTile(Wall.WALL_SHELF, R.drawable.wall_wallshelf1);
+
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
+		
+		spriteCache.loadTile(DiningTable.DININGTABLE_LEFT_IMAGE, R.drawable.table_diningtableleft);
+		spriteCache.loadTile(DiningTable.DININGTABLE_MIDDLE_IMAGE, R.drawable.table_diningtablemiddle);
+		spriteCache.loadTile(DiningTable.DININGTABLE_RIGHT_IMAGE, R.drawable.table_diningtableright);
+		
+		spriteCache.loadTile(Chair.CHAIR_DOWN_IMAGE, R.drawable.chair_chair_down);
+		spriteCache.loadTile(Chair.CHAIR_UP_IMAGE, R.drawable.chair_chair_up);
+		spriteCache.loadTile(Chair.CHAIR_LEFT_IMAGE, R.drawable.chair_chair_left);
+		spriteCache.loadTile(Chair.CHAIR_RIGHT_IMAGE, R.drawable.chair_chair_right);
+		
+		spriteCache.loadTile(Lamp.LAMP_IMAGE, R.drawable.lamp_lamp);
 		
 		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
 		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.door_northopendoor);
+		spriteCache.loadTile(Door.NORTH_STAIRS_UP, R.drawable.stairs_up);
 		spriteCache.loadTile(Door.WEST_CLOSED_DOOR_IMAGE, R.drawable.door_westcloseddoor);
 		spriteCache.loadTile(Door.WEST_OPEN_DOOR_IMAGE, R.drawable.door_westopendoor);
 		spriteCache.loadTile(Door.EAST_CLOSED_DOOR_IMAGE, R.drawable.door_eastcloseddoor);

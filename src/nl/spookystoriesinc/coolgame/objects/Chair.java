@@ -4,17 +4,22 @@ import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
 
 public class Chair extends GameObject{
-
-	public static final String CHAIR_IMAGE = "Chair";
+	public static final String CHAIR_DOWN_IMAGE = "Chair Down";
+	public static final String CHAIR_UP_IMAGE = "Chair Up";
+	public static final String CHAIR_RIGHT_IMAGE = "Chair Right";
+	public static final String CHAIR_LEFT_IMAGE = "Chair Left";
 	
-	public Chair() {
+	private String state;
+	
+	public Chair(String state) {
 		super();
+		this.state = state;
 	}
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return CHAIR_IMAGE;
+		return state;
 	}
 
 	@Override
