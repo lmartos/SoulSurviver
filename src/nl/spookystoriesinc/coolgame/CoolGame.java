@@ -4,9 +4,7 @@ import android.content.Context;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
-import nl.spookystoriesinc.coolgame.objects.DiningTableLeft;
-import nl.spookystoriesinc.coolgame.objects.DiningTableMiddle;
-import nl.spookystoriesinc.coolgame.objects.DiningTableRight;
+import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
@@ -77,6 +75,7 @@ public class CoolGame extends Game {
 		board.init();
 	}
 	public void initRoom(String room){
+		getGameBoard().removeAllObjects();
 		if(room.equals("MainHall")){
 			initMainHall(getGameBoard());
 		}
@@ -125,7 +124,7 @@ public class CoolGame extends Game {
 		board.addGameObject(new Player(),4, 3);
 		
 		// Add a enemy object
-		random = (int) (Math.random() * 2);
+		random = (int) (Math.random() * 5);
 		if(random <= 1){
 			board.addGameObject(new Enemy(), 7, 5);
 		}
@@ -180,9 +179,9 @@ public class CoolGame extends Game {
 		board.addGameObject(new Wall(Wall.WALL_IMAGE), 4,6);
 		
 		//dining table
-		board.addGameObject(new DiningTableLeft(), 3, 3);
-		board.addGameObject(new DiningTableMiddle(), 4, 3);
-		board.addGameObject(new DiningTableRight(), 5, 3);
+		board.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 3, 3);
+		board.addGameObject(new DiningTable(DiningTable.DININGTABLE_MIDDLE_IMAGE), 4, 3);
+		board.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 5, 3);
 		
 		//dining table chairs
 		board.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 3, 4);
@@ -197,12 +196,12 @@ public class CoolGame extends Game {
 		board.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 5, 2);
 		
 		//chest
-				Chest chestThree;
-				board.addGameObject(chestThree = new Chest(context), 1, 1);
+		Chest chestThree;
+		board.addGameObject(chestThree = new Chest(context), 1, 1);
 				
 		//lamp
-				board.addGameObject(new Lamp(), 7, 5);
-				board.addGameObject(new Lamp(), 1, 5);
+		board.addGameObject(new Lamp(), 7, 5);
+		board.addGameObject(new Lamp(), 1, 5);
 		
 		//north door | id 1
 		board.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, context, this, "Kitchen", true), 4, 0);
