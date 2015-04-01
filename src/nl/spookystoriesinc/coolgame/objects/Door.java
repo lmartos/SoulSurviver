@@ -1,10 +1,12 @@
 package nl.spookystoriesinc.coolgame.objects;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.*;
 import nl.spookystoriesinc.model.*;
+import nl.spookystoriesinc.spookystories.R;
 import nl.spookystoriesinc.view.*;
 
 
@@ -28,6 +30,7 @@ public class Door extends GameObject{
 	private int doorY;
 	private final int id;
 	private Context context;
+	private MediaPlayer mediaPlayer;
 	
 	/**
 	 * 				Make a door object
@@ -91,6 +94,8 @@ public class Door extends GameObject{
 			if(InventoryView.checkForKey(this.id)){
 				state = EAST_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				
+				playDoorSound();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
@@ -100,6 +105,8 @@ public class Door extends GameObject{
 			if(InventoryView.checkForKey(this.id)){
 				state = WEST_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				
+				playDoorSound();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
@@ -109,6 +116,8 @@ public class Door extends GameObject{
 			if(InventoryView.checkForKey(this.id)){
 				state = SOUTH_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				
+				playDoorSound();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
@@ -118,6 +127,8 @@ public class Door extends GameObject{
 			if(InventoryView.checkForKey(this.id)){
 				state = NORTH_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				
+				playDoorSound();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
@@ -129,6 +140,10 @@ public class Door extends GameObject{
 		
 		gameBoard.updateView();
 		
+	}
+	public void playDoorSound(){
+		mediaPlayer = MediaPlayer.create(context, R.raw.opening_door);
+		mediaPlayer.start();
 	}
 	
 }
