@@ -35,6 +35,7 @@ public class MainMenuActivity extends Activity {
 		context = getApplicationContext();
 		credits = (Button) findViewById(R.id.button23);
 		credits.setOnClickListener(menuClicks);
+		
 		if(testGameOver.getBooleanExtra("Game is over", false)){
 			Intent startGameOver = new Intent(this, GameOverScreenActivity.class);
 			startActivity(startGameOver);
@@ -66,17 +67,17 @@ public class MainMenuActivity extends Activity {
 			}else if (v == startGame){
 				resultIntent = new Intent();
 				setResult(Activity.RESULT_OK, resultIntent);
-				finish();	
+				playBackgroundMusic();
+				finish();
 			}else{
 				
 			}
 			
 		}
-			
+		private void playBackgroundMusic() {
+			mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.angel_of_death);
+			mediaPlayer.start();
+		}	
 	}
-	
-	
-	
-
 
 }

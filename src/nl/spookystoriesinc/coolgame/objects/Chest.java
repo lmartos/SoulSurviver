@@ -3,6 +3,7 @@ package nl.spookystoriesinc.coolgame.objects;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.CoolGameBoard;
@@ -20,6 +21,7 @@ public class Chest extends GameObject{
 	private int chestX;
 	private int chestY;
 	private Context context;
+	private MediaPlayer mediaPlayer;
 	
 	public Chest(Context context){
 		super();
@@ -78,6 +80,8 @@ public class Chest extends GameObject{
 			}	
 			this.items.removeAll(items);
 			Toast.makeText(context, "You've opened a chest!", Toast.LENGTH_LONG).show();
+			
+			playOpenChestSound();
 		}
 		else if(chestX == (gameBoard.getPlayer().getPositionX() - 1) && chestY == gameBoard.getPlayer().getPositionY()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -86,6 +90,8 @@ public class Chest extends GameObject{
 			}	
 			this.items.removeAll(items);
 			Toast.makeText(context, "You've opened a chest!",Toast.LENGTH_LONG).show();
+			
+			playOpenChestSound();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() + 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -94,6 +100,8 @@ public class Chest extends GameObject{
 			}	
 			this.items.removeAll(items);
 			Toast.makeText(context, "You've opened a chest!", Toast.LENGTH_LONG).show();
+			
+			playOpenChestSound();
 		}
 		else if(chestY == (gameBoard.getPlayer().getPositionY() - 1) && chestX == gameBoard.getPlayer().getPositionX()){
 			state = FRONT_OPEN_CHEST_IMAGE;
@@ -102,11 +110,18 @@ public class Chest extends GameObject{
 			}
 			this.items.removeAll(items);
 			Toast.makeText(context, "You've opened a chest!",Toast.LENGTH_LONG).show();
+			
+			playOpenChestSound();
 		}
 		else{
 			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
 		gameBoard.updateView();
+	}
+
+	private void playOpenChestSound() {
+		mediaPlayer = MediaPlayer.create(context, R.raw.chest_opening);
+		mediaPlayer.start();
 	}
 
 }
