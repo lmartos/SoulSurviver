@@ -168,12 +168,8 @@ public abstract class GameBoard extends Observable {
 		// walls of the Main hall
 		addWalls();
 	
-		
-
 		this.addGameObject(new Table(), 3, 1);
 		this.addGameObject(new Table(), 5, 1);
-		
-	
 		
 		//north door | id 1
 		this.addGameObject(new Door(1, Door.NORTH_OPEN_DOOR_IMAGE, this, context, "Hall", true), 4, 0);
@@ -296,6 +292,40 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Table(), 1, 1);
 		
 		
+	}
+	
+	public void initCorridor(){
+		this.removeAllObjects();
+		//Add a player object
+		this.addGameObject(new Player(), 4, 5);
+		
+		//walls of the Study room
+		addWalls();
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 2, 0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 4, 0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6, 0);
+		
+		//add west door | id 11
+		this.addGameObject(new Door(11, Door.WEST_OPEN_DOOR_IMAGE,this , context, "Hall", true), 0, 3);
+		//add east door | id 12
+		this.addGameObject(new Door(12, Door.EAST_OPEN_DOOR_IMAGE,this , context, "MasterBedroom", true), 8, 3);
+		//add south door | id 13
+		this.addGameObject(new Door(13, Door.SOUTH_STAIRS_DOWN,this , context, "Hall", true), 4, 6);
+		
+		//desk
+		Book book1 = new Book(R.drawable.book_souls_page1, context);
+		book1.addPage(R.drawable.book_souls_page_2);
+		this.addGameObject(new Desk(Desk.DESK_LEFT_IMAGE, context), 3, 1);
+		this.addGameObject(book1, 4, 1);
+		
+		//chair
+		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 4, 2);
+		
+		//table
+		this.addGameObject(new Table(), 1, 1);
+	
 	}
 	
 	public void changeRoom(String room){

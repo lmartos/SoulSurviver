@@ -17,6 +17,7 @@ public class Door extends GameObject{
 	public static final String NORTH_OPEN_DOOR_IMAGE = "NorthOpenDoor";
 	// stairs
 	public static final String NORTH_STAIRS_UP = "NorthStairsUp";
+	public static final String SOUTH_STAIRS_DOWN = "SouthStairsDown";
 	// The different states of a door that is placed on the west side
 	public static final String WEST_CLOSED_DOOR_IMAGE = "WestClosedDoor";
 	public static final String WEST_OPEN_DOOR_IMAGE = "WestOpenDoor";
