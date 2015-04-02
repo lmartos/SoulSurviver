@@ -6,9 +6,7 @@ import java.util.Observable;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
-import nl.spookystoriesinc.coolgame.objects.DiningTableLeft;
-import nl.spookystoriesinc.coolgame.objects.DiningTableMiddle;
-import nl.spookystoriesinc.coolgame.objects.DiningTableRight;
+import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
@@ -195,9 +193,9 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4,6);
 		
 		//dining table
-		this.addGameObject(new DiningTableLeft(), 3, 3);
-		this.addGameObject(new DiningTableMiddle(), 4, 3);
-		this.addGameObject(new DiningTableRight(), 5, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 3, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_MIDDLE_IMAGE), 4, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 5, 3);
 		
 		//dining table chairs
 		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 3, 4);
