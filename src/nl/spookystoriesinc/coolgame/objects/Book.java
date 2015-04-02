@@ -13,7 +13,7 @@ import nl.spookystoriesinc.view.*;
 
 public class Book extends GameObject {
 
-	public static final String BOOK_IMAGE = "Book";
+	public static final String DESK_RIGHT_IMAGE_BOOK = "Desk Right Book";
 	private ArrayList<Integer> pages = new ArrayList<Integer>();
 	private int bookX, bookY;
 	private Context context;
@@ -37,7 +37,7 @@ public class Book extends GameObject {
 	 * returns the String drawable of this object
 	 */
 	public String getImageId() {
-		return BOOK_IMAGE;
+		return DESK_RIGHT_IMAGE_BOOK;
 	}
 
 	@Override

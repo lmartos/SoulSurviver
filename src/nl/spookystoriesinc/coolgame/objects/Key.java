@@ -27,15 +27,21 @@ public class Key extends GameObject{
 	@Override
 	public int getImageIdInt() {
 		if(this.id == 1){
-			return R.drawable.key_greykey;
+			return R.drawable.key_guestkey;
 		}
 		else if(this.id == 2){
-			return R.drawable.key_goldkey;
+			return R.drawable.key_studykey;
 		}
 		else if(this.id == 3){
-			return R.drawable.key_bluekey;
+			return R.drawable.key_librarykey;
 		}
-		return R.drawable.key_greykey;
+		else if(this.id == 4){
+			return R.drawable.key_housekey;
+		}
+		else if(this.id == 5){
+			return R.drawable.key_bedroomkey;
+		}
+		return R.drawable.key_housekey;
 	}
 	
 	/**
