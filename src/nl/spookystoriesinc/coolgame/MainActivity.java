@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,14 +48,9 @@ public class MainActivity extends Activity {
 		mainMenu = new Intent(MainActivity.this, MainMenuActivity.class);
 		startActivityForResult(mainMenu, START_GAME);
 		
-		// Tell user to start the game
-		
-		
-		// Tell user to start the game
-		
-	}
+		}
 
-	
+
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 			if(resultCode == RESULT_OK){
 				inventory.clear();

@@ -7,47 +7,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp" 
-        android:background="@drawable/original">
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:gravity="center"
-            android:text="Main Menu"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Button
-            android:id="@+id/button21"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView21"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="58dp"
-            android:gravity="center_horizontal"
-            android:text="Start Game"
-             />
-
-        <Button
-            android:id="@+id/button22"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button21"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal"
-            android:text="Settings"
-            />
+        android:background="@drawable/main_menu_screen">
 
         <Button
             android:id="@+id/button23"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button22"
+            android:layout_alignLeft="@+id/button22"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:text="Credits" />
+
+        <Button
+            android:id="@+id/button22"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button23"
+            android:layout_alignLeft="@+id/button21"
+            android:gravity="center_horizontal"
+            android:text="Settings" />
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button22"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:text="Credits"
-           />
+            android:text="Start Game" />
 
     </RelativeLayout>
 
