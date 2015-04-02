@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
@@ -45,14 +46,24 @@ public class CoolGameBoard extends GameBoard {
 	/**
 	 * Create a new game board.
 	 */
-	public CoolGameBoard(MainActivity mainActivity) {
-		super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
-		timer = new Timer();
+	public CoolGameBoard(MainActivity mainActivity, Context context) {
+		super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT, context);
 		this.mainActivity = mainActivity;
+	}
+	
+	
+	@Override
+	public void changeRoom(String room){
+		timer.cancel();
+		timer.purge();
+		super.changeRoom(room);
+		init();
 	}
 	public void reset(){
 		gameOver = false;
+		this.resetGame();
 		timer = new Timer();
+		init();
 	}
 	
 	public void gameOver(){
@@ -66,6 +77,7 @@ public class CoolGameBoard extends GameBoard {
 		if(getEnemy() == null){
 			return;
 		}
+		timer = new Timer();
 		timer.scheduleAtFixedRate(new MoveEnemyTask(), 1500, 1500);
 		
 	}
@@ -149,6 +161,7 @@ public class CoolGameBoard extends GameBoard {
 					
 					if(gameOver){
 						timer.cancel();
+						timer.purge();
 						return;
 					}
 					

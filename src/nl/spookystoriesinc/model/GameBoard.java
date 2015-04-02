@@ -1,10 +1,25 @@
 package nl.spookystoriesinc.model;
 
+import java.util.Collections;
 import java.util.Observable;
 
+import nl.spookystoriesinc.coolgame.objects.Book;
+import nl.spookystoriesinc.coolgame.objects.Chair;
+import nl.spookystoriesinc.coolgame.objects.Chest;
+import nl.spookystoriesinc.coolgame.objects.DiningTableLeft;
+import nl.spookystoriesinc.coolgame.objects.DiningTableMiddle;
+import nl.spookystoriesinc.coolgame.objects.DiningTableRight;
+import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
+import nl.spookystoriesinc.coolgame.objects.Key;
+import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Player;
+import nl.spookystoriesinc.coolgame.objects.Table;
+import nl.spookystoriesinc.coolgame.objects.Wall;
+import nl.spookystoriesinc.spookystories.R;
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * The game board, which is a rectangular array of GameObject.
@@ -25,16 +40,270 @@ public abstract class GameBoard extends Observable {
 	
 	/** The game objects on the board. */
 	private GameObject[][] gameBoard;
+	private GameObject[][] mainHall;
+	private GameObject[][] diningRoom;
+	private GameObject[][] roomHall;
 	private Player player;
 	private Enemy enemy;
+	private Context context;
+	private int random;
+	private String currentRoom;
 	/**
 	 * Create a new game board.
 	 * 
 	 * @param width   The width of the board, in tiles.
 	 * @param height  The height of the board, in tiles.
 	 */
-	public GameBoard(int width, int height) {
+	public GameBoard(int width, int height, Context context) {
 		this.gameBoard = new GameObject[width][height];
+		this.mainHall = new GameObject[width][height];
+		this.diningRoom = new GameObject[width][height];
+		this.roomHall = new GameObject[width][height];
+		this.context = context;
+		this.currentRoom = "";
+		
+		resetGame();
+	}
+	
+	public void resetGame(){
+		//init main hall
+			
+				player = null;
+				enemy = null;
+				this.removeAllRooms();
+				
+				initMainHall();
+				
+				for( int x = 0; x < getWidth(); x++ ) {
+					for( int y = 0; y < getHeight(); y++ ) {
+						mainHall[x][y] = gameBoard[x][y];
+					}
+				}
+				
+				this.removeAllObjects();
+				
+				initDiningRoom();
+				
+				for( int x = 0; x < getWidth(); x++ ) {
+					for( int y = 0; y < getHeight(); y++ ) {
+						diningRoom[x][y] = gameBoard[x][y];
+					}
+				}
+				
+				this.removeAllObjects();
+				
+				initHall();
+				
+				for( int x = 0; x < getWidth(); x++ ) {
+					for( int y = 0; y < getHeight(); y++ ) {
+						roomHall[x][y] = gameBoard[x][y];
+					}
+				}
+				this.removeAllObjects();
+				
+				initMainHall();
+				this.currentRoom = "MainHall";
+				this.updateView();
+				
+	}
+	
+	public void addWalls(){
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 6,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
+	}
+	
+	public void initMainHall(){
+		
+		// Add a player object
+		this.addGameObject(new Player(),4, 3);
+		
+		// Add a enemy object
+		random = (int) (Math.random() * 2);
+		if(random <= 1){
+			Enemy currentEnemy = new Enemy();
+			enemy = currentEnemy;
+			this.addGameObject(currentEnemy, 7, 5);
+			
+		}
+		
+		// walls of the Main hall
+		addWalls();
+			
+		// chest (6,1)
+		Chest chestOne;
+		this.addGameObject(chestOne = new Chest(context), 6, 1);
+		chestOne.addKey(new Key(1));
+		
+		// Chest (2,1)
+		Chest chestTwo;
+		this.addGameObject(chestTwo = new Chest(context), 2, 1);
+		chestTwo.addKey(new Key(2));
+		
+
+		this.addGameObject(new Table(), 3, 1);
+		this.addGameObject(new Table(), 5, 1);
+		
+		// add a book
+		Book book = new Book(R.drawable.book_souls_page1, context);
+		book.addPage(R.drawable.book_souls_page_2);
+		this.addGameObject(book, 3, 5);
+		
+		//north door | id 1
+		this.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, this, context, "Hall", true), 4, 0);
+		//west door | id 2
+		this.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "DiningRoom", true), 0, 3);
+		//east door | id 3
+		this.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "Library", true), 8, 3);
+		//south door | id 4
+		this.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE, this, context, "Outside", true), 4, 6);
+
+	}
+	
+	public void initDiningRoom(){
+		// Add a player object
+		this.addGameObject(new Player(),7, 3);
+		
+		// walls of the Dining room
+		addWalls();
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4,6);
+		
+		//dining table
+		this.addGameObject(new DiningTableLeft(), 3, 3);
+		this.addGameObject(new DiningTableMiddle(), 4, 3);
+		this.addGameObject(new DiningTableRight(), 5, 3);
+		
+		//dining table chairs
+		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 3, 4);
+		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 4, 4);
+		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 5, 4);
+		
+		this.addGameObject(new Chair(Chair.CHAIR_RIGHT_IMAGE), 2, 3);
+		this.addGameObject(new Chair(Chair.CHAIR_LEFT_IMAGE), 6, 3);
+		
+		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 3, 2);
+		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 4, 2);
+		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 5, 2);
+		
+		//chest
+				Chest chestThree;
+				this.addGameObject(chestThree = new Chest(context), 1, 1);
+				
+		//lamp
+				this.addGameObject(new Lamp(), 7, 5);
+				this.addGameObject(new Lamp(), 1, 5);
+		
+		//north door | id 1
+		this.addGameObject(new Door(1, Door.NORTH_CLOSED_DOOR_IMAGE, this, context, "Kitchen", true), 4, 0);
+		//east door | id 3
+		this.addGameObject(new Door(3, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "MainHall", true), 8, 3);
+
+
+	}
+	
+	public void initHall(){
+		this.removeAllObjects();
+		// Add a player object
+		this.addGameObject(new Player(),4, 5);
+		
+		// walls of the Dining room
+		addWalls();
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		
+		//lamp
+		this.addGameObject(new Lamp(), 1, 1);
+		this.addGameObject(new Lamp(), 7, 1);
+		this.addGameObject(new Lamp(), 1, 5);
+		this.addGameObject(new Lamp(), 7, 5);
+		
+		//north door | id 7
+		this.addGameObject(new Door(7, Door.NORTH_STAIRS_UP, this, context, "Corridor", true), 4, 0);
+		//east door | id 8
+		this.addGameObject(new Door(8, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "Study Room", true), 8, 3);
+		//south door | id 9
+		this.addGameObject(new Door(9, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "MainHall", true), 4, 6);
+
+		
+		
+	}
+	
+	public void changeRoom(String room){
+		if(room.equals("MainHall")){
+			load(mainHall, this.currentRoom);
+			this.currentRoom = "MainHall";
+		}else if(room.equals("Hall")){
+			load(roomHall, this.currentRoom);
+			this.currentRoom  = "Hall";
+			
+		}else if(room.equals("DiningRoom")){
+			load(diningRoom, this.currentRoom);
+			this.currentRoom = "DiningRoom";
+			
+		}else{
+			Toast.makeText(context, "this is no joke", Toast.LENGTH_SHORT).show();
+		}
+		
+		
+	}
+	
+	public void load(GameObject[][] room, String currentRoom){
+		player = null;
+		enemy = null;
+		
+		if(currentRoom.equals("MainHall")){
+			save(mainHall);
+		}else if(currentRoom.equals("Hall")){
+			save(roomHall);
+		}else if(currentRoom.equals("DiningRoom")){
+			save(diningRoom);
+		}
+		
+		this.removeAllObjects();
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				if(room[x][y] instanceof Player){
+					player = (Player) room[x][y];
+				}else if(room[x][y] instanceof Enemy){
+					enemy = (Enemy) room[x][y];
+				}
+				gameBoard[x][y] = room[x][y];
+			}
+		}
+		this.updateView();
+	}
+	
+	public void save(GameObject[][] room){
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				room[x][y] =gameBoard[x][y];
+			}
+		}
 	}
 
 	public abstract void reset();
@@ -159,6 +428,29 @@ public abstract class GameBoard extends Observable {
 		for( int x = 0; x < getWidth(); x++ ) {
 			for( int y = 0; y < getHeight(); y++ ) {
 				gameBoard[x][y] = null;
+			}
+		}
+	}
+	
+	public void removeAllRooms(){
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				gameBoard[x][y] = null;
+			}
+		}
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				mainHall[x][y] = null;
+			}
+		}
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				roomHall[x][y] = null;
+			}
+		}
+		for( int x = 0; x < getWidth(); x++ ) {
+			for( int y = 0; y < getHeight(); y++ ) {
+				diningRoom[x][y] = null;
 			}
 		}
 	}

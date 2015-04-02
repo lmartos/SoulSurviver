@@ -33,20 +33,20 @@ public class Door extends GameObject{
 	private final int id;
 	private Context context;
 	private MediaPlayer mediaPlayer;
-	private CoolGame game;
 	private String room;
+	private GameBoard board;
 	
 	/**
 	 * 				Make a door object
 	 * @param id	the unique id of the door that helps with locking and unlocking	
 	 * @param state	the state where the door is in
 	 */
-	public Door(int id, String state, Context context, CoolGame game, String room, boolean b){
+	public Door(int id, String state, GameBoard board, Context context, String room, boolean b){
 		this.id = id;
 		this.state = state;
 		this.context = context;
-		this.game = game;
 		this.room = room;
+		this.board = board;
 	}
 	/** Returns the ImageId of the image to show. */
 	@Override
@@ -90,7 +90,7 @@ public class Door extends GameObject{
 		
 		if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
 				|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
-			game.initRoom(room);
+			board.changeRoom(room);
 			
 			Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
 			return;
