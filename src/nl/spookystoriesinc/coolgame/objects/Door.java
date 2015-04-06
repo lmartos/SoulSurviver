@@ -36,6 +36,7 @@ public class Door extends GameObject{
 	private MediaPlayer mediaPlayer;
 	private String room;
 	private GameBoard board;
+
 	
 	/**
 	 * 				Make a door object
@@ -103,10 +104,11 @@ public class Door extends GameObject{
 				state = EAST_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 				
-				playDoorSound();
+				playOpenDoor();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				playDoorLocked();
 			}
 		}
 		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
@@ -114,10 +116,11 @@ public class Door extends GameObject{
 				state = WEST_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 				
-				playDoorSound();
+				playOpenDoor();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				playDoorLocked();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
@@ -125,10 +128,11 @@ public class Door extends GameObject{
 				state = SOUTH_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 				
-				playDoorSound();
+				playOpenDoor();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				playDoorLocked();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
@@ -136,10 +140,11 @@ public class Door extends GameObject{
 				state = NORTH_OPEN_DOOR_IMAGE;	
 				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
 				
-				playDoorSound();
+				playOpenDoor();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				playDoorLocked();
 			}
 		}
 		else{
@@ -149,9 +154,16 @@ public class Door extends GameObject{
 		gameBoard.updateView();
 		
 	}
-	public void playDoorSound(){
+
+	private void playDoorLocked() {
+		mediaPlayer = MediaPlayer.create(context, R.raw.door_locked);
+		mediaPlayer.start();
+	}
+	
+	public void playOpenDoor(){
 		mediaPlayer = MediaPlayer.create(context, R.raw.opening_door);
 		mediaPlayer.start();
 	}
+	
 	
 }

@@ -6,11 +6,13 @@ import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
+import nl.spookystoriesinc.spookystories.R;
 import nl.spookystoriesinc.view.GameBoardView;
 import nl.spookystoriesinc.view.InventoryView;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
@@ -26,6 +28,7 @@ public class CoolGameBoard extends GameBoard {
 	private static final int GAMEBOARD_HEIGHT = 7;
 	private Intent gameIsOver;
 	private Timer timer;
+	private MediaPlayer mediaPlayer;
 	Handler handler = new Handler();
 	
 	private boolean gameOver = false;
@@ -70,7 +73,13 @@ public class CoolGameBoard extends GameBoard {
 		gameOver = true;
 		timer.cancel();
 		timer.purge();
+		deathSound();
 		mainActivity.initGameOverState();
+	}
+	
+	private void deathSound() {
+		mediaPlayer = MediaPlayer.create(mainActivity.getApplicationContext(), R.raw.death);
+		mediaPlayer.start();
 	}
 	
 	public void init(){

@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 	private TextView scoreLabel;	
 	private int init = 0;
 	private Intent mainMenu;
+	private MediaPlayer mediaPlayer;
 	public static final int START_GAME = 1;
 	private InventoryView inventory;
 
@@ -49,12 +50,18 @@ public class MainActivity extends Activity {
 		startActivityForResult(mainMenu, START_GAME);
 		
 		}
+	
+	private void playBackgroundMusic() {
+		mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.nightmare_on_elm_st);
+		mediaPlayer.start();
+	}
 
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 			if(resultCode == RESULT_OK){
 				inventory.clear();
 				game.initNewGame();
+				playBackgroundMusic();
 		}
 	}
 	
