@@ -307,15 +307,15 @@ public abstract class GameBoard extends Observable {
 		//bookcases
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 6, 1);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_IMAGE), 7, 1);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 2);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 3);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 4);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 7, 5);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 3);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_DOWN_IMAGE), 7, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 6, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
 		
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 1, 5);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_CORNER_DOWN_IMAGE), 1, 5);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 1, 4);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 2, 5);
 		
 		//desk
@@ -353,36 +353,29 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 2, 1);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 3, 1);
 		
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 2);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 3);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 1, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 1, 3);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 1, 4);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_CORNER_DOWN_IMAGE), 1, 5);
 		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 5, 1);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 6, 1);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_IMAGE), 7, 1);
 		
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 2);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 3);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 3);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 4);
 		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_DOWN_IMAGE), 7, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 6, 5);
 
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
+		//secret door by lever
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
+		//
+		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 4, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 3, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 2, 5);
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 1, 5);
-		
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
-
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
-		
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 1, 5);
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
-
-		//this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 2, 5);
 		
 		//table
 		this.addGameObject(new Table(), 4, 3);
