@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.coolgame;
 
 import nl.spookystoriesinc.spookystories.R;
+
 import nl.spookystoriesinc.view.VolumeMenu;
 import android.app.Activity;
 import android.content.Context;
@@ -70,7 +71,8 @@ public class MainMenuActivity extends Activity {
 				playBackgroundMusic();
 				finish();
 			}else{
-				
+				Intent creditsIntent = new Intent(MainMenuActivity.this, CreditsActivity.class);
+				startActivity(creditsIntent);
 			}
 			
 		}

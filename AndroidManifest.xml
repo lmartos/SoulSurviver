@@ -38,6 +38,12 @@
             android:label="GameOver"
             android:name="nl.spookystoriesinc.coolgame.GameOverScreenActivity"
             ></activity>
+          <activity
+            android:icon="@drawable/player_characterdown"
+            android:screenOrientation="landscape"
+            android:label="Credits"
+            android:name="nl.spookystoriesinc.coolgame.CreditsActivity"
+            ></activity>
     </application>
 
 </manifest>
