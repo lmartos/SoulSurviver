@@ -10,6 +10,10 @@ import nl.spookystoriesinc.model.GameObject;
 		public static final String BOOKCASE_RIGHT_IMAGE = "Bookcase right";
 		public static final String BOOKCASE_LEFT_IMAGE = "Bookcase left";
 		public static final String BOOKCASE_UP_IMAGE = "Bookcase up";
+		public static final String BOOKCASE_RIGHT_CORNER_IMAGE = "Bookcase right corner";
+		public static final String BOOKCASE_RIGHT_CORNER_DOWN_IMAGE = "Bookcase right corner down";
+		public static final String BOOKCASE_LEFT_CORNER_IMAGE = "Bookcase left corner";
+		public static final String BOOKCASE_LEFT_CORNER_DOWN_IMAGE = "Bookcase left corner down";
 	
 		private String state;
 	

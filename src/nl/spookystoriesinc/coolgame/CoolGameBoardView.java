@@ -84,9 +84,13 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(DiningTable.DININGTABLE_RIGHT_IMAGE, R.drawable.table_diningtableright);
 		
 		spriteCache.loadTile(Bookcase.BOOKCASE_LEFT_IMAGE, R.drawable.bookcase_left);
-		spriteCache.loadTile(Bookcase.BOOKCASE_DOWN_IMAGE, R.drawable.awesome_boekenkast);
+		spriteCache.loadTile(Bookcase.BOOKCASE_DOWN_IMAGE, R.drawable.bookcase_down);
 		spriteCache.loadTile(Bookcase.BOOKCASE_RIGHT_IMAGE, R.drawable.bookcase_right);
 		spriteCache.loadTile(Bookcase.BOOKCASE_UP_IMAGE, R.drawable.bookcase_up);
+		spriteCache.loadTile(Bookcase.BOOKCASE_RIGHT_CORNER_IMAGE, R.drawable.bookcase_right_corner);
+		spriteCache.loadTile(Bookcase.BOOKCASE_LEFT_CORNER_IMAGE, R.drawable.bookcase_left_corner);
+		spriteCache.loadTile(Bookcase.BOOKCASE_RIGHT_CORNER_DOWN_IMAGE, R.drawable.bookcase_right_down_corner);
+		spriteCache.loadTile(Bookcase.BOOKCASE_LEFT_CORNER_DOWN_IMAGE, R.drawable.bookcase_left_down_corner);
 		
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE, R.drawable.desk_right);
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE_BOOK, R.drawable.desk_right_book);
@@ -115,6 +119,6 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chest_chestfrontclosed);
 		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chest_chestfrontopen);
 		
-		spriteCache.loadTile(Note.NOTE_IMAGE, R.drawable.note);
+		
 	}
 }
