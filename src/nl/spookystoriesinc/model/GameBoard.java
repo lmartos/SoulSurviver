@@ -263,7 +263,7 @@ public abstract class GameBoard extends Observable {
 		//add west door | id 9
 		this.addGameObject(new Door(9, Door.WEST_OPEN_DOOR_IMAGE,this , context, "Hall", true), 0, 3);
 		//add south door | id 10
-		this.addGameObject(new Door(10, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "Library", true), 4, 6);
+		this.addGameObject(new Door(10, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "Library", true), 4, 6);
 		
 		//bookcases
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 6, 1);
@@ -294,6 +294,48 @@ public abstract class GameBoard extends Observable {
 		
 	}
 	
+	public void initLibrary(){
+		this.removeAllObjects();
+		//Add a player object
+		this.addGameObject(new Player(), 1, 3);
+		
+		//walls of the Study room
+		addWalls();
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 0);
+		
+		//add north door | id 14
+		this.addGameObject(new Door(14, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "StudyRoom", true), 4, 0);
+		
+		//bookcases
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 1, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 2, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 3, 1);
+		
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 5);
+		
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 5, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 6, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 7, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 3);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 7, 4);
+		
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 7, 5);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 6, 5);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
+		
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 1, 5);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 4);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 2, 5);
+		
+		
+		
+		
+	}
+	
 	public void initCorridor(){
 		this.removeAllObjects();
 		//Add a player object
@@ -308,7 +350,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6, 0);
 		
 		//add west door | id 11
-		this.addGameObject(new Door(11, Door.WEST_OPEN_DOOR_IMAGE,this , context, "Hall", true), 0, 3);
+		this.addGameObject(new Door(11, Door.WEST_OPEN_DOOR_IMAGE,this , context, "LivingRoom", true), 0, 3);
 		//add east door | id 12
 		this.addGameObject(new Door(12, Door.EAST_OPEN_DOOR_IMAGE,this , context, "MasterBedroom", true), 8, 3);
 		//add south door | id 13
@@ -321,7 +363,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(book1, 4, 1);
 		
 		//chair
-		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 4, 2);
+		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 3, 2);
 		
 		//table
 		this.addGameObject(new Table(), 1, 1);
