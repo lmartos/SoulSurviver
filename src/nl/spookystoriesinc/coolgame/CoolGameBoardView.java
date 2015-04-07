@@ -9,7 +9,8 @@ import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
-import nl.spookystoriesinc.coolgame.objects.Note;
+import nl.spookystoriesinc.coolgame.objects.Lever;
+import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.coolgame.objects.Player;
@@ -76,6 +77,9 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Wall.WALL_SHELF, R.drawable.wall_wallshelf1);
 		spriteCache.loadTile(Wall.WALL_CRACK, R.drawable.wall_with_hole);
 		spriteCache.loadTile(Wall.WALL_WINDOW, R.drawable.wall_window);
+		
+		spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
+		spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
 
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
 		
@@ -104,6 +108,9 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Chair.CHAIR_RIGHT_IMAGE, R.drawable.chair_chair_right);
 		
 		spriteCache.loadTile(Lamp.LAMP_IMAGE, R.drawable.lamp_lamp);
+		
+		spriteCache.loadTile(Stove.STOVE_IMAGE, R.drawable.stove);
+		spriteCache.loadTile(Sink.SINK_IMAGE, R.drawable.kitchen_sink);
 		
 		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
 		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.door_northopendoor);

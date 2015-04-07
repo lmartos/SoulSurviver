@@ -3,6 +3,7 @@ package nl.spookystoriesinc.model;
 import java.util.Collections;
 import java.util.Observable;
 
+import nl.spookystoriesinc.coolgame.Sink;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
@@ -13,7 +14,9 @@ import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
+import nl.spookystoriesinc.coolgame.objects.Lever;
 import nl.spookystoriesinc.coolgame.objects.Player;
+import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
 import nl.spookystoriesinc.spookystories.R;
@@ -384,6 +387,67 @@ public abstract class GameBoard extends Observable {
 		
 	}
 	
+	public void initKitchen(){
+		this.removeAllObjects();
+		//Add a player object
+		this.addGameObject(new Player(), 4, 1);
+		
+		//walls of the Kitchen
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 2,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0, 3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
+		
+		
+		//add south door | id 15
+		this.addGameObject(new Door(15, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "DiningRoom", true), 6, 4);
+	
+		//sink
+		this.addGameObject(new Sink(), 2, 1);
+		
+		//stove
+		this.addGameObject(new Stove(), 3, 1);
+		
+		//tables
+		this.addGameObject(new Desk(Desk.DESK_LEFT_IMAGE, context),6, 1);
+		this.addGameObject(new Desk(Desk.DESK_RIGHT_IMAGE, context), 7, 1);
+		
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 1, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_MIDDLE_IMAGE), 2, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_MIDDLE_IMAGE), 3, 3);
+		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 4, 3);
+		
+		//lever
+		//this.addGameObject(new Lever(context), 5, 0);
+		
+	}
 	public void initCorridor(){
 		this.removeAllObjects();
 		//Add a player object
