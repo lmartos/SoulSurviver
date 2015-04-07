@@ -95,84 +95,72 @@ public class Door extends GameObject{
 		
 		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
 				
-				if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
-						|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
-					board.changeRoom(room);
-					
-					Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
+				if(openCheck()){
 					return;
 				}
+			
 				if(InventoryView.checkForKey(this.id)){
 					state = EAST_OPEN_DOOR_IMAGE;
-				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 				
 				playOpenDoor();
 			}
 			else{
-				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
 			}
 		}
 		else if(doorX == (gameBoard.getPlayer().getPositionX() - 1) && doorY == gameBoard.getPlayer().getPositionY()){
 			
-				if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
-						|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
-					board.changeRoom(room);
-					
-					Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
+				if(openCheck()){
 					return;
 				}
+			
 				if(InventoryView.checkForKey(this.id)){
 					state = WEST_OPEN_DOOR_IMAGE;	
 				
-				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 				
 				playOpenDoor();
 			}
 			else{
-				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() + 1) && doorX == gameBoard.getPlayer().getPositionX()){
 			
-				if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
-						|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
-					board.changeRoom(room);
-					
-					Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
+				if(openCheck()){
 					return;
 				}
+				
 				if(InventoryView.checkForKey(this.id)){
 					state = SOUTH_OPEN_DOOR_IMAGE;	
 				
-				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 				
 				playOpenDoor();
 			}
 			else{
-				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
 				
-				if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
-						|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE ){
-					board.changeRoom(room);
-					
-					Toast.makeText(context, "You've already opened this door!", Toast.LENGTH_LONG).show();
+				if(openCheck()){
 					return;
 				}
+				
 				if(InventoryView.checkForKey(this.id)){
 					state = NORTH_OPEN_DOOR_IMAGE;
 				
-				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 				
 				playOpenDoor();
 			}
 			else{
-				Toast.makeText(context, "The door is locked!", Toast.LENGTH_LONG).show();
+				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
 			}
 		}
@@ -182,6 +170,18 @@ public class Door extends GameObject{
 		
 		gameBoard.updateView();
 		
+	}
+	
+	public boolean openCheck(){
+		if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
+				|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE || this.state == NORTH_STAIRS_UP || this.state == SOUTH_STAIRS_DOWN){
+			board.changeRoom(room);
+			
+			
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	private void playDoorLocked() {
