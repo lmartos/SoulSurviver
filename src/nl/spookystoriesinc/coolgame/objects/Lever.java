@@ -22,6 +22,8 @@ public class Lever extends GameObject {
 	public Lever (Context context) {
 		super();
 		this.context = context;
+		this.leverX = this.getPositionX();
+		this.leverY = this.getPositionY();
 	}
 	
 
@@ -55,8 +57,6 @@ public class Lever extends GameObject {
 	
 	public void pullLever() {
 		if (leverPulled == false) {
-			this.leverX = this.getPositionX();
-			this.leverY = this.getPositionY();
 			leverPulled = true;
 			playPullLeverSound();
 			Toast.makeText(context, "You can hear a wierd sound somewhere in the house", Toast.LENGTH_LONG).show();
