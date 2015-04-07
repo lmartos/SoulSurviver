@@ -10,6 +10,7 @@ import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
+import nl.spookystoriesinc.coolgame.objects.Sofa;
 import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -78,10 +79,11 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Wall.WALL_CRACK, R.drawable.wall_with_hole);
 		spriteCache.loadTile(Wall.WALL_WINDOW, R.drawable.wall_window);
 		
-		spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
-		spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
+		//spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
+		//spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
 
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
+		spriteCache.loadTile(Table.TABLE_CANDLE_IMAGE, R.drawable.tablesquare_with_candle);
 		
 		spriteCache.loadTile(DiningTable.DININGTABLE_LEFT_IMAGE, R.drawable.table_diningtableleft);
 		spriteCache.loadTile(DiningTable.DININGTABLE_MIDDLE_IMAGE, R.drawable.table_diningtablemiddle);
@@ -99,6 +101,10 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE, R.drawable.desk_right);
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE_BOOK, R.drawable.desk_right_book);
 		spriteCache.loadTile(Desk.DESK_LEFT_IMAGE, R.drawable.desk_left);
+		
+		spriteCache.loadTile(Sofa.SOFA_TOP_IMAGE, R.drawable.sofa_top);
+		spriteCache.loadTile(Sofa.SOFA_MIDDLE_IMAGE, R.drawable.sofa_mid);
+		spriteCache.loadTile(Sofa.SOFA_DOWN_IMAGE, R.drawable.sofa_bot);
 
 
 		

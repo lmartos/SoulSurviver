@@ -163,10 +163,14 @@ public class Door extends GameObject{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
 			}
+				
+	
 		}
 		else{
 			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
+	
+		
 		
 		gameBoard.updateView();
 		

@@ -5,15 +5,19 @@ import nl.spookystoriesinc.model.GameObject;
 
 public class Table extends GameObject{
 	public static final String TABLE_IMAGE = "Table";
+	public static final String TABLE_CANDLE_IMAGE = "Table Candle";
 
-	public Table() {
+	private String state;
+	
+	public Table(String state) {
 		super();
+		this.state = state;
 	}
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return TABLE_IMAGE;
+		return state;
 	}
 
 	@Override
