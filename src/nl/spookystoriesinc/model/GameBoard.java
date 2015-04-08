@@ -653,6 +653,10 @@ public abstract class GameBoard extends Observable {
 		
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
+		this.addGameObject(new Note(Note.))
+		//beds
+		
+		
 
 		//add north door | id 18
 		this.addGameObject(new Door(18, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "LivingRoom", true), 4, 0);

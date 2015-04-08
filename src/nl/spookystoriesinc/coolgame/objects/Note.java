@@ -12,6 +12,10 @@ import nl.spookystoriesinc.model.GameObject;
 public class Note extends GameObject{
 	
 	public static final String NOTE_IMAGE = "Note";
+	public static final String NOTE_NIGHTSTAND_IMAGE = "Nightstand note";
+	public static final String NOTE_TABLE = "Table note";
+	
+	private String state;
 	private int pageNum;
 	private Context context;
 	private int noteX;
@@ -20,6 +24,7 @@ public class Note extends GameObject{
 	
 	public Note(int pageDrawable, Context context){
 		super();
+		this.state = state;
 		this.context = context;
 		this.pageNum = pageDrawable;
 		this.noteX = this.getPositionX();
@@ -30,7 +35,7 @@ public class Note extends GameObject{
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return NOTE_IMAGE;
+		return ImageId;
 	}
 	
 	@Override
