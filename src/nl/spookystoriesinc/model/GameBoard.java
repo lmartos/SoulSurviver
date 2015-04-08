@@ -3,7 +3,6 @@ package nl.spookystoriesinc.model;
 import java.util.Collections;
 import java.util.Observable;
 
-import nl.spookystoriesinc.coolgame.Sink;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
@@ -16,6 +15,7 @@ import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
 import nl.spookystoriesinc.coolgame.objects.Player;
+import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
 import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
@@ -49,7 +49,9 @@ public abstract class GameBoard extends Observable {
 	private GameObject[][] roomHall;
 	private GameObject[][] studyRoom;
 	private GameObject[][] corridor;
-	private GameObject[][] mlg420bookplace;
+	private GameObject[][] library;
+	private GameObject[][] livingRoom;
+	private GameObject[][] kitchen;
 	private Player player;
 	private Enemy enemy;
 	private Context context;
@@ -68,7 +70,10 @@ public abstract class GameBoard extends Observable {
 		this.roomHall = new GameObject[width][height];
 		this.studyRoom = new GameObject[width][height];
 		this.corridor = new GameObject[width][height];
-		this.mlg420bookplace = new GameObject[width][height];
+		this.library = new GameObject[width][height];
+		this.livingRoom = new GameObject[width][height];
+		this.kitchen = new GameObject[width][height];
+		
 		this.context = context;
 		this.currentRoom = "";
 		
@@ -115,7 +120,19 @@ public abstract class GameBoard extends Observable {
 				
 				initLibrary();
 				
-				initRoom(mlg420bookplace);
+				initRoom(library);
+				
+				this.removeAllObjects();
+				
+				initLivingRoom();
+				
+				initRoom(livingRoom);
+				
+				this.removeAllObjects();
+				
+				initKitchen();
+				
+				initRoom(kitchen);
 				
 				this.removeAllObjects();
 			
@@ -190,7 +207,7 @@ public abstract class GameBoard extends Observable {
 		//north door | id 1
 		this.addGameObject(new Door(1, Door.NORTH_OPEN_DOOR_IMAGE, this, context, "Hall", true), 4, 0);
 		//west door | id 2 deze deur zit "op slot" kaars is nodig om te kunnen betreden.
-		this.addGameObject(new Door(2, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "DiningRoom", true), 0, 3);
+		this.addGameObject(new Door(2, Door.WEST_OPEN_DOOR_IMAGE, this, context, "DiningRoom", true), 0, 3);
 		//east door | id 3
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 		//south door | id 4
@@ -450,7 +467,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
 		
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
-		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0, 3);
+
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
 		
@@ -621,9 +638,15 @@ public abstract class GameBoard extends Observable {
 			this.currentRoom = "Corridor";
 			
 		}else if(room.equals("Library")){
-			load(mlg420bookplace, this.currentRoom);
+			load(library, this.currentRoom);
 			this.currentRoom = "Library";
 			
+		}else if(room.equals("LivingRoom")){
+			load(livingRoom, this.currentRoom);
+			this.currentRoom = "LivingRoom";
+		}else if(room.equals("Kitchen")){
+			load(kitchen, this.currentRoom);
+			this.currentRoom = "Kitchen";
 		}
 		
 		
@@ -644,7 +667,11 @@ public abstract class GameBoard extends Observable {
 		}else if(currentRoom.equals("Corridor")){
 			save(corridor);
 		}else if(currentRoom.equals("Library")){
-			save(mlg420bookplace);
+			save(library);
+		}else if(currentRoom.equals("LivingRoom")){
+			save(livingRoom);
+		}else if(currentRoom.equals("Kitchen")){
+			save(kitchen);
 		}
 		
 		this.removeAllObjects();

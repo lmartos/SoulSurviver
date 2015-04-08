@@ -10,6 +10,7 @@ import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
+import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
 import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;

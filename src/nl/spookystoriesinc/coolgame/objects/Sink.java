@@ -1,4 +1,4 @@
-package nl.spookystoriesinc.coolgame;
+package nl.spookystoriesinc.coolgame.objects;
 
 import android.content.Context;
 import android.util.Log;
