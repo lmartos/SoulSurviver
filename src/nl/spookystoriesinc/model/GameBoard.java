@@ -815,8 +815,6 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 2);
 		
 		
-		
-		
 		//north door | id 1
 		this.addGameObject(new Wall(Wall.WALL_PAINTING), 4 ,0);
 		//west door | id 2 
@@ -827,6 +825,53 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 	}
 	
+	public void initBathroom(){
+		//add a player object
+				this.addGameObject(new Player(), 1, 4);
+				
+				//addwalls
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,1);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,2);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,4);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,5);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,6);
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 1,6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2,6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 3,6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 5,6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 6,6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 7,6);
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 1,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HELP), 3,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 5,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 6,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 7,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,0);
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,1);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,2);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,4);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,5);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,6);		
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HANDS), 4, 6);
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2, 1);
+				
+				
+				//north door | id 1
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_DIE), 4 ,0);
+				//west door | id 2 
+				this.addGameObject(new Door(22, Door.WEST_OPEN_DOOR_IMAGE, this, context, "GuestBedroom", true), 0, 3);
+				//east door | id 3
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8, 3);
+				//south door | id 4
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 4, 6);
+	}
 	
 	
 	public void changeRoom(String room){
