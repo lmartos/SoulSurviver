@@ -6,6 +6,7 @@ import nl.spookystoriesinc.model.GameObject;
 public class Table extends GameObject{
 	public static final String TABLE_IMAGE = "Table";
 	public static final String TABLE_CANDLE_IMAGE = "Table Candle";
+	public static final String TABLE_LEFT_IMAGE = "Table left";
 
 	private String state;
 	

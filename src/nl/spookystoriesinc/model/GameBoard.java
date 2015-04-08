@@ -761,6 +761,70 @@ public abstract class GameBoard extends Observable {
 		
 	}
 	
+	public void initMasterBedRoom(){
+		
+		//add a player object
+		this.addGameObject(new Player(), 1, 4);
+		
+		//addwalls
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 2,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);		
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
+		
+		//bed
+		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_UP_IMAGE), 7, 2);
+		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_DOWN_IMAGE), 6, 2);
+		this.addGameObject(new Bed(Bed.BED_MASTER_RIGHT_UP_IMAGE), 7, 3);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 6, 3);
+		
+		//nightstands
+		this.addGameObject(new Table(Table.TABLE_LEFT_IMAGE), 7, 1);
+		this.addGameObject(new Table(Table.TABLE_LEFT_IMAGE), 7, 4);
+		
+		//bookcases
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_CORNER_IMAGE), 1, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 2, 1);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 2);
+		
+		
+		
+		
+		//north door | id 1
+		this.addGameObject(new Wall(Wall.WALL_PAINTING), 4 ,0);
+		//west door | id 2 
+		this.addGameObject(new Door(22, Door.WEST_OPEN_DOOR_IMAGE, this, context, "Corridor", true), 0, 3);
+		//east door | id 3
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
+		//south door | id 4
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
+	}
+	
 	
 	
 	public void changeRoom(String room){

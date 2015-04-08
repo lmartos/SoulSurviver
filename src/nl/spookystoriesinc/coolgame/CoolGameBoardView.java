@@ -91,6 +91,7 @@ public class CoolGameBoardView extends GameBoardView {
 
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
 		spriteCache.loadTile(Table.TABLE_CANDLE_IMAGE, R.drawable.tablesquare_with_candle);
+		spriteCache.loadTile(Table.TABLE_LEFT_IMAGE, R.drawable.table_square_left);
 		
 		spriteCache.loadTile(DiningTable.DININGTABLE_LEFT_IMAGE, R.drawable.table_diningtableleft);
 		spriteCache.loadTile(DiningTable.DININGTABLE_MIDDLE_IMAGE, R.drawable.table_diningtablemiddle);
