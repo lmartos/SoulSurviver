@@ -1,5 +1,6 @@
 package nl.spookystoriesinc.coolgame;
 
+import nl.spookystoriesinc.coolgame.objects.Bath;
 import nl.spookystoriesinc.coolgame.objects.Bed;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Bookcase;
@@ -142,6 +143,9 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Fridge.FRIDGE_IMAGE, R.drawable.fridge);
 		
 		spriteCache.loadTile(Shower.SHOWER_IMAGE, R.drawable.bathroom_shower);
+		spriteCache.loadTile(Bath.BATH_LEFT_IMAGE, R.drawable.bath_left);
+		spriteCache.loadTile(Bath.BATH_RIGHT_IMAGE, R.drawable.bath_right);
+	
 		
 		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
 		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.door_northopendoor);
