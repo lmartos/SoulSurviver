@@ -831,8 +831,6 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);		
 		
-		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
-		
 		//bed
 		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_UP_IMAGE), 7, 2);
 		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_DOWN_IMAGE), 6, 2);
@@ -892,8 +890,6 @@ public abstract class GameBoard extends Observable {
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,5);
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,6);		
 				
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HANDS), 4, 6);
-				
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2, 1);
 				
 				
@@ -904,7 +900,7 @@ public abstract class GameBoard extends Observable {
 				//east door | id 3
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8, 3);
 				//south door | id 4
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 4, 6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HANDS), 4, 6);
 	}
 	
 	
