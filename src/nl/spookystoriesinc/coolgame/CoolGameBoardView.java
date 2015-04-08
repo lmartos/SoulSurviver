@@ -150,7 +150,8 @@ public class CoolGameBoardView extends GameBoardView {
 		
 		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chest_chestfrontclosed);
 		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chest_chestfrontopen);
-		
+		spriteCache.loadTile(Chest.RIGHT_CLOSED_CHEST_IMAGE, R.drawable.chest_chestsideclosed);
+		spriteCache.loadTile(Chest.RIGHT_OPEN_CHEST_IMAGE, R.drawable.chest_chestrightopen);
 		
 		
 		

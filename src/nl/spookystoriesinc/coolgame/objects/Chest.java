@@ -16,15 +16,18 @@ import nl.spookystoriesinc.view.InventoryView;
 public class Chest extends GameObject{
 	public static final String FRONT_CLOSED_CHEST_IMAGE = "FrontClosedChest";
 	public static final String FRONT_OPEN_CHEST_IMAGE = "FrontOpenChest";
-	private String state = FRONT_CLOSED_CHEST_IMAGE;
+	public static final String RIGHT_CLOSED_CHEST_IMAGE = "RightClosedChest";
+	public static final String RIGHT_OPEN_CHEST_IMAGE = "RightOpenChest";
+	private String state;
 	private ArrayList<GameObject> items = new ArrayList<GameObject>();
 	private int chestX;
 	private int chestY;
 	private Context context;
 	private MediaPlayer mediaPlayer;
 	
-	public Chest(Context context){
+	public Chest(String state, Context context){
 		super();
+		this.state = state;
 		this.context = context;
 		
 	}
