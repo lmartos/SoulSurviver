@@ -201,7 +201,7 @@ public class Door extends GameObject{
 			context.startActivity(victoryIntent);
 		}else if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
 				|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE || this.state == NORTH_STAIRS_UP || this.state == SOUTH_STAIRS_DOWN){
-			playOpenDoor();
+			
 			board.changeRoom(room);
 			return true;
 		}
