@@ -11,6 +11,7 @@ import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
+import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
 import nl.spookystoriesinc.coolgame.objects.Stove;
@@ -118,8 +119,13 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Sofa.SOFA_TOP_IMAGE, R.drawable.sofa_top);
 		spriteCache.loadTile(Sofa.SOFA_MIDDLE_IMAGE, R.drawable.sofa_mid);
 		spriteCache.loadTile(Sofa.SOFA_DOWN_IMAGE, R.drawable.sofa_bot);
-
-
+		
+		spriteCache.loadTile(Note.NOTE_IMAGE, R.drawable.note);
+		spriteCache.loadTile(Note.NOTE_TABLE_IMAGE, R.drawable.tablesquare_note);
+		spriteCache.loadTile(Note.NOTE_NIGHTSTAND_IMAGE, R.drawable.nachtkastje_up_with_notes);
+		spriteCache.loadTile(Note.NOTE_BOOKCASE_LEFT_CORNER_DOWN_NOTE_IMAGE,R.drawable.bookcase_corner_left_note);
+		spriteCache.loadTile(Note.NOTE_BOOKCASE_LEFT_IMAGE,R.drawable.bookcase_left_note);
+		spriteCache.loadTile(Note.NOTE_BOOKCASE_RIGHT_IMAGE,R.drawable.bookcase_right_note);
 		
 		spriteCache.loadTile(Chair.CHAIR_DOWN_IMAGE, R.drawable.chair_chair_down);
 		spriteCache.loadTile(Chair.CHAIR_UP_IMAGE, R.drawable.chair_chair_up);
@@ -144,6 +150,8 @@ public class CoolGameBoardView extends GameBoardView {
 		
 		spriteCache.loadTile(Chest.FRONT_CLOSED_CHEST_IMAGE, R.drawable.chest_chestfrontclosed);
 		spriteCache.loadTile(Chest.FRONT_OPEN_CHEST_IMAGE, R.drawable.chest_chestfrontopen);
+		
+		
 		
 		
 	}

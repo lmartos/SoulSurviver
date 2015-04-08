@@ -13,7 +13,10 @@ public class Note extends GameObject{
 	
 	public static final String NOTE_IMAGE = "Note";
 	public static final String NOTE_NIGHTSTAND_IMAGE = "Nightstand note";
-	public static final String NOTE_TABLE = "Table note";
+	public static final String NOTE_TABLE_IMAGE = "Table note";
+	public static final String NOTE_BOOKCASE_LEFT_IMAGE = "Bookshelf left note";
+	public static final String NOTE_BOOKCASE_RIGHT_IMAGE = "Bookshelf right note";
+	public static final String NOTE_BOOKCASE_LEFT_CORNER_DOWN_NOTE_IMAGE = "Bookshelf left corner down note";
 	
 	private String state;
 	private int pageNum;
@@ -22,24 +25,25 @@ public class Note extends GameObject{
 	private int noteY;
 	
 	
-	public Note(int pageDrawable, Context context){
+	public Note(String state, int pageDrawable, Context context){
 		super();
-		this.state = state;
+		this.state= state;
 		this.context = context;
 		this.pageNum = pageDrawable;
-		this.noteX = this.getPositionX();
-		this.noteY = this.getPositionY();
+		
 		
 	}
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return ImageId;
+		return state;
 	}
 	
 	@Override
 	public void onTouched(GameBoard gameBoard) {
+		this.noteX = this.getPositionX();
+		this.noteY = this.getPositionY();
 		if (noteX == (gameBoard.getPlayer().getPositionX() + 1)
 				&& noteY == gameBoard.getPlayer().getPositionY()) {
 			startOverlay();

@@ -3,6 +3,7 @@ package nl.spookystoriesinc.model;
 import java.util.Collections;
 import java.util.Observable;
 
+import nl.spookystoriesinc.coolgame.objects.Bed;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
@@ -14,6 +15,7 @@ import nl.spookystoriesinc.coolgame.objects.Enemy;
 import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
+import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Player;
 import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
@@ -201,7 +203,8 @@ public abstract class GameBoard extends Observable {
 		// walls of the Main hall
 		addWalls();
 	
-		this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
+		Note note1 = new Note(Note.NOTE_TABLE_IMAGE, R.drawable.diarypage1, context);
+		this.addGameObject(note1, 1, 1);
 		this.addGameObject(new Table(Table.TABLE_IMAGE), 6, 1);
 		
 		//north door | id 1
@@ -411,7 +414,8 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_IMAGE), 7, 1);
 		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 2);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 3);
+		Note note4 = new Note(Note.NOTE_BOOKCASE_RIGHT_IMAGE, R.drawable.diarypage4, context);
+		this.addGameObject(note4, 7, 3);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 7, 4);
 		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_DOWN_IMAGE), 7, 5);
@@ -425,7 +429,9 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 2, 5);
 		
 		//table
-		this.addGameObject(new Table(Table.TABLE_IMAGE), 4, 3);
+		this.addGameObject(new Table(DiningTable.DININGTABLE_LEFT_IMAGE), 3, 3);
+		this.addGameObject(new Table(DiningTable.DININGTABLE_MIDDLE_IMAGE), 4, 3);
+		this.addGameObject(new Table(DiningTable.DININGTABLE_RIGHT_IMAGE), 5, 3);
 		
 		
 		
@@ -479,7 +485,13 @@ public abstract class GameBoard extends Observable {
 		//stove
 		this.addGameObject(new Stove(), 3, 1);
 		
+		//fridge
+		this.addGameObject(new Stove(), 1, 1);
+		
 		//tables
+		
+		Note note3 = new Note(Note.NOTE_TABLE_IMAGE, R.drawable.diarypage3, context);
+		this.addGameObject(note3, 4, 1);
 		this.addGameObject(new Desk(Desk.DESK_LEFT_IMAGE, context),6, 1);
 		this.addGameObject(new Desk(Desk.DESK_RIGHT_IMAGE, context), 7, 1);
 		
@@ -617,7 +629,7 @@ public abstract class GameBoard extends Observable {
 	public void initGuestBedroom(){
 		this.removeAllObjects();
 		//Add a player object
-		this.addGameObject(new Player(), 7, 3);
+		this.addGameObject(new Player(), 4, 1);
 		
 		//walls of the Guest Bedroom
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
@@ -652,8 +664,23 @@ public abstract class GameBoard extends Observable {
 		
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
-		this.addGameObject(new Note(Note.))
+		
+		
+		Note note2 = new Note(Note.NOTE_NIGHTSTAND_IMAGE, R.drawable.diarypage2, context);
+		this.addGameObject(note2, 7, 1);
+		
 		//beds
+		
+		this.addGameObject(new Bed(Bed.BED_REGULAR_TOP_IMAGE), 2, 1);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 2, 2);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_TOP_IMAGE), 3, 1);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 3, 2);
+		
+		this.addGameObject(new Bed(Bed.BED_REGULAR_TOP_IMAGE), 5, 1);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 5, 2);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_TOP_IMAGE), 6, 1);
+		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 6, 2);
+		
 		
 		
 
