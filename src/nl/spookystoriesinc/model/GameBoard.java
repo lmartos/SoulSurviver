@@ -12,6 +12,7 @@ import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Bookcase;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
+import nl.spookystoriesinc.coolgame.objects.Fridge;
 import nl.spookystoriesinc.coolgame.objects.Key;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
@@ -337,6 +338,7 @@ public abstract class GameBoard extends Observable {
 		
 		
 		//lamp
+		this.addGameObject(new Lamp(), 1, 1);
 		this.addGameObject(new Lamp(), 1, 5);
 		this.addGameObject(new Lamp(), 7, 5);
 		
@@ -530,7 +532,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Stove(), 3, 1);
 		
 		//fridge
-		this.addGameObject(new Stove(), 1, 1);
+		this.addGameObject(new Fridge(), 1, 1);
 		
 		//tables
 		
@@ -646,32 +648,26 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);
 		
 		//sofa
-		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 2);
-		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 3);
-		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 4);
+		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 1);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 2);
+		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
+
+		this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 1);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_LEFT_IMAGE), 1, 2);
+		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_LEFT_IMAGE), 1, 3);
+
 		
 		//bookcase
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_CORNER_IMAGE), 7, 1);
 		
 		//lamps
-		this.addGameObject(new Lamp(), 1, 1);
 		this.addGameObject(new Lamp(), 1, 5);
 		
 		//table
 		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 7, 5);
 		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 6, 5);
 		
-		//sofas
-		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 1);
-		//this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 2);
-		//this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
-		
 		//this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 1);
-		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_LEFT_IMAGE), 1, 2);
-		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_LEFT_IMAGE), 1, 3);
-
-		//table
-		//this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
 		
 		//add east door | id 16
 		this.addGameObject(new Door(0, Door.EAST_OPEN_DOOR_IMAGE,this , context, "Corridor", true), 8, 3);
@@ -723,9 +719,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
 		
-		//deze moet in masterbedroom
-		//Note note2 = new Note(Note.NOTE_NIGHTSTAND_IMAGE, R.drawable.diarypage2, context);
-		//this.addGameObject(note2, 7, 1);
+		
 		
 		//beds
 		
@@ -863,16 +857,20 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_UP_IMAGE), 7, 2);
 		this.addGameObject(new Bed(Bed.BED_MASTER_LEFT_DOWN_IMAGE), 6, 2);
 		this.addGameObject(new Bed(Bed.BED_MASTER_RIGHT_UP_IMAGE), 7, 3);
-		this.addGameObject(new Bed(Bed.BED_REGULAR_DOWN_IMAGE), 6, 3);
+		this.addGameObject(new Bed(Bed.BED_MASTER_RIGHT_DOWN_IMAGE), 6, 3);
 		
 		//nightstands
 		this.addGameObject(new Table(Table.TABLE_LEFT_IMAGE), 7, 1);
 		this.addGameObject(new Table(Table.TABLE_LEFT_IMAGE), 7, 4);
 		
+		
+		Note note2 = new Note(Note.NOTE_NIGHTSTAND_IMAGE, R.drawable.diarypage2, context);
+		this.addGameObject(note2, 4, 1);
+		
 		//bookcases
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_CORNER_IMAGE), 1, 1);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 2, 1);
-		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_RIGHT_IMAGE), 1, 2);
+		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_IMAGE), 1, 2);
 		
 		
 		//north door | id 1
@@ -886,7 +884,7 @@ public abstract class GameBoard extends Observable {
 		
 		//chest
 		Chest masterbedroomChest;
-		this.addGameObject(masterbedroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 2, 2);
+		this.addGameObject(masterbedroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 3, 1);
 		masterbedroomChest.addKey(new Key(2));
 	}
 	
