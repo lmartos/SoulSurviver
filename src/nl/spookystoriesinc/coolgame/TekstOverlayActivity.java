@@ -42,11 +42,13 @@ public class TekstOverlayActivity extends Activity {
 
 		// setting default image for tekstoverlay
 		if(pages != null){
+			previousPage.setVisibility(View.VISIBLE);
+			nextPage.setVisibility(View.VISIBLE);
 			book.setImageResource(pages.get(0));
 		}else{
 			book.setImageResource(pageNum);
-			previousPage.setVisibility(0);
-			nextPage.setVisibility(0);
+			previousPage.setVisibility(View.GONE);
+			nextPage.setVisibility(View.GONE);
 		}
 	}
 
