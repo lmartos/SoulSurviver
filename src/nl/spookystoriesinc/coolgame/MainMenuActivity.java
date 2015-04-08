@@ -68,7 +68,7 @@ public class MainMenuActivity extends Activity {
 			}else if (v == startGame){
 				resultIntent = new Intent();
 				setResult(Activity.RESULT_OK, resultIntent);
-				playBackgroundMusic();
+				mediaPlayer.stop();
 				finish();
 			}else{
 				Intent creditsIntent = new Intent(MainMenuActivity.this, CreditsActivity.class);
@@ -76,10 +76,7 @@ public class MainMenuActivity extends Activity {
 			}
 			
 		}
-		private void playBackgroundMusic() {
-			mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.angel_of_death);
-			mediaPlayer.start();
-		}	
+		
 	}
 
 }

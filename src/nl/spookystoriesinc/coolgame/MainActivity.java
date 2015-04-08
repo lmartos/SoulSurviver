@@ -66,9 +66,11 @@ public class MainActivity extends Activity {
 	}
 	
 	public void initGameOverState(){
+		mediaPlayer.stop();
 		Intent initGameOver = new Intent(this, MainMenuActivity.class);
 		initGameOver.putExtra("Game is over", true);
 		startActivityForResult(initGameOver, START_GAME);
+		
 		
 	}
 	
