@@ -2,6 +2,7 @@ package nl.spookystoriesinc.coolgame.objects;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.widget.Toast;
 import nl.spookystoriesinc.model.GameBoard;
 import nl.spookystoriesinc.model.GameObject;
@@ -22,8 +23,6 @@ public class Lever extends GameObject {
 	public Lever (Context context) {
 		super();
 		this.context = context;
-		this.leverX = this.getPositionX();
-		this.leverY = this.getPositionY();
 	}
 	
 
@@ -34,20 +33,23 @@ public class Lever extends GameObject {
 
 	@Override
 	public int getImageIdInt() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {
+		this.leverX = this.getPositionX();
+		this.leverY = this.getPositionY();
+		Log.d("Clicked Lever", "Lever X: " + leverX + "Lever Y: " + leverY);
+		
 		if (leverX == (gameBoard.getPlayer().getPositionX() + 1) && leverY == gameBoard.getPlayer().getPositionY()){
-			pullLever();
+			pullLever(gameBoard);
 		} else if (leverX == (gameBoard.getPlayer().getPositionX() - 1) && leverY == gameBoard.getPlayer().getPositionY()) {
-			pullLever();
+			pullLever(gameBoard);
 		} else if (leverY == (gameBoard.getPlayer().getPositionY() + 1) && leverX == gameBoard.getPlayer().getPositionX()) {
-			pullLever();
+			pullLever(gameBoard);
 		} else if (leverY == (gameBoard.getPlayer().getPositionY() - 1) && leverX == gameBoard.getPlayer().getPositionX()) {
-			pullLever();
+			pullLever(gameBoard);
 		} else {
 			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
@@ -55,11 +57,11 @@ public class Lever extends GameObject {
 		gameBoard.updateView();
 	}
 	
-	public void pullLever() {
+	public void pullLever(GameBoard gameBoard) {
 		if (leverPulled == false) {
 			leverPulled = true;
 			playPullLeverSound();
-			Toast.makeText(context, "You can hear a wierd sound somewhere in the house", Toast.LENGTH_LONG).show();
+			Toast.makeText(context, "You hear a spooky sound!", Toast.LENGTH_LONG).show();
 			state = LEVER_IMAGE_DOWN;
 		}else {
 			Toast.makeText(context, "The lever is pulled", Toast.LENGTH_SHORT).show();
