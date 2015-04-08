@@ -1081,5 +1081,7 @@ public abstract class GameBoard extends Observable {
 	public void removeSecretBookcase(){
 		library[5][5] = null;
 		library[5][6] = null;
+		// door to the basement
+		library[5][6] = new Door(20, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "Basement", true);
 	}
 }
