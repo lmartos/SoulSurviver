@@ -18,7 +18,7 @@ import android.widget.Button;
 
 public class MainMenuActivity extends Activity {
 	
-	private Button settings, startGame, credits;
+	private Button settings, startGame, credits, controls;
 	private Context context;
 	private MediaPlayer mediaPlayer;
 	private Intent testGameOver;
@@ -36,6 +36,8 @@ public class MainMenuActivity extends Activity {
 		context = getApplicationContext();
 		credits = (Button) findViewById(R.id.button23);
 		credits.setOnClickListener(menuClicks);
+		controls = (Button) findViewById(R.id.button24);
+		controls.setOnClickListener(menuClicks);
 		
 		if(testGameOver.getBooleanExtra("Game is over", false)){
 			Intent startGameOver = new Intent(this, GameOverScreenActivity.class);
@@ -70,6 +72,9 @@ public class MainMenuActivity extends Activity {
 				setResult(Activity.RESULT_OK, resultIntent);
 				mediaPlayer.stop();
 				finish();
+			}else if (v == controls){
+				Intent controlsIntent = new Intent(MainMenuActivity.this, ControlsActivity.class);
+				startActivity(controlsIntent);
 			}else{
 				Intent creditsIntent = new Intent(MainMenuActivity.this, CreditsActivity.class);
 				startActivity(creditsIntent);
