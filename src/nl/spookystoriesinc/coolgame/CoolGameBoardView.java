@@ -1,5 +1,6 @@
 package nl.spookystoriesinc.coolgame;
 
+import nl.spookystoriesinc.coolgame.objects.Bed;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Bookcase;
 import nl.spookystoriesinc.coolgame.objects.Chair;
@@ -79,9 +80,13 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Wall.WALL_SHELF, R.drawable.wall_wallshelf1);
 		spriteCache.loadTile(Wall.WALL_CRACK, R.drawable.wall_with_hole);
 		spriteCache.loadTile(Wall.WALL_WINDOW, R.drawable.wall_window);
+		spriteCache.loadTile(Wall.WALL_BATHROOM_HANDS, R.drawable.bathroom_wall_bloodyhands);
+		spriteCache.loadTile(Wall.WALL_BATHROOM_DIE, R.drawable.bathroom_wall_die);
+		spriteCache.loadTile(Wall.WALL_BATHROOM_HELP, R.drawable.bathroom_wall_help);
+		spriteCache.loadTile(Wall.WALL_BATHROOM, R.drawable.bathroom_wall);
 		
-		//spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
-		//spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
+		spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
+		spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
 
 		spriteCache.loadTile(Table.TABLE_IMAGE, R.drawable.collidable_tablesquare);
 		spriteCache.loadTile(Table.TABLE_CANDLE_IMAGE, R.drawable.tablesquare_with_candle);
@@ -98,6 +103,13 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Bookcase.BOOKCASE_LEFT_CORNER_IMAGE, R.drawable.bookcase_left_corner);
 		spriteCache.loadTile(Bookcase.BOOKCASE_RIGHT_CORNER_DOWN_IMAGE, R.drawable.bookcase_right_down_corner);
 		spriteCache.loadTile(Bookcase.BOOKCASE_LEFT_CORNER_DOWN_IMAGE, R.drawable.bookcase_left_down_corner);
+		
+		spriteCache.loadTile(Bed.BED_REGULAR_TOP_IMAGE, R.drawable.regular_bed_top_up);
+		spriteCache.loadTile(Bed.BED_REGULAR_DOWN_IMAGE, R.drawable.regular_bed_up_bot);
+		spriteCache.loadTile(Bed.BED_MASTER_LEFT_UP_IMAGE, R.drawable.masterbed_top_left);
+		spriteCache.loadTile(Bed.BED_MASTER_LEFT_DOWN_IMAGE, R.drawable.masterbed_up_left);
+		spriteCache.loadTile(Bed.BED_MASTER_RIGHT_UP_IMAGE, R.drawable.masterbed_top_right);
+		spriteCache.loadTile(Bed.BED_MASTER_RIGHT_DOWN_IMAGE, R.drawable.masterbed_bot_right);
 		
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE, R.drawable.desk_right);
 		spriteCache.loadTile(Desk.DESK_RIGHT_IMAGE_BOOK, R.drawable.desk_right_book);

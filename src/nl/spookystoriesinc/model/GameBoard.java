@@ -435,7 +435,7 @@ public abstract class GameBoard extends Observable {
 	public void initKitchen(){
 		this.removeAllObjects();
 		//Add a player object
-		this.addGameObject(new Player(), 4, 1);
+		this.addGameObject(new Player(), 4, 5);
 		
 		//walls of the Kitchen
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
@@ -456,6 +456,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4,0);
 		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
@@ -468,11 +469,10 @@ public abstract class GameBoard extends Observable {
 		
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 
-		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
 		
 		//add south door | id 15
-		this.addGameObject(new Door(15, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "DiningRoom", true), 6, 4);
+		this.addGameObject(new Door(15, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "DiningRoom", true), 4, 6);
 	
 		//sink
 		this.addGameObject(new Sink(), 2, 1);
@@ -493,7 +493,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 4, 3);
 		
 		//lever
-		//this.addGameObject(new Lever(context), 5, 0);
+		this.addGameObject(new Lever(context), 5, 0);
 		
 	}
 	public void initCorridor(){
@@ -592,7 +592,7 @@ public abstract class GameBoard extends Observable {
 		
 		//sofa
 		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 2);
-		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 3);
 		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 4);
 		
 		//bookcase
@@ -614,6 +614,53 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Door(17, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "GuestBedroom", true), 4, 6);
 		
 	}
+	
+	public void initGuestBedroom(){
+		this.removeAllObjects();
+		//Add a player object
+		this.addGameObject(new Player(), 7, 3);
+		
+		//walls of the Guest Bedroom
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,3);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 2,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 6,6);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,6);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 2,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 4,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
+		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,0);
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,1);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,2);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,4);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,5);
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8,6);		
+		
+		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
+		
+
+		//add north door | id 18
+		this.addGameObject(new Door(18, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "LivingRoom", true), 4, 0);
+		//add east door | id 19
+		this.addGameObject(new Door(19, Door.EAST_OPEN_DOOR_IMAGE,this , context, "Bathroom", true), 8, 3);
+		
+	}
+	
 	
 	
 	

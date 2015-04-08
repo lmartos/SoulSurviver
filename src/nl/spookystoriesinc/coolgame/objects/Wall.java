@@ -11,6 +11,10 @@ public class Wall extends GameObject {
 	public static final String WALL_SHELF = "WallShelf";
 	public static final String WALL_WINDOW = "WallWindow";
 	public static final String WALL_CRACK = "WallCrack";
+	public static final String WALL_BATHROOM = "Bathroom wall";
+	public static final String WALL_BATHROOM_HELP = "Bathroom wall help";
+	public static final String WALL_BATHROOM_HANDS = "Bathroom wall hands";
+	public static final String WALL_BATHROOM_DIE = "Bathroom wall die";
 	
 	private String state;
 
