@@ -249,11 +249,11 @@ public abstract class GameBoard extends Observable {
 		//north door | id 1
 		this.addGameObject(new Door(0, Door.NORTH_CLOSED_DOOR_IMAGE, this, context, "Hall", true), 4, 0);
 		//west door | id 2 deze deur zit "op slot" kaars is nodig om te kunnen betreden.
-		this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "DiningRoom", true), 0, 3);
+		this.addGameObject(new Door(7, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "DiningRoom", true), 0, 3);
 		//east door | id 3
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 		//south door | id 4
-		Door outside = new Door(0, Door.SOUTH_CLOSED_DOOR_IMAGE, this, context, "Outside", true);
+		Door outside = new Door(5, Door.SOUTH_CLOSED_DOOR_IMAGE, this, context, "Outside", true);
 		outside.setVictoryDoor(true);
 		this.addGameObject(outside, 4, 6);
 
@@ -292,11 +292,11 @@ public abstract class GameBoard extends Observable {
 		//north door | id 1
 		this.addGameObject(new Door(0, Door.NORTH_CLOSED_DOOR_IMAGE, this, context, "Kitchen", true), 4, 0);
 		//east door | id 3
-		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "MainHall", true), 8, 3);
+		this.addGameObject(new Door(0, Door.EAST_OPEN_DOOR_IMAGE, this, context, "MainHall", true), 8, 3);
 		
 		Chest diningRoomChest;
 		this.addGameObject(diningRoomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
-		diningRoomChest.addKey(new Key(1));
+		diningRoomChest.addKey(new Key(3));
 
 	}
 	
@@ -349,9 +349,9 @@ public abstract class GameBoard extends Observable {
 		//north door | id 7
 		this.addGameObject(new Door(0, Door.NORTH_STAIRS_UP, this, context, "Corridor", true), 4, 0);
 		//east door | id 8
-		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "StudyRoom", true), 8, 3);
+		this.addGameObject(new Door(2, Door.EAST_CLOSED_DOOR_IMAGE, this, context, "StudyRoom", true), 8, 3);
 		//south door | id 9
-		this.addGameObject(new Door(0, Door.SOUTH_CLOSED_DOOR_IMAGE, this, context, "MainHall", true), 4, 6);
+		this.addGameObject(new Door(0, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "MainHall", true), 4, 6);
 
 		
 		
@@ -394,9 +394,9 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 0);
 		
 		//add west door | id 9
-		this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE,this , context, "Hall", true), 0, 3);
+		this.addGameObject(new Door(0, Door.WEST_OPEN_DOOR_IMAGE,this , context, "Hall", true), 0, 3);
 		//add south door | id 10
-		this.addGameObject(new Door(0, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "Library", true), 4, 6);
+		this.addGameObject(new Door(4, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "Library", true), 4, 6);
 		
 		//bookcases
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_DOWN_IMAGE), 6, 1);
@@ -444,7 +444,7 @@ public abstract class GameBoard extends Observable {
 		basementDoor = new Door(0, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "Basement", true);
 		basementDoor.setPosition(5, 6);
 		//add north door | id 14
-		this.addGameObject(new Door(0, Door.NORTH_CLOSED_DOOR_IMAGE,this , context, "StudyRoom", true), 4, 0);
+		this.addGameObject(new Door(0, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "StudyRoom", true), 4, 0);
 		
 		//bookcases
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_LEFT_CORNER_IMAGE), 1, 1);
@@ -478,10 +478,7 @@ public abstract class GameBoard extends Observable {
 		//table
 		this.addGameObject(new Table(DiningTable.DININGTABLE_LEFT_IMAGE), 3, 3);
 		this.addGameObject(new Table(DiningTable.DININGTABLE_MIDDLE_IMAGE), 4, 3);
-		this.addGameObject(new Table(DiningTable.DININGTABLE_RIGHT_IMAGE), 5, 3);
-		
-		
-		
+		this.addGameObject(new Table(DiningTable.DININGTABLE_RIGHT_IMAGE), 5, 3);	
 	}
 	
 	public void initKitchen(){
@@ -524,7 +521,7 @@ public abstract class GameBoard extends Observable {
 		
 		
 		//add south door | id 15
-		this.addGameObject(new Door(0, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "DiningRoom", true), 4, 6);
+		this.addGameObject(new Door(0, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "DiningRoom", true), 4, 6);
 	
 		//sink
 		this.addGameObject(new Sink(), 2, 1);
@@ -595,7 +592,7 @@ public abstract class GameBoard extends Observable {
 		//add west door | id 11
 		this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE,this , context, "LivingRoom", true), 0, 3);
 		//add east door | id 12
-		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "MasterBedroom", true), 8, 3);
+		this.addGameObject(new Door(1, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "MasterBedroom", true), 8, 3);
 		//add south door | id 13
 		this.addGameObject(new Door(0, Door.SOUTH_STAIRS_DOWN,this , context, "Hall", true), 4, 6);
 		
@@ -677,13 +674,13 @@ public abstract class GameBoard extends Observable {
 		//this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
 		
 		//add east door | id 16
-		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "Corridor", true), 8, 3);
+		this.addGameObject(new Door(0, Door.EAST_OPEN_DOOR_IMAGE,this , context, "Corridor", true), 8, 3);
 		//add south door | id 17
-		this.addGameObject(new Door(0, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "GuestBedroom", true), 4, 6);
+		this.addGameObject(new Door(3, Door.SOUTH_CLOSED_DOOR_IMAGE,this , context, "GuestBedroom", true), 4, 6);
 		
 		Chest livingroomChest;
 		this.addGameObject(livingroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 2, 1);
-		livingroomChest.addKey(new Key(5));
+		livingroomChest.addKey(new Key(1));
 		
 	}
 	
@@ -759,14 +756,14 @@ public abstract class GameBoard extends Observable {
 		
 
 		//add north door | id 18
-		this.addGameObject(new Door(0, Door.NORTH_CLOSED_DOOR_IMAGE,this , context, "LivingRoom", true), 4, 0);
+		this.addGameObject(new Door(0, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "LivingRoom", true), 4, 0);
 		//add east door | id 19
-		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "Bathroom", true), 8, 3);
+		this.addGameObject(new Door(6, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "Bathroom", true), 8, 3);
 		
 		//chest
 		Chest guestbedroomChest;
 		this.addGameObject(guestbedroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 4, 5);
-		guestbedroomChest.addKey(new Key(3));
+		guestbedroomChest.addKey(new Key(4));
 		
 	}
 	
@@ -831,7 +828,7 @@ public abstract class GameBoard extends Observable {
 	public void initMasterBedRoom(){
 		
 		//add a player object
-		this.addGameObject(new Player(), 1, 4);
+		this.addGameObject(new Player(), 1, 3);
 		
 		//addwalls
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0,0);
@@ -881,7 +878,7 @@ public abstract class GameBoard extends Observable {
 		//north door | id 1
 		this.addGameObject(new Wall(Wall.WALL_PAINTING), 4 ,0);
 		//west door | id 2 
-		this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "Corridor", true), 0, 3);
+		this.addGameObject(new Door(0, Door.WEST_OPEN_DOOR_IMAGE, this, context, "Corridor", true), 0, 3);
 		//east door | id 3
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 		//south door | id 4
@@ -895,7 +892,7 @@ public abstract class GameBoard extends Observable {
 	
 	public void initBathroom(){
 		//add a player object
-				this.addGameObject(new Player(), 1, 4);
+				this.addGameObject(new Player(), 1, 3);
 				
 				//addwalls
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 0,0);
@@ -932,7 +929,7 @@ public abstract class GameBoard extends Observable {
 				//north door | id 1
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM_DIE), 4 ,0);
 				//west door | id 2 
-				this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "GuestBedroom", true), 0, 3);
+				this.addGameObject(new Door(0, Door.WEST_OPEN_DOOR_IMAGE, this, context, "GuestBedroom", true), 0, 3);
 				//east door | id 3
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8, 3);
 				//south door | id 4

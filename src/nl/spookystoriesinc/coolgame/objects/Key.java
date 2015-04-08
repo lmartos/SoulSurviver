@@ -36,10 +36,10 @@ public class Key extends GameObject{
 			return R.drawable.key_librarykey;
 		}
 		else if(this.id == 4){
-			return R.drawable.key_housekey;
+			return R.drawable.key_bedroomkey;
 		}
 		else if(this.id == 5){
-			return R.drawable.key_bedroomkey;
+			return R.drawable.key_housekey;
 		}
 		else if(this.id == 6){
 			return R.drawable.crowbar;

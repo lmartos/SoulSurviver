@@ -53,8 +53,6 @@ public class Door extends GameObject{
 		this.board = board;
 	}
 	
-	
-	
 	public void setVictoryDoor(boolean bool){
 		isVictoryDoor = bool;
 	}
@@ -100,8 +98,6 @@ public class Door extends GameObject{
 		this.doorX = this.getPositionX();
 		this.doorY = this.getPositionY();
 		Log.d("Chest", "You clicked the chest X: " + doorX + " Y: " + doorY);
-		
-		
 		
 		
 		if(doorX == (gameBoard.getPlayer().getPositionX() + 1) && doorY == gameBoard.getPlayer().getPositionY()){
