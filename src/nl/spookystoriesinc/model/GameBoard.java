@@ -7,6 +7,7 @@ import nl.spookystoriesinc.coolgame.objects.Bed;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
+import nl.spookystoriesinc.coolgame.objects.CodelockDoor;
 import nl.spookystoriesinc.coolgame.objects.Desk;
 import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Bookcase;
@@ -784,7 +785,7 @@ public abstract class GameBoard extends Observable {
 		//north door | id 1
 		this.addGameObject(new Door(0, Door.EAST_OPEN_DOOR_IMAGE,this, context, "Library", true), 4 ,0);
 		//west door | id 2 
-		this.addGameObject(new Door(0, Door.WEST_CLOSED_DOOR_IMAGE, this, context, "Tomb", true), 0, 3);
+		this.addGameObject(new CodelockDoor(0, CodelockDoor.WEST_CLOSED_DOOR_IMAGE, this, context, "Tomb", true), 0, 3);
 		//east door 
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 		//south door 
