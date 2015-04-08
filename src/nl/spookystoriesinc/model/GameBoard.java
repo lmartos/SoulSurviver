@@ -3,6 +3,7 @@ package nl.spookystoriesinc.model;
 import java.util.Collections;
 import java.util.Observable;
 
+import nl.spookystoriesinc.coolgame.objects.Bath;
 import nl.spookystoriesinc.coolgame.objects.Bed;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
@@ -19,8 +20,10 @@ import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
 import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Player;
+import nl.spookystoriesinc.coolgame.objects.Shower;
 import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
+import nl.spookystoriesinc.coolgame.objects.Statue;
 import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -814,9 +817,20 @@ public abstract class GameBoard extends Observable {
 		//south door | id 4
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
+		//statues
+		this.addGameObject(new Statue(), 1, 1);
+		this.addGameObject(new Statue(), 3, 1);
+		this.addGameObject(new Statue(), 5, 1);
+		this.addGameObject(new Statue(), 7, 1);
+		
+		this.addGameObject(new Statue(), 1, 5);
+		this.addGameObject(new Statue(), 3, 5);
+		this.addGameObject(new Statue(), 5, 5);
+		this.addGameObject(new Statue(), 7, 5);
+		
 		//chest
 		Chest tombChest;
-		this.addGameObject(tombChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
+		this.addGameObject(tombChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 4);
 		tombChest.addKey(new Key(4));
 	}
 	
@@ -910,10 +924,10 @@ public abstract class GameBoard extends Observable {
 				
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 1,0);
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2,0);
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HELP), 3,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 3,0);
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 5,0);
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 6,0);
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 7,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HANDS), 7,0);
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,0);
 				
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,1);
@@ -923,16 +937,39 @@ public abstract class GameBoard extends Observable {
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8,6);		
 				
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2, 1);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 2, 2);
 				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 4, 1);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_DIE), 4, 2);
+				
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM),6, 1);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HELP), 6, 2);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 5, 5);
+				
+				//showers
+				this.addGameObject(new Shower(), 1, 1);
+				this.addGameObject(new Shower(), 3, 1);
+				this.addGameObject(new Shower(), 5, 1);
+				
+				//note
+				this.addGameObject(new Note(Note.NOTE_TABLE_IMAGE,R.drawable.diarypage5, context), 7, 1);
+				
+				//bath
+				this.addGameObject(new Bath(Bath.BATH_LEFT_IMAGE), 6, 5);
+				this.addGameObject(new Bath(Bath.BATH_RIGHT_IMAGE), 7, 5);
+				
+				//table
+				this.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 1, 5);
+				this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 2, 5);
 				
 				//north door | id 1
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM_DIE), 4 ,0);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 4 ,0);
 				//west door | id 2 
 				this.addGameObject(new Door(0, Door.WEST_OPEN_DOOR_IMAGE, this, context, "GuestBedroom", true), 0, 3);
 				//east door | id 3
 				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 8, 3);
 				//south door | id 4
-				this.addGameObject(new Wall(Wall.WALL_BATHROOM_HANDS), 4, 6);
+				this.addGameObject(new Wall(Wall.WALL_BATHROOM), 4, 6);
 	}
 	
 	

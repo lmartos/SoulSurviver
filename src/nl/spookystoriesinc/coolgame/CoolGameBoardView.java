@@ -17,6 +17,7 @@ import nl.spookystoriesinc.coolgame.objects.Note;
 import nl.spookystoriesinc.coolgame.objects.Shower;
 import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
+import nl.spookystoriesinc.coolgame.objects.Statue;
 import nl.spookystoriesinc.coolgame.objects.Stove;
 import nl.spookystoriesinc.coolgame.objects.Table;
 import nl.spookystoriesinc.coolgame.objects.Wall;
@@ -88,6 +89,8 @@ public class CoolGameBoardView extends GameBoardView {
 		spriteCache.loadTile(Wall.WALL_BATHROOM_DIE, R.drawable.bathroom_wall_die);
 		spriteCache.loadTile(Wall.WALL_BATHROOM_HELP, R.drawable.bathroom_wall_help);
 		spriteCache.loadTile(Wall.WALL_BATHROOM, R.drawable.bathroom_wall);
+		
+		spriteCache.loadTile(Statue.STATUE_IMAGE, R.drawable.statue_tomb);
 		
 		spriteCache.loadTile(Lever.LEVER_IMAGE_DOWN, R.drawable.dark_wall_with_lever_down);
 		spriteCache.loadTile(Lever.LEVER_IMAGE_UP, R.drawable.dark_wall_with_lever_up);
