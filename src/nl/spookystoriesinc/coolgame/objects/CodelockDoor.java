@@ -28,7 +28,7 @@ public class CodelockDoor extends Door implements Serializable {
 	
 	public void setOpened(boolean bool){
 		this.opened = bool;
-		this.setState(SOUTH_OPEN_DOOR_IMAGE);
+		this.setState(WEST_OPEN_DOOR_IMAGE);
 	}
 	
 	
@@ -54,26 +54,19 @@ public class CodelockDoor extends Door implements Serializable {
 		startOverlay();		
 		
 
-	}
-	else{
+	}else{
 		Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
-	}
-
-	
-	
+		}
 		
 	}else{
 		super.onTouched(gameBoard);
-	}
+		}
 		
 	}
 	
 	public void startOverlay(){
-	
 				Intent intent = new Intent(context, CodeslotActivity.class);
 				intent.putExtra("the door", this);
 				context.startActivity(intent);
 	}
-	
-
 }
