@@ -44,6 +44,12 @@
             android:label="Credits"
             android:name="nl.spookystoriesinc.coolgame.CreditsActivity"
             ></activity>
+          <activity
+            android:icon="@drawable/player_characterdown"
+            android:screenOrientation="landscape"
+            android:label="Controls"
+            android:name="nl.spookystoriesinc.coolgame.ControlsActivity"
+            ></activity>
     </application>
 
 </manifest>
