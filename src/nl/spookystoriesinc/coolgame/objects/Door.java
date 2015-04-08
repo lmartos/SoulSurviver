@@ -53,6 +53,8 @@ public class Door extends GameObject{
 		this.board = board;
 	}
 	
+	
+	
 	public void setVictoryDoor(boolean bool){
 		isVictoryDoor = bool;
 	}
@@ -60,6 +62,9 @@ public class Door extends GameObject{
 	@Override
 	public String getImageId() {
 		return state;
+	}
+	public void setState(String state){
+		this.state = state;
 	}
 
 	@Override
@@ -94,7 +99,7 @@ public class Door extends GameObject{
 		
 		this.doorX = this.getPositionX();
 		this.doorY = this.getPositionY();
-		Log.d("Door", "You clicked the door X: " + doorX + " Y: " + doorY);
+		Log.d("Chest", "You clicked the chest X: " + doorX + " Y: " + doorY);
 		
 		
 		
