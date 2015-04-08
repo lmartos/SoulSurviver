@@ -17,6 +17,7 @@ public class TekstOverlayActivity extends Activity {
 	private ImageView book;
 	private ArrayList<Integer> pages;
 	private int currentPage;
+	private int pageNum;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class TekstOverlayActivity extends Activity {
 		Intent intent = getIntent();
 		onClick clicker = new onClick();
 		pages = intent.getIntegerArrayListExtra("pages");
+		pageNum = intent.getIntExtra("page", 1);
 
 		// coupling of xml to java code
 		returnToGame = (Button) findViewById(R.id.returnButton1);
@@ -39,7 +41,13 @@ public class TekstOverlayActivity extends Activity {
 		nextPage.setOnClickListener(clicker);
 
 		// setting default image for tekstoverlay
-		book.setImageResource(pages.get(0));
+		if(pages != null){
+			book.setImageResource(pages.get(0));
+		}else{
+			book.setImageResource(pageNum);
+			previousPage.setVisibility(0);
+			nextPage.setVisibility(0);
+		}
 	}
 
 	public class onClick implements OnClickListener {
