@@ -9,9 +9,11 @@ import nl.spookystoriesinc.coolgame.objects.Desk;
 import nl.spookystoriesinc.coolgame.objects.DiningTable;
 import nl.spookystoriesinc.coolgame.objects.Door;
 import nl.spookystoriesinc.coolgame.objects.Enemy;
+import nl.spookystoriesinc.coolgame.objects.Fridge;
 import nl.spookystoriesinc.coolgame.objects.Lamp;
 import nl.spookystoriesinc.coolgame.objects.Lever;
 import nl.spookystoriesinc.coolgame.objects.Note;
+import nl.spookystoriesinc.coolgame.objects.Shower;
 import nl.spookystoriesinc.coolgame.objects.Sink;
 import nl.spookystoriesinc.coolgame.objects.Sofa;
 import nl.spookystoriesinc.coolgame.objects.Stove;
@@ -137,6 +139,9 @@ public class CoolGameBoardView extends GameBoardView {
 		
 		spriteCache.loadTile(Stove.STOVE_IMAGE, R.drawable.stove);
 		spriteCache.loadTile(Sink.SINK_IMAGE, R.drawable.kitchen_sink);
+		spriteCache.loadTile(Fridge.FRIDGE_IMAGE, R.drawable.fridge);
+		
+		spriteCache.loadTile(Shower.SHOWER_IMAGE, R.drawable.bathroom_shower);
 		
 		spriteCache.loadTile(Door.NORTH_CLOSED_DOOR_IMAGE, R.drawable.door_northcloseddoor);
 		spriteCache.loadTile(Door.NORTH_OPEN_DOOR_IMAGE, R.drawable.door_northopendoor);
