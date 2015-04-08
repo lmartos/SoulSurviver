@@ -243,7 +243,7 @@ public abstract class GameBoard extends Observable {
 		//lamps
 		this.addGameObject(new Lamp(), 3, 5);
 		this.addGameObject(new Lamp(), 5, 5);
-		this.addGameObject(new Lamp(), 1, 1);
+		//this.addGameObject(new Lamp(), 1, 1);
 		this.addGameObject(new Lamp(), 7, 1);
 				
 		//north door | id 1
@@ -666,15 +666,15 @@ public abstract class GameBoard extends Observable {
 		
 		//sofas
 		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 1);
-		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 2);
-		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
+		//this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 2);
+		//this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
 		
-		this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 1);
+		//this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 1);
 		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_LEFT_IMAGE), 1, 2);
 		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_LEFT_IMAGE), 1, 3);
 
 		//table
-		this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
+		//this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
 		
 		//add east door | id 16
 		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "Corridor", true), 8, 3);
