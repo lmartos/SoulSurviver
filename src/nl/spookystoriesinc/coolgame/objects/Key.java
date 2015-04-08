@@ -45,7 +45,7 @@ public class Key extends GameObject{
 			return R.drawable.crowbar;
 		}
 		else if(this.id == 7){
-			return R.drawable.key_bedroomkey;
+			return R.drawable.candle_item;
 		}
 		return R.drawable.key_housekey;
 	}
