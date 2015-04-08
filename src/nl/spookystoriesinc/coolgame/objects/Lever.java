@@ -60,6 +60,7 @@ public class Lever extends GameObject {
 	public void pullLever(GameBoard gameBoard) {
 		if (leverPulled == false) {
 			leverPulled = true;
+			gameBoard.setEnemySpawnTrue();
 			playPullLeverSound();
 			Toast.makeText(context, "You hear a spooky sound!", Toast.LENGTH_LONG).show();
 			state = LEVER_IMAGE_DOWN;
