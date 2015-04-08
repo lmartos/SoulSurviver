@@ -278,20 +278,19 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 3, 2);
 		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 4, 2);
 		this.addGameObject(new Chair(Chair.CHAIR_DOWN_IMAGE), 5, 2);
-		
-		//chest
-				Chest chestThree;
-				this.addGameObject(chestThree = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
 				
 		//lamp
-				this.addGameObject(new Lamp(), 7, 5);
-				this.addGameObject(new Lamp(), 1, 5);
+		this.addGameObject(new Lamp(), 7, 5);
+		this.addGameObject(new Lamp(), 1, 5);
 		
 		//north door | id 1
 		this.addGameObject(new Door(1, Door.NORTH_OPEN_DOOR_IMAGE, this, context, "Kitchen", true), 4, 0);
 		//east door | id 3
 		this.addGameObject(new Door(3, Door.EAST_OPEN_DOOR_IMAGE, this, context, "MainHall", true), 8, 3);
-
+		
+		Chest diningRoomChest;
+		this.addGameObject(diningRoomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
+		diningRoomChest.addKey(new Key(1));
 
 	}
 	
@@ -416,7 +415,9 @@ public abstract class GameBoard extends Observable {
 		//table
 		this.addGameObject(new Table(Table.TABLE_CANDLE_IMAGE), 1, 1);
 		
-		
+		Chest studyroomChest;
+		this.addGameObject(studyroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 5, 1);
+		studyroomChest.addKey(new Key(7));
 	}
 	
 	public void initLibrary(){
@@ -660,6 +661,10 @@ public abstract class GameBoard extends Observable {
 		//add south door | id 17
 		this.addGameObject(new Door(17, Door.SOUTH_OPEN_DOOR_IMAGE,this , context, "GuestBedroom", true), 4, 6);
 		
+		Chest livingroomChest;
+		this.addGameObject(livingroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 2, 1);
+		livingroomChest.addKey(new Key(5));
+		
 	}
 	
 	public void initGuestBedroom(){
@@ -732,13 +737,16 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 1, 5);
 		this.addGameObject(new Chair(Chair.CHAIR_UP_IMAGE), 7, 5);
 		
-		
-		
 
 		//add north door | id 18
 		this.addGameObject(new Door(18, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "LivingRoom", true), 4, 0);
 		//add east door | id 19
 		this.addGameObject(new Door(19, Door.EAST_OPEN_DOOR_IMAGE,this , context, "Bathroom", true), 8, 3);
+		
+		//chest
+		Chest guestbedroomChest;
+		this.addGameObject(guestbedroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 4, 5);
+		guestbedroomChest.addKey(new Key(3));
 		
 	}
 	
@@ -771,7 +779,10 @@ public abstract class GameBoard extends Observable {
 		//south door 
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 	
-	
+		//chest
+		Chest basementChest;
+		this.addGameObject(basementChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
+		basementChest.addKey(new Key(6));
 	}
 	
 	public void initTomb(){
@@ -792,9 +803,9 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
 		//chest
-		this.addGameObject(new Chest(Chest.RIGHT_CLOSED_CHEST_IMAGE, context), 1, 4);
-		
-		
+		Chest tombChest;
+		this.addGameObject(tombChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 1, 1);
+		tombChest.addKey(new Key(4));
 	}
 	
 	public void initMasterBedRoom(){
@@ -855,6 +866,11 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 8, 3);
 		//south door | id 4
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
+		
+		//chest
+		Chest masterbedroomChest;
+		this.addGameObject(masterbedroomChest = new Chest(Chest.FRONT_CLOSED_CHEST_IMAGE, context), 2, 2);
+		masterbedroomChest.addKey(new Key(2));
 	}
 	
 	public void initBathroom(){
