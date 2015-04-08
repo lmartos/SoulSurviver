@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.coolgame.objects;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class Door extends GameObject{
 	private MediaPlayer mediaPlayer;
 	private String room;
 	private GameBoard board;
+	private boolean isVictoryDoor;
 
 	
 	/**
@@ -49,6 +51,10 @@ public class Door extends GameObject{
 		this.context = context;
 		this.room = room;
 		this.board = board;
+	}
+	
+	public void setVictoryDoor(boolean bool){
+		isVictoryDoor = bool;
 	}
 	/** Returns the ImageId of the image to show. */
 	@Override
@@ -177,15 +183,17 @@ public class Door extends GameObject{
 	}
 	
 	public boolean openCheck(){
-		if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
+		if(isVictoryDoor){
+			Intent victoryIntent = new Intent(context, GameOverScreenActivity.class);
+			victoryIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			victoryIntent.putExtra("Victory", true);
+			context.startActivity(victoryIntent);
+		}else if(this.state == NORTH_OPEN_DOOR_IMAGE || this.state == WEST_OPEN_DOOR_IMAGE 
 				|| this.state == EAST_OPEN_DOOR_IMAGE || this.state == SOUTH_OPEN_DOOR_IMAGE || this.state == NORTH_STAIRS_UP || this.state == SOUTH_STAIRS_DOWN){
 			board.changeRoom(room);
-			
-			
 			return true;
-		}else{
-			return false;
 		}
+		return false;	
 	}
 
 	private void playDoorLocked() {
