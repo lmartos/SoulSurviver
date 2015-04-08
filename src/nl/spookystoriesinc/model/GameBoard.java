@@ -240,6 +240,12 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(note1, 1, 1);
 		this.addGameObject(new Table(Table.TABLE_IMAGE), 6, 1);
 		
+		//lamps
+		this.addGameObject(new Lamp(), 3, 5);
+		this.addGameObject(new Lamp(), 5, 5);
+		this.addGameObject(new Lamp(), 1, 1);
+		this.addGameObject(new Lamp(), 7, 1);
+				
 		//north door | id 1
 		this.addGameObject(new Door(0, Door.NORTH_CLOSED_DOOR_IMAGE, this, context, "Hall", true), 4, 0);
 		//west door | id 2 deze deur zit "op slot" kaars is nodig om te kunnen betreden.
@@ -331,10 +337,14 @@ public abstract class GameBoard extends Observable {
 		
 		
 		//lamp
-		this.addGameObject(new Lamp(), 1, 1);
-		this.addGameObject(new Lamp(), 7, 1);
 		this.addGameObject(new Lamp(), 1, 5);
 		this.addGameObject(new Lamp(), 7, 5);
+		
+		//sofa
+		this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 2);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_LEFT_IMAGE), 1, 3);
+		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_LEFT_IMAGE), 1, 4);
+		
 		
 		//north door | id 7
 		this.addGameObject(new Door(0, Door.NORTH_STAIRS_UP, this, context, "Corridor", true), 4, 0);
@@ -654,8 +664,18 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_RIGHT_IMAGE), 7, 5);
 		this.addGameObject(new DiningTable(DiningTable.DININGTABLE_LEFT_IMAGE), 6, 5);
 		
+		//sofas
+		this.addGameObject(new Sofa(Sofa.SOFA_TOP_IMAGE), 3, 1);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_IMAGE), 3, 2);
+		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_IMAGE), 3, 3);
 		
+		this.addGameObject(new Sofa(Sofa.SOFA_TOP_LEFT_IMAGE), 1, 1);
+		this.addGameObject(new Sofa(Sofa.SOFA_MIDDLE_LEFT_IMAGE), 1, 2);
+		this.addGameObject(new Sofa(Sofa.SOFA_DOWN_LEFT_IMAGE), 1, 3);
 
+		//table
+		this.addGameObject(new Table(Table.TABLE_IMAGE), 2, 1);
+		
 		//add east door | id 16
 		this.addGameObject(new Door(0, Door.EAST_CLOSED_DOOR_IMAGE,this , context, "Corridor", true), 8, 3);
 		//add south door | id 17
