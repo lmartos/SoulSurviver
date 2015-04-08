@@ -198,15 +198,6 @@ public abstract class GameBoard extends Observable {
 		// Add a player object
 		this.addGameObject(new Player(),4, 3);
 		
-		// Add a enemy object
-		if(enemySpawn){
-			random = (int) (Math.random() * 4);
-			if(random <= 1){
-				Enemy currentEnemy = new Enemy();
-				enemy = currentEnemy;
-				this.addGameObject(currentEnemy, 7, 5);	
-			}
-		}
 		// walls of the Main hall
 		addWalls();
 	
@@ -940,7 +931,19 @@ public abstract class GameBoard extends Observable {
 		this.game = game;
 	}
 
-	public void setEnemy(){
+	public void setEnemySpawnTrue(){
 		enemySpawn = true;
+	}
+	
+	public void spawnEnemy(int chance){
+		// Add a enemy object
+		if(enemySpawn){
+			random = (int) (Math.random() * chance);
+			if(random <= 1){
+				Enemy currentEnemy = new Enemy();
+				enemy = currentEnemy;
+				this.addGameObject(currentEnemy, 7, 5);	
+			}
+		}
 	}
 }
