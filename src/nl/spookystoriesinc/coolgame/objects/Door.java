@@ -94,7 +94,7 @@ public class Door extends GameObject{
 		
 		this.doorX = this.getPositionX();
 		this.doorY = this.getPositionY();
-		Log.d("Chest", "You clicked the chest X: " + doorX + " Y: " + doorY);
+		Log.d("Door", "You clicked the door X: " + doorX + " Y: " + doorY);
 		
 		
 		

@@ -61,6 +61,7 @@ public abstract class GameBoard extends Observable {
 	private int random;
 	private String currentRoom;
 	
+	private Door basementDoor;
 	private boolean enemySpawn = false;
 	/**
 	 * Create a new game board.
@@ -395,7 +396,8 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 0, 3);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 4, 6);
 		
-		
+		basementDoor = new Door(20, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "Basement", true);
+		basementDoor.setPosition(5, 6);
 		//add north door | id 14
 		this.addGameObject(new Door(14, Door.NORTH_OPEN_DOOR_IMAGE,this , context, "StudyRoom", true), 4, 0);
 		
@@ -913,13 +915,13 @@ public abstract class GameBoard extends Observable {
 			this.spawnEnemy(10, 7, 3);
 		}
 		else if(room.equals(studyRoom)){
-			this.spawnEnemy(10, 7, 3);
+			this.spawnEnemy(10, 6, 3);
 		}
 		else if(room.equals(corridor)){
 			this.spawnEnemy(10, 7, 3);
 		}
 		else if(room.equals(library)){
-			this.spawnEnemy(10, 7, 3);
+			this.spawnEnemy(10, 1, 3);
 		}
 		else if(room.equals(livingRoom)){
 			this.spawnEnemy(10, 7, 3);
@@ -1146,6 +1148,6 @@ public abstract class GameBoard extends Observable {
 		library[5][5] = null;
 		library[5][6] = null;
 		// door to the basement
-		library[5][6] = new Door(20, Door.SOUTH_OPEN_DOOR_IMAGE, this, context, "Basement", true);
+		library[5][6] = basementDoor;
 	}
 }

@@ -68,7 +68,7 @@ public abstract class GameObject {
 	public abstract void onTouched(GameBoard gameBoard);
 
 	/** Used by GameBoard.moveObject() */
-	void setPosition(int positionX, int positionY) {
+	public void setPosition(int positionX, int positionY) {
 		this.positionX = positionX;
 		this.positionY = positionY;
 	}
