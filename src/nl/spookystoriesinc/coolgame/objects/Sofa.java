@@ -11,7 +11,9 @@ import nl.spookystoriesinc.spookystories.R;
 		public static final String SOFA_TOP_IMAGE = "Sofa op";
 		public static final String SOFA_MIDDLE_IMAGE = "Sofa middle";
 		public static final String SOFA_DOWN_IMAGE = "Sofa down";
-		
+		public static final String SOFA_TOP_LEFT_IMAGE = "Sofa left top";
+		public static final String SOFA_MIDDLE_LEFT_IMAGE = "Sofa left middle";
+		public static final String SOFA_DOWN_LEFT_IMAGE = "Sofa left down";
 	
 		private String state;
 	
