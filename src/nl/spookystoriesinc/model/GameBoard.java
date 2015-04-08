@@ -160,7 +160,7 @@ public abstract class GameBoard extends Observable {
 				room[x][y] = gameBoard[x][y];
 			}
 		}
-		}
+	}
 	
 	public void addWalls(){
 		
@@ -196,7 +196,7 @@ public abstract class GameBoard extends Observable {
 	public void initMainHall(){
 		
 		// Add a player object
-		this.addGameObject(new Player(),4, 3);
+		this.addGameObject(new Player(), 4, 3);
 		
 		// walls of the Main hall
 		addWalls();
@@ -419,7 +419,6 @@ public abstract class GameBoard extends Observable {
 
 		//secret door by lever
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 5, 5);
-		//
 		
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 4, 5);
 		this.addGameObject(new Bookcase(Bookcase.BOOKCASE_UP_IMAGE), 3, 5);
@@ -669,9 +668,11 @@ public abstract class GameBoard extends Observable {
 	
 	
 	public void changeRoom(String room){
+		
 		if(room.equals("MainHall")){
 			load(mainHall, this.currentRoom);
 			this.currentRoom = "MainHall";
+			
 		}else if(room.equals("Hall")){
 			load(roomHall, this.currentRoom);
 			this.currentRoom  = "Hall";
@@ -742,13 +743,18 @@ public abstract class GameBoard extends Observable {
 				gameBoard[x][y] = room[x][y];
 			}
 		}
+		this.spawnEnemy(4, 7, 3);
 		this.updateView();
 	}
 	
 	public void save(GameObject[][] room){
 		for( int x = 0; x < getWidth(); x++ ) {
 			for( int y = 0; y < getHeight(); y++ ) {
-				room[x][y] =gameBoard[x][y];
+				if(gameBoard[x][y] instanceof Enemy){
+					gameBoard[x][y] = null;
+				}
+				room[x][y] = gameBoard[x][y];
+
 			}
 		}
 	}
@@ -939,15 +945,19 @@ public abstract class GameBoard extends Observable {
 		enemySpawn = true;
 	}
 	
-	public void spawnEnemy(int chance){
+	public void spawnEnemy(int chance, int x, int y){
 		// Add a enemy object
 		if(enemySpawn){
 			random = (int) (Math.random() * chance);
 			if(random <= 1){
 				Enemy currentEnemy = new Enemy();
 				enemy = currentEnemy;
-				this.addGameObject(currentEnemy, 7, 5);	
+				this.addGameObject(currentEnemy, x, y);	
 			}
 		}
+	}
+	public void removeSecretBookcase(){
+		library[5][5] = null;
+		library[5][6] = null;
 	}
 }

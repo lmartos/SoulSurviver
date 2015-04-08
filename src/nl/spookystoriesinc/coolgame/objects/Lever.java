@@ -61,6 +61,7 @@ public class Lever extends GameObject {
 		if (leverPulled == false) {
 			leverPulled = true;
 			gameBoard.setEnemySpawnTrue();
+			gameBoard.removeSecretBookcase();
 			playPullLeverSound();
 			Toast.makeText(context, "You hear a spooky sound!", Toast.LENGTH_LONG).show();
 			state = LEVER_IMAGE_DOWN;
@@ -73,6 +74,6 @@ public class Lever extends GameObject {
 		mediaPlayer = MediaPlayer.create(context, R.raw.pulling_lever);
 		mediaPlayer.start();
 		}
-
+	
 
 }
