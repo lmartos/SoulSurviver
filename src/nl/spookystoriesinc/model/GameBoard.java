@@ -52,6 +52,7 @@ public abstract class GameBoard extends Observable {
 	private GameObject[][] library;
 	private GameObject[][] livingRoom;
 	private GameObject[][] kitchen;
+	private GameObject[][] guestBedroom;
 	private Player player;
 	private Enemy enemy;
 	private Context context;
@@ -73,7 +74,7 @@ public abstract class GameBoard extends Observable {
 		this.library = new GameObject[width][height];
 		this.livingRoom = new GameObject[width][height];
 		this.kitchen = new GameObject[width][height];
-		
+		this.guestBedroom = new GameObject[width][height];
 		this.context = context;
 		this.currentRoom = "";
 		
@@ -133,6 +134,12 @@ public abstract class GameBoard extends Observable {
 				initKitchen();
 				
 				initRoom(kitchen);
+				
+				this.removeAllObjects();
+				
+				initGuestBedroom();
+				
+				initRoom(guestBedroom);
 				
 				this.removeAllObjects();
 			
@@ -639,7 +646,7 @@ public abstract class GameBoard extends Observable {
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 1,0);
 		this.addGameObject(new Wall(Wall.WALL_WINDOW), 2,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 3,0);
-		this.addGameObject(new Wall(Wall.WALL_WINDOW), 4,0);
+
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 5,0);
 		this.addGameObject(new Wall(Wall.WALL_WINDOW), 6,0);
 		this.addGameObject(new Wall(Wall.WALL_IMAGE), 7,0);
@@ -694,6 +701,9 @@ public abstract class GameBoard extends Observable {
 		}else if(room.equals("Kitchen")){
 			load(kitchen, this.currentRoom);
 			this.currentRoom = "Kitchen";
+		}else if(room.equals("GuestBedroom")){
+			load(guestBedroom, this.currentRoom);
+			this.currentRoom = "GuestBedroom";
 		}
 		
 		
@@ -719,6 +729,8 @@ public abstract class GameBoard extends Observable {
 			save(livingRoom);
 		}else if(currentRoom.equals("Kitchen")){
 			save(kitchen);
+		}else if(currentRoom.equals("GuestBedroom")){
+			save(guestBedroom);
 		}
 		
 		this.removeAllObjects();
