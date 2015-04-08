@@ -770,7 +770,33 @@ public abstract class GameBoard extends Observable {
 				gameBoard[x][y] = room[x][y];
 			}
 		}
-		this.spawnEnemy(4, 7, 3);
+		if(room.equals(mainHall)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(roomHall)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(diningRoom)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(studyRoom)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(corridor)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(library)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(livingRoom)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(kitchen)){
+			this.spawnEnemy(10, 7, 3);
+		}
+		else if(room.equals(guestBedroom)){
+			this.spawnEnemy(10, 7, 3);
+		}
 		this.updateView();
 	}
 	
