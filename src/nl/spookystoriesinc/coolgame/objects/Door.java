@@ -107,8 +107,12 @@ public class Door extends GameObject{
 				if(InventoryView.checkForKey(this.id) || this.id == 0){
 					state = EAST_OPEN_DOOR_IMAGE;
 					Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
+					if (this.id == 6){
+						mediaPlayer = MediaPlayer.create(context, R.raw.breaking_plank);
+					}else {
+						playOpenDoor();
+					}
 					
-					playOpenDoor();
 					if(openCheck()){
 						return;
 					}
@@ -132,7 +136,11 @@ public class Door extends GameObject{
 					state = WEST_OPEN_DOOR_IMAGE;	
 					Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 					
-					playOpenDoor();
+					if (this.id == 6){
+						mediaPlayer = MediaPlayer.create(context, R.raw.breaking_plank);
+					}else {
+						playOpenDoor();
+					}
 					
 					if(openCheck()){
 						return;
@@ -158,7 +166,11 @@ public class Door extends GameObject{
 					state = SOUTH_OPEN_DOOR_IMAGE;	
 					Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 					
-					playOpenDoor();
+					if (this.id == 6){
+						mediaPlayer = MediaPlayer.create(context, R.raw.breaking_plank);
+					}else {
+						playOpenDoor();
+					}
 					if(openCheck()){
 						return;
 					}
@@ -179,7 +191,11 @@ public class Door extends GameObject{
 					state = NORTH_OPEN_DOOR_IMAGE;
 					Toast.makeText(context, "You've opened a door!", Toast.LENGTH_SHORT).show();
 					
-					playOpenDoor();
+					if (this.id == 6){
+						mediaPlayer = MediaPlayer.create(context, R.raw.breaking_plank);
+					}else {
+						playOpenDoor();
+					}
 					
 					if(openCheck()){
 						return;
