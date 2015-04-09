@@ -1,6 +1,7 @@
 package nl.spookystoriesinc.coolgame;
 
 import android.content.Context;
+import android.widget.Toast;
 import nl.spookystoriesinc.coolgame.objects.Book;
 import nl.spookystoriesinc.coolgame.objects.Chair;
 import nl.spookystoriesinc.coolgame.objects.Chest;
@@ -70,6 +71,7 @@ public class CoolGame extends Game {
 		GameBoard board = getGameBoard();
 		board.reset();
 		board.updateView();
+		Toast.makeText(context, "Try to escape the house!", Toast.LENGTH_LONG).show();
 	}
 
 	

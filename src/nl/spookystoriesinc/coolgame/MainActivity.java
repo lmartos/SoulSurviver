@@ -48,7 +48,6 @@ public class MainActivity extends Activity {
 		registerNewGameButton();
 		mainMenu = new Intent(MainActivity.this, MainMenuActivity.class);
 		startActivityForResult(mainMenu, START_GAME);
-		
 		}
 	
 	private void playBackgroundMusic() {

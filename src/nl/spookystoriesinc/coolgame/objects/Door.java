@@ -113,6 +113,11 @@ public class Door extends GameObject{
 						return;
 					}
 				
+			}else if (this.id == 6) {
+				Toast.makeText(context, "The is barricaded with planks!", Toast.LENGTH_LONG).show();
+			}
+			else if (this.id == 7){
+				Toast.makeText(context, "The room is too dark to see!", Toast.LENGTH_LONG).show();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
@@ -134,6 +139,11 @@ public class Door extends GameObject{
 					}
 				
 				
+			}else if (this.id == 6) {
+				Toast.makeText(context, "The is barricaded with planks!", Toast.LENGTH_LONG).show();
+			}
+			else if (this.id == 7){
+				Toast.makeText(context, "The room is too dark to see!", Toast.LENGTH_LONG).show();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
@@ -152,8 +162,11 @@ public class Door extends GameObject{
 					if(openCheck()){
 						return;
 					}
-				
-				
+			}else if (this.id == 6) {
+				Toast.makeText(context, "The is barricaded with planks!", Toast.LENGTH_LONG).show();
+			}
+			else if (this.id == 7){
+				Toast.makeText(context, "The room is too dark to see!", Toast.LENGTH_LONG).show();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
@@ -161,8 +174,6 @@ public class Door extends GameObject{
 			}
 		}
 		else if(doorY == (gameBoard.getPlayer().getPositionY() - 1) && doorX == gameBoard.getPlayer().getPositionX()){
-				
-				
 				
 			if(InventoryView.checkForKey(this.id) || this.id == 0){
 					state = NORTH_OPEN_DOOR_IMAGE;
@@ -173,24 +184,21 @@ public class Door extends GameObject{
 					if(openCheck()){
 						return;
 					}
-				
-				
+			}else if (this.id == 6) {
+				Toast.makeText(context, "The is barricaded with planks!", Toast.LENGTH_LONG).show();
+			}
+			else if (this.id == 7){
+				Toast.makeText(context, "The room is too dark to see!", Toast.LENGTH_LONG).show();
 			}
 			else{
 				Toast.makeText(context, "The door is locked!", Toast.LENGTH_SHORT).show();
 				playDoorLocked();
-			}
-				
-	
+			}	
 		}
 		else{
 			Toast.makeText(context, "Out of range!", Toast.LENGTH_SHORT).show();
 		}
-	
-		
-		
 		gameBoard.updateView();
-		
 	}
 	
 	public boolean openCheck(){
